@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Show Photographers - FlashMeToday</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: #f4f6fa;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .navbar {
+      background-color: #5e17eb;
+    }
+
+    .navbar-brand {
+      color: white !important;
+      font-weight: 600;
+    }
+
+    .photographer-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      margin-bottom: 30px;
+    }
+
+    .photographer-image {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #5e17eb;
+    }
+
+    .badge-skill {
+      background-color: #eee8fc;
+      color: #5e17eb;
+      font-weight: 500;
+    }
+
+    .status-badge {
+      font-weight: 500;
+      font-size: 0.85rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    .free {
+      background-color: #d4edda;
+      color: #155724;
+    }
+
+    .working {
+      background-color: #f8d7da;
+      color: #721c24;
+    }
+
+    .filter-bar select {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">FlashMeToday</a>
+    </div>
+  </nav>
+
+  <!-- Filter Section -->
+  <div class="container my-4">
+    <div class="filter-bar d-flex flex-wrap align-items-center">
+      <select class="form-select mb-2" id="filterAvailability" style="width: 200px;">
+        <option value="">Availability</option>
+        <option value="free">Free</option>
+        <option value="working">At Work</option>
+      </select>
+
+      <select class="form-select mb-2" id="filterSkill" style="width: 200px;">
+        <option value="">Skill</option>
+        <option value="Photographer">Photographer</option>
+        <option value="Photo Editor">Photo Editor</option>
+        <option value="Videographer">Videographer</option>
+        <option value="Video/Reel Editor">Video/Reel Editor</option>
+        <option value="Mobile Content Creator">Mobile Content Creator</option>
+      </select>
+
+      <select class="form-select mb-2" id="filterCity" style="width: 200px;">
+        <option value="">Work City</option>
+        <option value="Mumbai">Mumbai</option>
+        <option value="Delhi">Delhi</option>
+        <option value="Pune">Pune</option>
+        <option value="Bangalore">Bangalore</option>
+        <option value="Chennai">Chennai</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Photographer List -->
+  <div class="container">
+    <div id="photographerList" class="row gy-4">
+      <!-- Cards Injected Here -->
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script>
+    const photographers = [
+      {
+        name: "Kartik Jain",
+        email: "kartik@example.com",
+        city: "Mumbai",
+        state: "Maharashtra",
+        country: "India",
+        workCities: ["Mumbai", "Pune"],
+        skills: ["Photographer", "Photo Editor"],
+        isFree: true,
+        image: "https://randomuser.me/api/portraits/men/1.jpg"
+      },
+      {
+        name: "Simran Kaur",
+        email: "simran@example.com",
+        city: "Delhi",
+        state: "Delhi",
+        country: "India",
+        workCities: ["Delhi", "Noida"],
+        skills: ["Mobile Content Creator", "Video/Reel Editor"],
+        isFree: false,
+        image: "https://randomuser.me/api/portraits/women/2.jpg"
+      },
+      {
+        name: "Ravi Sharma",
+        email: "ravi@example.com",
+        city: "Bangalore",
+        state: "Karnataka",
+        country: "India",
+        workCities: ["Bangalore", "Hyderabad"],
+        skills: ["Photographer", "Videographer"],
+        isFree: true,
+        image: "https://randomuser.me/api/portraits/men/3.jpg"
+      },
+      {
+        name: "Ayesha Verma",
+        email: "ayesha@example.com",
+        city: "Chennai",
+        state: "Tamil Nadu",
+        country: "India",
+        workCities: ["Chennai", "Bangalore"],
+        skills: ["Photo Editor", "Video/Reel Editor"],
+        isFree: false,
+        image: "https://randomuser.me/api/portraits/women/4.jpg"
+      },
+      {
+        name: "Rohan Desai",
+        email: "rohan@example.com",
+        city: "Pune",
+        state: "Maharashtra",
+        country: "India",
+        workCities: ["Pune", "Mumbai"],
+        skills: ["Photographer", "Mobile Content Creator"],
+        isFree: true,
+        image: "https://randomuser.me/api/portraits/men/5.jpg"
+      }
+    ];
+
+    const listContainer = document.getElementById("photographerList");
+    const filterAvailability = document.getElementById("filterAvailability");
+    const filterSkill = document.getElementById("filterSkill");
+    const filterCity = document.getElementById("filterCity");
+
+    function renderPhotographers(data) {
+      listContainer.innerHTML = "";
+      if (data.length === 0) {
+        listContainer.innerHTML = "<p class='text-center'>No photographers found.</p>";
+        return;
+      }
+
+      data.forEach(p => {
+        const statusClass = p.isFree ? "free" : "working";
+        const statusText = p.isFree ? "Free" : "At Work";
+
+        const skillsHTML = p.skills.map(skill => `
+          <span class="badge badge-skill me-1 mb-1">${skill}</span>
+        `).join("");
+
+        const workCitiesHTML = p.workCities.join(", ");
+
+        const cardHTML = `
+          <div class="col-md-6 col-lg-4">
+            <div class="photographer-card">
+              <div class="d-flex align-items-center mb-3">
+                <img src="${p.image}" alt="${p.name}" class="photographer-image me-3">
+                <div>
+                  <h5 class="mb-1">${p.name}</h5>
+                  <p class="mb-1 small">${p.email}</p>
+                  <span class="status-badge ${statusClass}">${statusText}</span>
+                </div>
+              </div>
+              <p class="mb-1"><strong>Address:</strong> ${p.city}, ${p.state}, ${p.country}</p>
+              <p class="mb-1"><strong>Can work in:</strong> ${workCitiesHTML}</p>
+              <div><strong>Professional in:</strong><br>${skillsHTML}</div>
+            </div>
+          </div>
+        `;
+        listContainer.innerHTML += cardHTML;
+      });
+    }
+
+    function applyFilters() {
+      const av = filterAvailability.value;
+      const skill = filterSkill.value;
+      const city = filterCity.value;
+
+      const filtered = photographers.filter(p => {
+        const matchAvailability = !av || (av === "free" && p.isFree) || (av === "working" && !p.isFree);
+        const matchSkill = !skill || p.skills.includes(skill);
+        const matchCity = !city || p.workCities.includes(city);
+        return matchAvailability && matchSkill && matchCity;
+      });
+
+      renderPhotographers(filtered);
+    }
+
+    filterAvailability.addEventListener("change", applyFilters);
+    filterSkill.addEventListener("change", applyFilters);
+    filterCity.addEventListener("change", applyFilters);
+
+    renderPhotographers(photographers); // Initial load
+  </script>
+
+</body>
+</html>

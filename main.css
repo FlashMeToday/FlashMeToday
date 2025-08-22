@@ -1,0 +1,288 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar Enhancements */
+.navbar-nav .nav-link {
+  color: #212529;
+  font-weight: 500;
+  position: relative;
+  margin: 0 14px;
+  padding: 8px 6px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+
+/* Hover & Active state styling */
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link:focus,
+.navbar-nav .nav-link.active {
+  color: #6f42c1 !important;
+  font-weight: 600;
+}
+
+/* Prevent dropdown toggles from showing underline */
+.navbar-nav .dropdown-toggle::after {
+  content: none !important;
+}
+
+/* Dropdown styles */
+.navbar-nav .dropdown-menu {
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown-item:hover {
+  background-color: #f1e8fc;
+  color: #6f42c1;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+/* Purple Buttons */
+.btn-purple {
+  background-color: #6f42c1;
+  color: #fff;
+  border: none;
+}
+
+.btn-purple:hover {
+  background-color: #5a32a3;
+  color: #fff;
+}
+
+.btn-outline-purple {
+  color: #6f42c1;
+  border: 2px solid #6f42c1;
+  background-color: transparent;
+}
+
+.btn-outline-purple:hover {
+  background-color: #6f42c1;
+  color: #fff;
+}
+
+/* Slider Wrapper */
+.slider-wrapper {
+  overflow: hidden;
+  position: relative;
+  padding: 0 20px;
+}
+
+/* Card Slider Styles with Snap */
+.card-slider {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+  scroll-padding-left: 20px;
+  gap: 20px;
+  padding-bottom: 10px;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.card-slider::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-card {
+  flex: 0 0 300px;
+  min-width: 300px;
+  max-width: 300px;
+  scroll-snap-align: start;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.slider-card img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+}
+
+.slider-card h4 {
+  margin-top: 10px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.slider-card p {
+  font-size: 0.9rem;
+  padding: 0 10px 15px;
+  color: #555;
+  word-wrap: break-word;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 20px;
+  z-index: 2;
+  opacity: 0.8;
+}
+
+.slider-btn:hover {
+  opacity: 1;
+}
+
+.left-btn {
+  left: 5px;
+}
+
+.right-btn {
+  right: 5px;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 991.98px) {
+  .slider-card {
+    flex: 0 0 250px;
+    min-width: 250px;
+    max-width: 250px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .slider-card {
+    flex: 0 0 85%;
+    min-width: 85%;
+    max-width: 85%;
+  }
+
+  .card-slider {
+    padding: 0 10px;
+    gap: 10px;
+  }
+
+  .slider-btn {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+  }
+
+  .left-btn {
+    left: 2px;
+  }
+
+  .right-btn {
+    right: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-card {
+    flex: 0 0 90%;
+    min-width: 90%;
+    max-width: 90%;
+  }
+
+  .slider-card img {
+    height: 200px;
+  }
+}
+
+/* Other Components */
+.ideas-section {
+  background-size: cover;
+  background-position: center;
+  min-height: 500px;
+  position: relative;
+}
+
+.text-purple {
+  color: #6f42c1 !important;
+}
+
+.text-purple:hover {
+  color: #8e5bd3 !important;
+}
+
+/* Social Icons */
+.social-icon {
+  color: white;
+  transition: color 0.3s ease;
+}
+
+.icon-facebook:hover { color: #1877f2; }
+.icon-instagram:hover { color: #c13584; }
+.icon-linkedin:hover { color: #0077b5; }
+.icon-youtube:hover { color: #ff0000; }
+.icon-pinterest:hover { color: #bd081c; }
+
+/* Offer Cards with Solid Color Hover */
+.icon-splash {
+  background: white;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem auto;
+  transition: background-color 0.3s ease;
+}
+
+.icon-splash i {
+  color: #6f42c1;
+  font-size: 2rem;
+  transition: color 0.3s ease;
+}
+
+.offer-card {
+  background: white;
+  color: #212529;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.offer-card:hover {
+  background-color: #6f42c1;
+  color: white !important;
+  transition: all 0.5s ease-in-out;
+}
+
+.offer-card:hover .icon-splash {
+  background-color: white;
+}
+
+.offer-card:hover .icon-splash i {
+  color: #6f42c1 !important;
+}
+
+.offer-card h5,
+.offer-card p {
+  transition: color 0.3s ease;
+  color: #212529;
+}
+
+.offer-card:hover h5,
+.offer-card:hover p {
+  color: white !important;
+}
+
+.offer-btn {
+  background-color: #6f42c1;
+  color: white;
+  border: none;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.offer-card:hover .offer-btn {
+  background-color: white !important;
+  color: #6f42c1 !important;
+}

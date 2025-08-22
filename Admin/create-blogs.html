@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Create Blog - FlashMeToday</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background: linear-gradient(to right top, #f3e7ff, #fff8ff);
+    }
+
+    .header {
+      text-align: center;
+      padding: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #5e17eb;
+    }
+
+    .form-label {
+      font-weight: 600;
+      color: #5e17eb;
+    }
+
+    .btn-purple {
+      background-color: #5e17eb;
+      color: white;
+    }
+
+    .btn-purple:hover {
+      background-color: #4a12c7;
+    }
+
+    textarea.form-control {
+      resize: vertical;
+      min-height: 200px;
+    }
+
+    .preview-box {
+      background-color: white;
+      border-radius: 12px;
+      padding: 15px;
+      min-height: 300px;
+      border: 1px solid #ccc;
+    }
+
+    .img-fluid {
+      max-height: 300px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container-fluid">
+    <div class="header">✍️ Create a Blog Post</div>
+
+    <div class="row g-4 px-3 pb-5">
+      <!-- Left Column -->
+      <div class="col-12 col-md-6">
+        <form id="blogForm">
+          <div class="mb-3">
+            <label class="form-label">Upload Image</label>
+            <input type="file" class="form-control" id="blogImage" accept="image/*" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Author</label>
+            <input type="text" class="form-control" id="author" required />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Date</label>
+            <input type="text" class="form-control" id="date" readonly />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Category</label>
+            <select class="form-select" id="category" required>
+              <option value="">Select Category</option>
+              <option value="Photography">Photography</option>
+              <option value="Editing">Editing</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">SubCategory</label>
+            <select class="form-select" id="subCategory" required>
+              <option value="">Select Subcategory</option>
+              <option value="Wedding">Wedding</option>
+              <option value="Food">Food</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Blog HTML Content</label>
+            <textarea class="form-control" id="blogContent" placeholder="<h1>My Blog Post</h1>" required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-purple w-100">📢 Publish Blog</button>
+        </form>
+      </div>
+
+      <!-- Right Column -->
+      <div class="col-12 col-md-6">
+        <h5 class="text-muted mb-3">Live Preview</h5>
+        <img id="previewImage" class="img-fluid mb-3 d-none" />
+        <div class="preview-box" id="previewContent">Preview will appear here</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Set current date
+    document.getElementById("date").value = new Date().toLocaleString();
+
+    // Live preview content
+    const blogContent = document.getElementById("blogContent");
+    const previewContent = document.getElementById("previewContent");
+    const blogImage = document.getElementById("blogImage");
+    const previewImage = document.getElementById("previewImage");
+
+    blogContent.addEventListener("input", () => {
+      previewContent.innerHTML = blogContent.value;
+    });
+
+    blogImage.addEventListener("change", function () {
+      const file = this.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          previewImage.src = e.target.result;
+          previewImage.classList.remove("d-none");
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    document.getElementById("blogForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      alert("✅ Blog Published Successfully!");
+    });
+  </script>
+</body>
+</html>

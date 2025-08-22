@@ -1,0 +1,134 @@
+[{
+  "plan": "Wedding",
+  "packages": [
+    {
+      "type of shoot": "Grand Wedding",
+      "includes": "Photography + Video + Drone",
+      "packageDescp": [
+        "3 Functions - 4 Member Team",
+        "1 Traditional + 1 Candid Photographer, 1 Traditional + 1 Cinematic Videographer",
+        "1 Minute Teaser, 4 Min Trailer. 1 Full-Length Traditional Video, 1000 Images"
+      ],
+      "aboutEquipment": "Full Frame Cameras, Prime and Wide Lenses, Gimbal, and Lights",
+      "price": {
+        "original": 180000,
+        "offer": 150000
+      }
+    },
+    {
+      "type of shoot": "Luxury Package",
+      "includes": "Photography + Video + Drone",
+      "packageDescp": [
+        "5 Functions - 5 Member team",
+        "1 Traditional + 2 Candid Photographer, 1 Traditional + 1 Cinematic Videographer",
+        "1 Minute Teaser, 4 Min Trailer. 1 Full-Length Traditional Video, 1000 Images",
+        "Senior Team"
+      ],
+      "aboutEquipment": "Full Frame Cameras, Prime and Wide Lenses, Gimbal, and Lights",
+      "price": {
+        "original": 290000,
+        "offer": 250000
+      }
+    },
+    {
+      "type of shoot": "Celebrity Package",
+      "includes": "Photography + Video + Drone",
+      "packageDescp": [
+        "7 Functions - 6 Member Team",
+        "1 Traditional + 2 Candid Photographer, 1 Traditional + 2 Cinematic Videographer",
+        "1 Minute Teaser, 4 Min Trailer. 1 Full-Length Traditional Video, 2000 Images",
+        "Boutique Wedding Team",
+        "Wedding Scripting and Mood Boarding"
+      ],
+      "aboutEquipment": "Full Frame High-end Cameras, Prime and Wide Lenses, Gimbal and Lights",
+      "price": {
+        "original": 410000,
+        "offer": 350000
+      }
+    }
+  ] 
+},
+{
+  "plan": "Pre-Wedding",
+  "packages": [
+    {
+      "type of shoot": "Insta Shoot",
+      "includes": "Photography Only",
+      "packageDescp": [
+        "25 Edited images",
+        "4 hours shoot, 2 locations & 2 Dress Changes",
+        "Full Frame Camera & 1 Photographer with Prime lens"
+      ],
+      "aboutEquipment": "",
+      "price": {
+        "original": 16999,
+        "offer": 15999
+      }
+    },
+    {
+      "type of shoot": "Luxury Shoot",
+      "includes": "Photography + Videography",
+      "packageDescp": [
+        "35 Edited images",
+        "2-3 Minutes Cinematic Video",
+        "8 hours shoot with 3 Dress Changes at 3 locations"
+      ],
+      "aboutEquipment": "1 Photographer, 1 Cinematographer, Full Frame Camera bodies with prime and wide lenses along with Gimbal.",
+      "price": {
+        "original": 35999,
+        "offer": 33999
+      }
+    },
+    {
+      "type of shoot": "Celebrity Shoot",
+      "includes": "Photography + Video + Drone",
+      "packageDescp": [
+        "35 Edited images",
+        "2-3 Minutes Cinematic Video",
+        "1 Teaser Video",
+        "8 hours shoot, 3 Dress Changes , 3 location, Story Designing/ Moodboarding"
+      ],
+      "aboutEquipment": "1 Photographer, 1 Cinematographer, Full Frame Camera body with prime and wide lenses along with Gimbal and Drone",
+      "price": {
+        "original": 49999,
+        "offer": 43999
+      }
+    },
+    {
+      "type of shoot": "Premium Shoot",
+      "includes": "Photography + Videography + Drone",
+      "packageDescp": [
+        "35 Edited images",
+        "2-3 Minutes Cinematic Video",
+        "1 Teaser Video",
+        "8 hours shoot, 3 Dress Changes , 3 location, Story Designing/ Moodboarding"
+      ],
+      "aboutEquipment":
+      "1 Photographer, 1 Cinematographer, Full Frame Camera body with prime and wide lenses along with Gimbal and Drone",
+      "price": {
+        "original": 35999,
+        "offer": 33999
+      }
+    },
+    {
+      "type of shoot": "Celebrity Shoot",
+      "includes": "Photography + Video + Drone",
+      "packageDescp": [
+        "35 Edited images",
+        "2-3 Minutes Cinematic Video",  
+        "1 Teaser Video",
+        "8 hours shoot, 3 Dress Changes , 3 location, Story Designing/ Moodboarding",
+        "3 Save the date images",
+        "5 Countdown images",
+        "1 Reel",
+        "1 E-Invitation"
+      ],
+      "aboutEquipment": "1 Photographer, 1 Cinematographer, Full Frame Camera body with prime and wide lenses along with Gimbal and Drone",
+      "price": {
+        "original": 64999,
+        "offer": 59999
+      }
+    }
+  ]
+}
+]
