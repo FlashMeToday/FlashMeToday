@@ -11,7 +11,8 @@
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" 
     rel="stylesheet"
   />
-
+<!-- Font Awesome for WhatsApp icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <!-- Bootstrap Icons -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
@@ -94,7 +95,7 @@
 <!-- NavBar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm py-3">
   <div class="container-fluid">
-    <a class="navbar-brand fw-bold text-dark" href="./index.html">FlashMeToday</a>
+    <a class="navbar-brand" href="./index.html"><img src="./Images/WebLogo/Logo-light.png" height="40px" alt="FlashMeToday Logo"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -102,14 +103,14 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav m-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link px-3 active" aria-current="page" href="./index.html">Home</a>
+          <a class="nav-link px-3" aria-current="page" href="./index.html">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link px-3" href="./wedding.html">Wedding</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link px-3 dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown">Occasions</a>
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu" >
             <li><a class="dropdown-item" href="./Ocasions/pre-wedding.html">Pre Wedding</a></li>
             <li><a class="dropdown-item" href="./Ocasions/maternity.html">Maternity</a></li>
             <li><a class="dropdown-item" href="./Ocasions/baby-and-kids.html">Baby & Kids</a></li>
@@ -130,7 +131,7 @@
         </li>
         <li class="nav-item"><a class="nav-link px-3" href="./ideas.html">Ideas</a></li>
         <li class="nav-item"><a class="nav-link px-3" href="./blogs.html">Blog</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="./blogs.html">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link px-3" href="./contact-us.html">Contact Us</a></li>
       </ul>
     </div>
   </div>
@@ -197,27 +198,21 @@
 
             <div class="col-md-6 form-group">
               <label class="form-label">Plan</label>
-              <select class="form-select" id="planSelect">
+              <select id="planSelect" class="form-select" required>
                 <option selected disabled>Select Plan</option>
-                <option>Insta Shoot</option>
-                <option>Premium Shoot</option>
-                <option>Royal Shoot</option>
               </select>
             </div>
 
             <div class="col-md-6 form-group">
               <label class="form-label">Type of Shoot</label>
-              <select class="form-select" id="shootTypeSelect">
-                <option selected disabled>Type of Shoot</option>
-                <option>Indoor</option>
-                <option>Outdoor</option>
-                <option>Mixed</option>
+              <select id="typeSelect" class="form-select" disabled required>
+                <option selected disabled>Select Type of Shoot</option>
               </select>
             </div>
 
             <div class="col-md-6 form-group">
               <label class="form-label">City <span class="text-purple">Verify Price Change</span></label>
-              <select class="form-select">
+              <select id="citySelect" class="form-select">
                 <option selected>Moradabad</option>
                 <option>Delhi</option>
                 <option>Mumbai</option>
@@ -252,7 +247,7 @@
 <footer class="bg-black text-white text-center py-5">
   <div class="container">
     <div class="mb-4">
-      <img src="https://www.vsnapu.com/images/logo.svg" alt="FlashMeToday Logo" style="height: 60px;" class="mb-3" />
+      <img src="./Images/WebLogo/Logo-dark.png" alt="FlashMeToday Logo" style="height: 60px;" class="mb-3" />
       <h2 class="fw-bold mb-0">FlashMeToday<span style="color: #6f42c1;">.</span></h2>
       <p class="mb-4" style="color: #6f42c1;">Memories for Lifetime.</p>
     </div>
@@ -275,32 +270,154 @@
     </div>
   </div>
 </footer>
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="whatsapp-float" style="text-decoration: none;">
+  <i class="fab fa-whatsapp"></i>
+</a>
 <!-- Logic to Show/Hide Left and Adjust Form -->
 <script>
-  const planSelect = document.getElementById('planSelect');
-  const shootTypeSelect = document.getElementById('shootTypeSelect');
-  const packageInfo = document.getElementById('packageInfo');
-  const formFields = document.getElementById('formFields');
-  const bookingRow = document.getElementById('bookingRow');
+let data = {};
+let citySyncBound = false; // ensure we only bind main city listener once
 
-  function togglePackageInfo() {
-    const planSelected = planSelect.value !== 'Select Plan';
-    const typeSelected = shootTypeSelect.value !== 'Type of Shoot';
+// Fetch your data.json
+fetch("./data.json")
+  .then(res => res.json())
+  .then(json => {
+    data = json[0]; // your JSON starts with [ { ... } ]
+    const planSelect = document.getElementById("planSelect");
 
-    if (planSelected && typeSelected) {
-      packageInfo.classList.remove('d-none');
-      formFields.classList.add('full-width');
-      bookingRow.classList.remove('only-form');
-    } else {
-      packageInfo.classList.add('d-none');
-      formFields.classList.remove('full-width');
-      bookingRow.classList.add('only-form');
-    }
+    // Collect both Occasions + Business plans
+    const allPlans = [...data.Occasions, ...data.Business];
+
+    allPlans.forEach(item => {
+      const option = document.createElement("option");
+      option.value = item.plan;
+      option.textContent = item.plan;
+      planSelect.appendChild(option);
+    });
+  })
+  .catch(err => console.error("Error loading data.json:", err));
+
+// Handle plan change -> populate types
+document.getElementById("planSelect").addEventListener("change", function () {
+  const selectedPlan = this.value;
+  const typeSelect = document.getElementById("typeSelect");
+
+  // Reset type select
+  typeSelect.innerHTML = '<option selected disabled>Select Type of Shoot</option>';
+  typeSelect.disabled = true;
+
+  // Search plan inside both Occasions & Business
+  const selectedObj =
+    data.Occasions.find(item => item.plan === selectedPlan) ||
+    data.Business.find(item => item.plan === selectedPlan);
+
+  if (selectedObj) {
+    typeSelect.dataset.plan = selectedPlan; // store current plan
+    selectedObj.packages.forEach(pkg => {
+      const option = document.createElement("option");
+      option.value = pkg["type of shoot"];
+      option.textContent = pkg["type of shoot"];
+      typeSelect.appendChild(option);
+    });
+
+    typeSelect.disabled = false;
   }
+});
 
-  planSelect.addEventListener('change', togglePackageInfo);
-  shootTypeSelect.addEventListener('change', togglePackageInfo);
+// Handle type change -> Show package info with city as text
+document.getElementById("typeSelect").addEventListener("change", function () {
+  const selectedType = this.value;
+  const selectedPlan = this.dataset.plan;
+  const packageInfoDiv = document.getElementById("packageInfo");
+  const mainCitySelect = document.getElementById("citySelect");
+  const currentCity = (mainCitySelect && mainCitySelect.value) || "Moradabad";
+  const none = "N/A";
+
+  // Find plan
+  const selectedObj =
+    data.Occasions.find(item => item.plan === selectedPlan) ||
+    data.Business.find(item => item.plan === selectedPlan);
+  if (!selectedObj) return;
+
+  // Find package
+  const selectedPkg = selectedObj.packages.find(pkg => pkg["type of shoot"] === selectedType);
+  if (!selectedPkg) return;
+
+  // Show package info card
+  packageInfoDiv.classList.remove("d-none");
+
+  // Fill content dynamically with city as text
+  packageInfoDiv.innerHTML = `
+    <div class="card shadow-sm p-4">
+      <p class="mb-1 fw-bold"><span class="text-purple"><u>${selectedPlan.toUpperCase()}</u></span> PLAN:</p>
+      <h3 class="fw-bold text-purple">${selectedPkg["type of shoot"]}<span class="text-purple">.</span></h3>
+      <p>${selectedPkg.includes || none.toUpperCase()}</p>
+      <ul>
+        <li>${selectedPkg.packageDescp.join("</li><li>")}</li>
+      </ul>
+    
+      <div class="mb-3">
+        <p class="text-purple fw-semibold mb-1">
+          Price in <span id="pkgCityName">${currentCity}</span>
+        </p>
+        <del>₹ ${Number(selectedPkg.price.original).toLocaleString()}</del>
+        <span class="fs-5 fw-bold text-purple ms-2">₹ ${Number(selectedPkg.price.offer).toLocaleString()}</span>
+      </div>
+    </div>
+  `;
+
+  // Bind main form city -> package info city text, only once globally
+  if (!citySyncBound && mainCitySelect) {
+    mainCitySelect.addEventListener("change", (e) => {
+      const city = e.target.value;
+      const pkgCityName = document.getElementById("pkgCityName");
+      if (pkgCityName) pkgCityName.textContent = city;
+      // Recompute pricing here if city affects price later
+    });
+    citySyncBound = true;
+  }
+});
 </script>
+
+
+<script>
+  // Pre-select Plan & Type from URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const selectedPlan = urlParams.get('plan');
+  const selectedType = urlParams.get('type');
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const planSelect = document.getElementById("planSelect");
+    const typeSelect = document.getElementById("typeSelect");
+
+    // Wait until options are populated (since they're loaded from data.json)
+    const observer = new MutationObserver(() => {
+      if (selectedPlan && planSelect) {
+        const planOption = [...planSelect.options].find(opt => opt.value === selectedPlan);
+        if (planOption) {
+          planSelect.value = selectedPlan;
+          planSelect.dispatchEvent(new Event("change")); // trigger type population
+        }
+      }
+
+      if (selectedType && typeSelect) {
+        // delay a bit to let plan change populate types
+        setTimeout(() => {
+          const typeOption = [...typeSelect.options].find(opt => opt.value === selectedType);
+          if (typeOption) {
+            typeSelect.value = selectedType;
+            typeSelect.dispatchEvent(new Event("change"));
+          }
+        }, 500);
+      }
+    });
+
+    observer.observe(planSelect, { childList: true });
+  });
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </body>

@@ -98,7 +98,26 @@
 <body>
   <nav class="navbar navbar-expand-lg">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">FlashMeToday</a>
+      <a class="navbar-brand" href="../index.html">FlashMeToday</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link text-light fw-semibold" href="../Admin.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light"  href="./create-blogs.html">Create Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="./show-photographers.html">Show   Photographers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light fw-semibold text-decoration-underline" aria-current="page" href="./show-bookings.html">Show Bookings</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </nav>
 
@@ -123,17 +142,148 @@
 
   <script>
      const bookings = [
-      {name:"Aarav Mehta",email:"aarav@example.com",phone:"9876543210",dateTime:"2025-07-27T10:30:00",shootType:"Wedding Shoot",plan:"Luxury Shoot",price:"₹95,000",address:"12 Palace Road",city:"Jaipur",state:"Rajasthan",image:"https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrZP7gA_i2U2LgxDCtmeWhnGyPZvjKraxff2OIqmhNSY6LqC-DQwRwRE9mkcfAsXDnosneTKAHYqL9yXykAXj6GGvdH6Iu1bwGaVau_9AkU02MWj-UbqSjacHmIRzapukmXzsBT=w675-h390-n-k-no",assigned:true},
-      {name:"Isha Kapoor",email:"isha@example.com",phone:"9812345678",dateTime:"2025-07-27T13:00:00",shootType:"Food Shoot",plan:"Insta Shoot",price:"₹20,000",address:"Connaught Place",city:"Delhi",state:"Delhi",image:"https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQ509dlWouTf0tu2_xXaEwRhIUW5gMYdvVs1Qcg-YhpcH-8nKvOyGTm9uXWZSMwZIOxPgENbhcalLdvhusNrQaon0SQGgjOmgw9oapeuQ",assigned:false},
-      {name:"Rahul Nair",email:"rahul@example.com",phone:"9100254789",dateTime:"2025-08-02T17:45:00",shootType:"Brand Video",plan:"Celebrity Shoot",price:"₹1,50,000",address:"MG Road",city:"Chennai",state:"Tamil Nadu",image:"https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcT2i2jD3Y1Yy3R6SQ_WHFJLm6F07xBxJ7ca4xeOerKe-hcVkG1nfR1ynu9o_SCX8Lvrdb4x1o3YdW_usIpmckoxl8W2cYr1dRjsF0gY6g",assigned:true},
-      {name:"Sneha Reddy",email:"sneha@example.com",phone:"9812456798",dateTime:"2025-07-26T22:00:00",shootType:"Maternity Shoot",plan:"Insta Shoot",price:"₹18,000",address:"Marine Drive",city:"Mumbai",state:"Maharashtra",image:"https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqX4u7j6XCbylqPLyPeSPIf_Uj1wVau3vKMf5Hag4DcSgW2p4PsqGnQLVhJqeGpOeBEW5iEH8CjFctm0iEChi1Cu9ahO3vvHbHGysLdF2_orqBim4PuUo2W64uMR_4WfwQe-xroww=w675-h390-n-k-no",assigned:false},
-      {name:"Sameer Joshi",email:"sameer@example.com",phone:"9821345678",dateTime:"2025-08-15T19:00:00",shootType:"Corporate Events Shoot",plan:"Luxury Shoot",price:"₹65,000",address:"Koregaon Park",city:"Pune",state:"Maharashtra",image:"https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQnvF7CuyPj9vdJQ7u32s5vKSSkfRn848Ff4nj0xLWIaZxtgzFCSsJa19hNhu5RZJQnsQJ15TtkKiDNssFsSH6jNNny7myWfdS38Dhtrw",assigned:true},
-      {name:"Aditi Singh",email:"aditi@example.com",phone:"9156782341",dateTime:"2025-08-10T14:00:00",shootType:"Baby Shoot",plan:"Insta Shoot",price:"₹22,000",address:"Near Hawa Mahal",city:"Jaipur",state:"Rajasthan",image:"https://lh3.googleusercontent.com/gps-cs-s/AC9h4nrZP7gA_i2U2LgxDCtmeWhnGyPZvjKraxff2OIqmhNSY6LqC-DQwRwRE9mkcfAsXDnosneTKAHYqL9yXykAXj6GGvdH6Iu1bwGaVau_9AkU02MWj-UbqSjacHmIRzapukmXzsBT=w675-h390-n-k-no",assigned:true},
-      {name:"Vikram Patel",email:"vikram@example.com",phone:"8877665544",dateTime:"2025-08-12T09:30:00",shootType:"Product Shoot",plan:"Luxury Shoot",price:"₹45,000",address:"Outer Circle",city:"Delhi",state:"Delhi",image:"https://encrypted-tbn0.gstatic.com/licensed-image?q=tbn:ANd9GcQ509dlWouTf0tu2_xXaEwRhIUW5gMYdvVs1Qcg-YhpcH-8nKvOyGTm9uXWZSMwZIOxPgENbhcalLdvhusNrQaon0SQGgjOmgw9oapeuQ",assigned:true},
-      {name:"Rhea Kapoor",email:"rhea@example.com",phone:"9234578812",dateTime:"2025-07-28T16:00:00",shootType:"Vacation Shoot",plan:"Insta Shoot",price:"₹30,000",address:"East Coast Road",city:"Chennai",state:"Tamil Nadu",image:"https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcT2i2jD3Y1Yy3R6SQ_WHFJLm6F07xBxJ7ca4xeOerKe-hcVkG1nfR1ynu9o_SCX8Lvrdb4x1o3YdW_usIpmckoxl8W2cYr1dRjsF0gY6g",assigned:false},
-      {name:"Kriti Desai",email:"kriti@example.com",phone:"9045671234",dateTime:"2025-08-20T12:15:00",shootType:"Pre-wedding Shoot",plan:"Celebrity Shoot",price:"₹1,10,000",address:"Marine Drive",city:"Mumbai",state:"Maharashtra",image:"https://lh3.googleusercontent.com/gps-cs-s/AC9h4nqX4u7j6XCbylqPLyPeSPIf_Uj1wVau3vKMf5Hag4DcSgW2p4PsqGnQLVhJqeGpOeBEW5iEH8CjFctm0iEChi1Cu9ahO3vvHbHGysLdF2_orqBim4PuUo2W64uMR_4WfwQe-xroww=w675-h390-n-k-no",assigned:true},
-      {name:"Anil Sharma",email:"anil@example.com",phone:"9321123456",dateTime:"2025-08-05T11:45:00",shootType:"Party Shoot",plan:"Insta Shoot",price:"₹28,000",address:"Baner",city:"Pune",state:"Maharashtra",image:"https://encrypted-tbn2.gstatic.com/licensed-image?q=tbn:ANd9GcQnvF7CuyPj9vdJQ7u32s5vKSSkfRn848Ff4nj0xLWIaZxtgzFCSsJa19hNhu5RZJQnsQJ15TtkKiDNssFsSH6jNNny7myWfdS38Dhtrw",assigned:false}
-    ];
+  {
+    name:"Aarav Mehta",
+    email:"aarav@example.com",
+    phone:"9876543210",
+    dateTime:"2025-07-27T10:30:00",
+    shootType:"Wedding Shoot",
+    plan:"Luxury Shoot",
+    price:"₹95,000",
+    address:"12 Palace Road",
+    city:"Jaipur",
+    state:"Rajasthan",
+    image:"../Images/Cities/Jaipur.jpg",
+    assigned:true
+  },
+  {
+    name:"Isha Kapoor",
+    email:"isha@example.com",
+    phone:"9812345678",
+    dateTime:"2025-07-27T13:00:00",
+    shootType:"Food Shoot",
+    plan:"Insta Shoot",
+    price:"₹20,000",
+    address:"Connaught Place",
+    city:"Delhi",
+    state:"Delhi",
+    image:"../Images/Cities/Delhi.jpg",
+    assigned:false
+  },
+  {
+    name:"Rahul Nair",
+    email:"rahul@example.com",
+    phone:"9100254789",
+    dateTime:"2025-08-02T17:45:00",
+    shootType:"Brand Video",
+    plan:"Celebrity Shoot",
+    price:"₹1,50,000",
+    address:"MG Road",
+    city:"Chennai",
+    state:"Tamil Nadu",
+    image:"../Images/Cities/Chennai.jpg",
+    assigned:true
+  },
+  {
+    name:"Sneha Reddy",
+    email:"sneha@example.com",
+    phone:"9812456798",
+    dateTime:"2025-07-26T22:00:00",
+    shootType:"Maternity Shoot",
+    plan:"Insta Shoot",
+    price:"₹18,000",
+    address:"Marine Drive",
+    city:"Mumbai",
+    state:"Maharashtra",
+    image:"../Images/Cities/Mumbai.jpg",
+    assigned:false
+  },
+  {
+    name:"Sameer Joshi",
+    email:"sameer@example.com",
+    phone:"9821345678",
+    dateTime:"2025-08-15T19:00:00",
+    shootType:"Corporate Events Shoot",
+    plan:"Luxury Shoot",
+    price:"₹65,000",
+    address:"Koregaon Park",
+    city:"Pune",
+    state:"Maharashtra",
+    image:"../Images/Cities/Pune.jpg",
+    assigned:true
+  },
+  {
+    name:"Aditi Singh",
+    email:"aditi@example.com",
+    phone:"9156782341",
+    dateTime:"2025-08-10T14:00:00",
+    shootType:"Baby Shoot",
+    plan:"Insta Shoot",
+    price:"₹22,000",
+    address:"Near Hawa Mahal",
+    city:"Jaipur",
+    state:"Rajasthan",
+    image:"../Images/Cities/Jaipur.jpg",
+    assigned:true
+  },
+  {
+    name:"Vikram Patel",
+    email:"vikram@example.com",
+    phone:"8877665544",
+    dateTime:"2025-08-12T09:30:00",
+    shootType:"Product Shoot",
+    plan:"Luxury Shoot",
+    price:"₹45,000",
+    address:"Outer Circle",
+    city:"Delhi",
+    state:"Delhi",
+    image:"../Images/Cities/Delhi.jpg",
+    assigned:true
+  },
+  {
+    name:"Rhea Kapoor",
+    email:"rhea@example.com",
+    phone:"9234578812",
+    dateTime:"2025-07-28T16:00:00",
+    shootType:"Vacation Shoot",
+    plan:"Insta Shoot",
+    price:"₹30,000",
+    address:"East Coast Road",
+    city:"Chennai",
+    state:"Tamil Nadu",
+    image:"../Images/Cities/Chennai.jpg",
+    assigned:false
+  },
+  {
+    name:"Kriti Desai",
+    email:"kriti@example.com",
+    phone:"9045671234",
+    dateTime:"2025-08-20T12:15:00",
+    shootType:"Pre-wedding Shoot",
+    plan:"Celebrity Shoot",
+    price:"₹1,10,000",
+    address:"Marine Drive",
+    city:"Mumbai",
+    state:"Maharashtra",
+    image:"../Images/Cities/Mumbai.jpg",
+    assigned:true
+  },
+  {
+    name:"Anil Sharma",
+    email:"anil@example.com",
+    phone:"9321123456",
+    dateTime:"2025-08-05T11:45:00",
+    shootType:"Party Shoot",
+    plan:"Insta Shoot",
+    price:"₹28,000",
+    address:"Baner",
+    city:"Pune",
+    state:"Maharashtra",
+    image:"../Images/Cities/Pune.jpg",
+    assigned:false
+  }
+];
+
 
     function getStatusClass(dateTime, assigned) {
       if (assigned) return "status-green";

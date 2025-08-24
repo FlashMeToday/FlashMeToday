@@ -50,9 +50,44 @@
       object-fit: cover;
       border-radius: 8px;
     }
+
+    .navbar {
+      background-color: #5e17eb;
+    }
+
+    .navbar-brand {
+      color: white !important;
+      font-weight: 600;
+    }
   </style>
 </head>
 <body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="../index.html">FlashMeToday</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link text-light" href="../Admin.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light fw-semibold text-decoration-underline" aria-current="page" href="./create-blogs.html">Create Blog</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="./show-photographers.html">Show   Photographers</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-light" href="./show-bookings.html">Show Bookings</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
   <div class="container-fluid">
     <div class="header">✍️ Create a Blog Post</div>
 
