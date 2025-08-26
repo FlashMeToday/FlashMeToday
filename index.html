@@ -30,85 +30,6 @@
 
   <!-- Your Custom CSS -->
   <link rel="stylesheet" href="./main.css" />
-
-  <style>
-.ideas-section {
-  background: #6f42c1;
-  color: #fff;
-  position: relative;
-  overflow: hidden;
-}
-
-.section-subtitle {
-  font-weight: 700;
-  color: #ffc107;
-  letter-spacing: 1px;
-  margin-bottom: 10px;
-  text-transform: uppercase;
-}
-
-.section-title {
-  font-weight: 800;
-  font-size: 2.5rem;
-  margin-bottom: 15px;
-}
-
-.section-desc {
-  font-size: 1rem;
-  max-width: 700px;
-  margin: auto;
-  color: #f1f1f1;
-}
-
-.ideas-cards {
-  margin-top: 2rem;
-}
-
-.idea-card {
-  background: #fff;
-  color: #333;
-  padding: 30px 20px;
-  border-radius: 15px;
-  text-align: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  cursor: pointer;
-}
-
-.idea-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-}
-
-.idea-icon {
-  font-size: 3rem;
-  margin-bottom: 15px;
-}
-
-.idea-title {
-  font-weight: 700;
-  margin-bottom: 10px;
-}
-
-.idea-text {
-  font-size: 0.95rem;
-}
-
-.explore-btn {
-  background: #fff;
-  color: #6f42c1;
-  border: none;
-  padding: 12px 30px;
-  font-weight: bold;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: background 0.3s ease, color 0.3s ease;
-}
-
-.explore-btn:hover {
-  background: #ffc107;
-  color: #fff;
-}
-</style>
 </head>
 
 <body>
@@ -170,7 +91,9 @@
       </div>
     </div>
     <div class="col-10 col-sm-8 col-lg-6">
-      <img src="./Images/Intro/Intro.jpg" class="d-block mx-lg-auto img-fluid" style="border-radius: 12px; box-shadow: 0 0 18px 1px #6f42c1;" width="900" height="500" loading="lazy">
+      <img src="./Images/Intro/Intro.jpg" 
+           class="d-block mx-lg-auto img-fluid hero-img"
+           width="900" height="500" loading="lazy">
     </div>
   </div>
 </div>
@@ -299,9 +222,9 @@
 </div>
 
 <!-- Ideas To Inspire Section -->
-<section class="ideas-section py-5">
-  <div class="container">
-    <div class="text-center mb-5">
+<section class="ideas-section">
+  <div class="container ideas-container">
+    <div class="mb-5">
       <h6 class="section-subtitle">NEVER STOP EXPLORING.</h6>
       <h2 class="section-title">👍 Ideas To Inspire You</h2>
       <p class="section-desc">
@@ -309,31 +232,6 @@
         Explore curated shots, poses, dresses, and spots to fuel your creativity.
       </p>
     </div>
-
-    <div class="ideas-cards row g-4">
-      <div class="col-md-4">
-        <div class="idea-card">
-          <div class="idea-icon">📸</div>
-          <h5 class="idea-title">Best Shots</h5>
-          <p class="idea-text">Discover amazing angles and shots to make your photos stand out.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="idea-card">
-          <div class="idea-icon">👗</div>
-          <h5 class="idea-title">Dress Ideas</h5>
-          <p class="idea-text">Get inspired by outfit choices that match your theme perfectly.</p>
-        </div>
-      </div>
-      <div class="col-md-4">
-        <div class="idea-card">
-          <div class="idea-icon">📍</div>
-          <h5 class="idea-title">Location Spots</h5>
-          <p class="idea-text">Explore unique locations that bring life and story to your photos.</p>
-        </div>
-      </div>
-    </div>
-
     <div class="text-center mt-4">
       <button id="exploreBtn" class="explore-btn">Explore More Ideas</button>
     </div>
@@ -348,7 +246,7 @@
     <h2 class="fw-bold mb-4">
       Coz Numbers Don't Lie<span style="color: #6f42c1;">.</span>
     </h2>
-    <div class="row gy-4 justify-content-center">
+    <div class="row gy-4 justify-content-center mt-3">
       <div class="col-6 col-md-3">
         <h3 class="fw-bold" style="color: #6f42c1;">40,000+</h3>
         <p class="mb-0">Shoots Done</p>
@@ -446,9 +344,9 @@
 </section>
 
 <section class="py-4 bg-light">
-  <div class="container text-center">
+  <div class="container">
     <p class="fw-semibold mb-1" style="color: #6f42c1;">We Bleed Photographs.</p>
-    <h2 class="fw-bold display-5 mb-5">
+    <h2 class="fw-bold display-5 mb-4">
       Offerings For All<span style="color: #6f42c1;">.</span>
     </h2>
 
@@ -514,7 +412,7 @@
     </div>
 
     <h5 class="fw-bold mb-3">Starts with a click – ends with a notification.</h5>
-    <p class="text-white opacity-25 px-3 px-md-5 lead">
+    <p class="text-white opacity-50 px-3 px-md-5 lead">
       FlashMeToday has made professional photography service this easy to access. Doesn't matter if you want multiple shoots at a time or multiple locations at a time. We're present across 135 international destinations with multiple teams at every location.
     </p>
 
@@ -554,8 +452,6 @@
 </script>
 <script>
 document.getElementById('exploreBtn').addEventListener('click', () => {
-  alert("Redirecting to ideas page!");
-  // Here you can redirect to ideas page
   window.location.href = "./ideas.html";
 });
 </script>
