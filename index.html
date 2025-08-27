@@ -43,15 +43,15 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav m-auto mb-2 mb-lg-0">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link px-3 active" aria-current="page" href="./index.html">Home</a>
+          <a class="nav-link px-1 active" aria-current="page" href="./index.html">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link px-3" href="./wedding.html">Wedding</a>
+          <a class="nav-link px-1" href="./wedding.html">Wedding</a>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link px-3 dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown">Occasions</a>
+          <a class="nav-link px-1 dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown">Occasions</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="./Ocasions/pre-wedding.html">Pre Wedding</a></li>
             <li><a class="dropdown-item" href="./Ocasions/maternity.html">Maternity</a></li>
@@ -61,7 +61,7 @@
           </ul>
         </li>
         <li class="nav-item dropdown">
-          <a class="nav-link px-3 dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown">Business</a>
+          <a class="nav-link px-1 dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown">Business</a>
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="./Business/food.html">Food</a></li>
             <li><a class="dropdown-item" href="./Business/interior.html">Interior</a></li>
@@ -71,39 +71,46 @@
             <li><a class="dropdown-item" href="./Business/profile-and-headshot.html">Profile & Headshot</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link px-3" href="./ideas.html">Ideas</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="./blogs.html">Blog</a></li>
-        <li class="nav-item"><a class="nav-link px-3" href="./contact-us.html">Contact Us</a></li>
+        <li class="nav-item"><a class="nav-link px-1" href="./ideas.html">Ideas</a></li>
+        <li class="nav-item"><a class="nav-link px-1" href="./blogs.html">Blog</a></li>
+        <li class="nav-item"><a class="nav-link px-1" href="./contact-us.html">Contact Us</a></li>
       </ul>
     </div>
   </div>
 </nav>
 
 <!-- Hero Section -->
-<div class="container col-lg-12 mb-4">
-  <div class="row flex-lg-row-reverse align-items-center g-5 py-4">
-    <div class="col-lg-6">
-      <h1 class="display-5 fw-bold lh-1 mb-3">Bring out the Celebrity in you.</h1>
-      <p class="lead">Be a star yourself with our quality photoshoots at various occasions, moments and places that you travel. Let your photos speak your story, in style.</p>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-        <a href="./contact-us.html"><button type="button" class="btn btn-purple btn-lg px-4 me-md-2">Talk to an Expert</button></a>
-        <a href="./ideas.html"><button type="button" class="btn btn-outline-purple btn-lg px-4">Sample Shoots</button></a>
+<section class="hero-section container py-5">
+  <div class="row align-items-center">
+    <!-- Text Section -->
+    <div class="col-lg-6 text-center text-lg-start">
+      <h1 class="display-4 fw-bold mb-3 text-black">
+        Capture Today. <br> <span class="text-purple"> Cherish Forever </span>
+      </h1>
+      <p class="lead mb-4 text-black">
+        From weddings to real estate, FlashMeToday brings every moment to life with stunning visuals and expert post-production — all under one roof.
+      </p>
+      <div class="d-flex gap-3 justify-content-center justify-content-lg-start">
+        <a href="./contact-us.html" class="btn btn-lg btn-purple shadow-lg">Talk to an Expert</a>
+         <a href="./booking.html" class="btn btn-lg btn-outline-purple">Book a Shoot</a>
+        <a href="./ideas.html" class="btn btn-lg btn-outline-purple">View Our Work</a>
       </div>
     </div>
-    <div class="col-10 col-sm-8 col-lg-6">
-      <img src="./Images/Intro/Intro.jpg" 
-           class="d-block mx-lg-auto img-fluid hero-img"
-           width="900" height="500" loading="lazy">
+
+    <!-- Image Slider Section -->
+    <div class="col-lg-6 text-center mt-4 mt-lg-0">
+      <img id="hero-slider-img" src="./Images/Intro/Intro-1.jpg" 
+           class="img-fluid shadow-lg slider-img" alt="Photoshoot" style="border-radius: 25px;">
     </div>
   </div>
-</div>
+</section>
 
 <!-- Occasions Slider -->
 <div class="container-fluid mb-5">
   <div class="row">
     <div class="col text-start ps-4">
-      <p class="text-purple fw-bold mb-1">Life Is Full Of Beautiful Moments, We Just Need To Capture Them.</p>
-      <h2 class="fw-bold">Occasions To Capture<span class="text-purple">.</span></h2>
+      <p class="text-purple fw-bold mb-1">Our Work Speaks Louder Than Words</p>
+      <h2 class="fw-bold">Occasions Shoots</h2>
     </div>
   </div>
 
@@ -115,7 +122,7 @@
             <img src="./Images/Pre Wedding/9.jpg" alt="">
             <div class="card-body">
                 <h5 class="card-title">Pre Wedding</h5>
-                <p class="card-text">Pose in style, let the world know your love.</p>
+                <p class="card-text">Where love meets timeless frames.</p>
             </div>
             </div>
             <!-- Card 2 -->
@@ -123,7 +130,7 @@
             <img src="./Images/Pre Wedding/12.jpg" alt="">
             <div class="card-body">
                 <h5 class="card-title">Wedding</h5>
-                <p class="card-text">Make sure the moment of a lifetime is captured for eternity.</p>
+                <p class="card-text">Preserve your most precious moments for eternity.</p>
             </div>
             </div>
             <!-- Card 3 -->
@@ -131,7 +138,7 @@
             <img src="./Images/Baby-Kids/6.jpg" alt="">
             <div class="card-body">
                 <h5 class="card-title">Baby & Kids</h5>
-                <p class="card-text">Kids grow up fast, make sure every month is captured.</p>
+                <p class="card-text">Kids bring moments you’ll want to hold onto forever.</p>
             </div>
             </div>
             <!-- Card 4 -->
@@ -139,7 +146,7 @@
             <img src="./Images/Maternity/4.jpg" alt="">
             <div class="card-body">
                 <h5 class="card-title">Maternity</h5>
-                <p class="card-text">Preserve the happiness of motherhood with some lovely pictures.</p>
+                <p class="card-text">Embrace every motherhood moment in beautiful frames. </p>
             </div>
             </div>
             <!-- Card 5 -->
@@ -147,7 +154,7 @@
             <img src="./Images/Parties/6.jpg" alt="">
             <div class="card-body">
                 <h5 class="card-title">Parties</h5>
-                <p class="card-text">Special occasions demand special attention! Let's click!</p>
+                <p class="card-text">Celebrate your parties night's in frames that last forever!</p>
             </div>
             </div>
             <!-- Card 6 -->
@@ -155,7 +162,7 @@
             <img src="./Images/Vacation/11.jpg" alt="">
             <div class="card-body">
                 <h5 class="card-title">Vacation</h5>
-                <p class="card-text">Spent a bomb on travel? Freeze the scene forever!</p>
+                <p class="card-text">Don’t just travel, treasure it forever!</p>
             </div>
             </div>
         </div>
@@ -168,8 +175,8 @@
 <div class="container-fluid mb-5">
   <div class="row">
     <div class="col text-start ps-4">
-      <p class="text-purple fw-bold mb-1">Get better product appearance on your platform, at scale!</p>
-      <h2 class="fw-bold">Business Offerings<span class="text-purple">.</span></h2>
+      <p class="text-purple fw-bold mb-1">Enhance product visuals on your platform, effortlessly.</p>
+      <h2 class="fw-bold">Business Shoots</h2>
     </div>
   </div>
 
@@ -181,7 +188,7 @@
             <img src="./Images/Food/3.jpg" alt="">
             <div class="card-body">
                 <h5 class="card-title">Food</h5>
-                <p class="card-text">You are able to taste a picture they say!</p>
+                <p class="card-text">When frames turn into flavors.</p>
             </div>
             </div>
             <!-- Card 2 -->
@@ -189,7 +196,7 @@
             <img src="./Images/Interior/8.jpg" alt="">
             <div class="card-body">
                 <h5 class="card-title">Interior</h5>
-                <p class="card-text">Make the clients feel the comfort before they step in!</p>
+                <p class="card-text">Make them feel at home before they enter the door.</p>
             </div>
             </div>
             <!-- Card 3 -->
@@ -197,7 +204,7 @@
             <img src="./Images/Product Shoot/1.jpg" alt="">
             <div class="card-body">
                 <h5 class="card-title">Product Shoot</h5>
-                <p class="card-text">What is seen, sells – and we make sure it looks fantastic!</p>
+                <p class="card-text">Visibility drives sales, and we make your brand look stunning.</p>
             </div>
             </div>
             <!-- Card 4 -->
@@ -205,7 +212,7 @@
             <img src="./Images/Corporate Event/10.jpg" alt="">
             <div class="card-body">
                 <h5 class="card-title">Events</h5>
-                <p class="card-text">Make sure your event reaches even to the people not attending it!</p>
+                <p class="card-text">Take your event to audiences, near or far.</p>
             </div>
             </div>
             <!-- Card 5 -->
@@ -213,7 +220,7 @@
             <img src="./Images/Brand Video/5.jpg" alt="">
             <div class="card-body">
                 <h5 class="card-title">Brand Video</h5>
-                <p class="card-text">Make sure your business is understood visually!</p>
+                <p class="card-text">Communicate your brand story with powerful visuals.</p>
             </div>
             </div>
         </div>
@@ -225,63 +232,78 @@
 <section class="ideas-section">
   <div class="container ideas-container">
     <div class="mb-5">
-      <h6 class="section-subtitle">NEVER STOP EXPLORING.</h6>
-      <h2 class="section-title">👍 Ideas To Inspire You</h2>
+      <h6 class="section-subtitle">Every journey deserves a perfect frame.</h6>
+      <h2 class="section-title">👍 New ideas, every day.</h2>
       <p class="section-desc">
-        We get inspired everyday by moments from the people we click.
-        Explore curated shots, poses, dresses, and spots to fuel your creativity.
+        From the laughter we capture to the beauty of unseen places, inspiration never stops flowing. We’ve curated trending poses, creative fits, and stunning spots so you can bring your vision to life. Your next trip or celebration deserves it.
       </p>
     </div>
     <div class="text-center mt-4">
-      <button id="exploreBtn" class="explore-btn">Explore More Ideas</button>
+      <button id="exploreBtn" class="explore-btn">Your Next Photoshoot Starts Here</button>
     </div>
   </div>
 </section>
 
 
-<!-- Stats Section -->
-<section class="py-3 bg-white text-center mb-5">
+<section class="py-5 mb-5" style="background: linear-gradient(135deg, #ffffff, #f8f9ff);">
   <div class="container">
     <p class="fw-semibold mb-2" style="color: #6f42c1;">Some Stats To Speak Our Capacity.</p>
-    <h2 class="fw-bold mb-4">
+    <h2 class="fw-bold mb-5">
       Coz Numbers Don't Lie<span style="color: #6f42c1;">.</span>
     </h2>
-    <div class="row gy-4 justify-content-center mt-3">
+    <div class="row gy-4 justify-content-center">
+
       <div class="col-6 col-md-3">
-        <h3 class="fw-bold" style="color: #6f42c1;">40,000+</h3>
-        <p class="mb-0">Shoots Done</p>
+        <div class="stat-card glass p-4 rounded-4 shadow-lg">
+          <i class="bi bi-camera-fill fs-2 mb-2"></i>
+          <h3 class="fw-bold stat-number" data-target="500">0</h3>
+          <p class="mb-0">Shoots Done</p>
+        </div>
       </div>
+
       <div class="col-6 col-md-3">
-        <h3 class="fw-bold" style="color: #6f42c1;">1000+</h3>
-        <p class="mb-0">Photographers</p>
+        <div class="stat-card glass p-4 rounded-4 shadow-lg">
+          <i class="bi bi-people-fill fs-2 mb-2"></i>
+          <h3 class="fw-bold stat-number" data-target="200">0</h3>
+          <p class="mb-0">Photographers</p>
+        </div>
       </div>
+
       <div class="col-6 col-md-3">
-        <h3 class="fw-bold" style="color: #6f42c1;">140+</h3>
-        <p class="mb-0">Cities</p>
+        <div class="stat-card glass p-4 rounded-4 shadow-lg">
+          <i class="bi bi-geo-alt-fill fs-2 mb-2"></i>
+          <h3 class="fw-bold stat-number" data-target="15">0</h3>
+          <p class="mb-0">Cities</p>
+        </div>
       </div>
+
       <div class="col-6 col-md-3">
-        <h3 class="fw-bold" style="color: #6f42c1;">2.5m+</h3>
-        <p class="mb-0">Images Processed</p>
+        <div class="stat-card glass p-4 rounded-4 shadow-lg">
+          <i class="bi bi-images fs-2 mb-2"></i>
+          <h3 class="fw-bold stat-number" data-target="50000">0</h3>
+          <p class="mb-0">Images Processed</p>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
 
 
 <!-- Testimonials Section -->
-<section class="py-5 text-white px-3" style="background-color: #000;">
+<section class="py-5 text-white px-1" style="background-color: #472389;">
   <div class="container">
     <div class="row align-items-center">
       <!-- Text Content -->
       <div class="col-lg-6 mb-4 mb-lg-0">
-        <p class="text-uppercase fw-semibold text-white-50 mb-2">Memories Are All You Would Need To Live Happy Forever.</p>
+        <p class="text-uppercase fw-semibold text-white-50 mb-2">Memories are the treasures that last forever.</p>
         <h2 class="fw-bold display-5 mb-3">
-          People Who <br> Believed In Us<span class="text-primary">.</span>
+          Trusted by many, <br>loved by all <span style="color: red;">❤</span></span>
         </h2>
         <p class="mb-4">
-          FlashMeToday is loved ❤️ by many, in fact all of them who have been with us on their trips. Images are the only way to rewind your memories of the most important moments in your life. Read what People who preserved their memories with us, say 😍
+          FlashMeToday has been a part of countless trips and stories. Photos are your forever ticket to relive the moments that shaped your life. Hear from the people who turned their memories into magic with us 😍
         </p>
-        <a href="#" class="btn btn-purple">Tripadvisor Reviews</a>
+        <a href="#" class="btn" style="background-color: goldenrod; color: white">Tripadvisor Reviews</a>
       </div>
 
       <!-- Carousel -->
@@ -292,13 +314,13 @@
             <div class="carousel-item active">
               <div class="card bg-dark text-white border-0 rounded shadow-sm p-3" style="min-height: 260px;">
                 <div class="d-flex align-items-center mb-3">
-                  <img src="https://randomuser.me/api/portraits/women/1.jpg" class="rounded-circle me-3" width="50" height="50" alt="User">
-                  <h5 class="mb-0">Priyanka Jain</h5>
+                  <img src="https://randomuser.me/api/portraits/women/22.jpg" class="rounded-circle me-3" width="50" height="50" alt="User">
+                  <h5 class="mb-0">Divyanka Tripathi</h5>
                 </div>
                 <p>
-                  I and my husband had went for post wedding shoot with FlashMeToday which had tie up with Hyatt centric ... it was a wonderful shoot.. and life time memories... Afsana , adil nester... they were awesome... they made us comfortable before every click and gave their best.
+                  From the very first meeting till the delivery of the album, the team was absolutely professional and warm. They made us feel so comfortable during the shoot that the photos came out super natural. Looking at them feels like reliving the day again!
                 </p>
-                <small class="text-white-50">Hyatt Centric, Goa, India</small>
+                <small class="text-white-50">The fern, Alwar</small>
               </div>
             </div>
 
@@ -306,13 +328,13 @@
             <div class="carousel-item">
               <div class="card bg-dark text-white border-0 rounded shadow-sm p-3" style="min-height: 260px;">
                 <div class="d-flex align-items-center mb-3">
-                  <img src="https://randomuser.me/api/portraits/women/2.jpg" class="rounded-circle me-3" width="50" height="50" alt="User">
-                  <h5 class="mb-0">Surbhi Jain</h5>
+                  <img src="https://randomuser.me/api/portraits/women/15.jpg" class="rounded-circle me-3" width="50" height="50" alt="User">
+                  <h5 class="mb-0">Neha Tiwari</h5>
                 </div>
                 <p>
-                  The team was amazing, super cooperative, and made me feel confident during the shoot. Thank you FlashMeToday for turning my vision into reality!
+                  We hired them for our pre-wedding, and honestly, it was the best decision! The poses, the locations, the candid shots — everything was beautifully captured. Friends and family can’t stop praising the pictures.
                 </p>
-                <small class="text-white-50">The Leela, Goa, India</small>
+                <small class="text-white-50">The leela, Delhi </small>
               </div>
             </div>
 
@@ -320,13 +342,13 @@
             <div class="carousel-item">
               <div class="card bg-dark text-white border-0 rounded shadow-sm p-3" style="min-height: 260px;">
                 <div class="d-flex align-items-center mb-3">
-                  <img src="https://randomuser.me/api/portraits/men/3.jpg" class="rounded-circle me-3" width="50" height="50" alt="User">
-                  <h5 class="mb-0">Ankit Sharma</h5>
+                  <img src="https://randomuser.me/api/portraits/men/9.jpg" class="rounded-circle me-3" width="50" height="50" alt="User">
+                  <h5 class="mb-0">Akshat Sharma</h5>
                 </div>
                 <p>
-                  From start to finish, it was a smooth and memorable experience. Highly professional photographers and beautiful locations!
+                  I was a little camera-shy, but the way they guided me with poses and made me laugh in between was amazing. The final pictures looked like straight out of a magazine!
                 </p>
-                <small class="text-white-50">Taj Fort Aguada, Goa, India</small>
+                <small class="text-white-50">Hyatt, Delhi</small>
               </div>
             </div>
           </div>
@@ -345,9 +367,9 @@
 
 <section class="py-4 bg-light">
   <div class="container">
-    <p class="fw-semibold mb-1" style="color: #6f42c1;">We Bleed Photographs.</p>
+    <p class="fw-semibold mb-1" style="color: #6f42c1;">Photography is in our DNA.</p>
     <h2 class="fw-bold display-5 mb-4">
-      Offerings For All<span style="color: #6f42c1;">.</span>
+       For every story<span style="color: #6f42c1;">.</span>
     </h2>
 
     <div class="row g-4">
@@ -358,7 +380,7 @@
             <i class="bi bi-building"></i>
           </div>
           <h5 class="fw-bold">Corporate<span style="color: #6f42c1;">.</span></h5>
-          <p class="mb-3">Mass photography solution. Let us handle the chaos.</p>
+          <p class="mb-3">Seamless photography solutions for every scale</p>
           <a href="./contact-us.html?concern=Corporate%20Shoot" class="btn offer-btn">Talk to us</a>
         </div>
       </div>
@@ -370,7 +392,7 @@
             <i class="bi bi-camera"></i>
           </div>
           <h5 class="fw-bold">Photographers<span style="color: #6f42c1;">.</span></h5>
-          <p class="mb-3">Get jobs, get recognition. Join the fleet today.</p>
+          <p class="mb-3">Your talent deserves the spotlight – come onboard today</p>
           <a href="./PhotographerJoiningForm.html" class="btn offer-btn">Join us</a>
         </div>
       </div>
@@ -382,7 +404,7 @@
             <i class="bi bi-airplane-engines"></i>
           </div>
           <h5 class="fw-bold">Travel Agents<span style="color: #6f42c1;">.</span></h5>
-          <p class="mb-3">Sell with holiday packages. Add value to your offerings.</p>
+          <p class="mb-3">Give your clients more than a trip – give them memories.</p>
           <a href="./contact-us.html?concern=Travel%20Agent%20Signup" class="btn offer-btn">Sell with us</a>
         </div>
       </div>
@@ -394,7 +416,7 @@
             <i class="bi bi-hospital"></i>
           </div>
           <h5 class="fw-bold">Attractions & Hotels<span style="color: #6f42c1;">.</span></h5>
-          <p class="mb-3">Add on-premises activity. Get social engagement.</p>
+          <p class="mb-3">Add value on-site, multiply reach online.</p>
           <a href="./contact-us.html?concern=Hotels%20and%20Attractions" class="btn offer-btn">Let's Plan</a>
         </div>
       </div>
@@ -406,13 +428,11 @@
 <footer class="bg-black text-white text-center py-5">
   <div class="container">
     <div class="mb-4">
-      <img src="./Images/WebLogo/Logo-dark.png" alt="FlashMeToday Logo" style="height: 60px;" class="mb-3" />
-      <h2 class="fw-bold mb-0">FlashMeToday<span style="color: #6f42c1;">.</span></h2>
-      <p class="mb-4" style="color: #6f42c1;">Memories for Lifetime.</p>
+      <img src="./Images/WebLogo/Logo-dark.png" alt="FlashMeToday Logo" style="height: 80px;" class="mb-3" />
     </div>
 
     <h5 class="fw-bold mb-3">Starts with a click – ends with a notification.</h5>
-    <p class="text-white opacity-50 px-3 px-md-5 lead">
+    <p class="text-white opacity-50 px-1 px-md-5 lead">
       FlashMeToday has made professional photography service this easy to access. Doesn't matter if you want multiple shoots at a time or multiple locations at a time. We're present across 135 international destinations with multiple teams at every location.
     </p>
 
@@ -431,7 +451,7 @@
 </footer>
 
 <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="whatsapp-float" style="text-decoration: none;">
+<a href="https://wa.me/919967490542" target="_blank" class="whatsapp-float" style="text-decoration: none;">
   <i class="fab fa-whatsapp"></i>
 </a>
 
@@ -455,5 +475,46 @@ document.getElementById('exploreBtn').addEventListener('click', () => {
   window.location.href = "./ideas.html";
 });
 </script>
+<script>
+  const images = [
+    "./Images/Intro/Intro-1.jpg",
+    "./Images/Intro/Intro-2.jpg",
+    "./Images/Intro/Intro-3.jpg",
+    "./Images/Intro/Intro-4.jpg"
+  ];
+
+  let index = 0;
+  const sliderImg = document.getElementById("hero-slider-img");
+
+  setInterval(() => {
+    sliderImg.style.opacity = 0; // fade out
+    setTimeout(() => {
+      index = (index + 1) % images.length;
+      sliderImg.src = images[index];
+      sliderImg.style.opacity = 1; // fade in
+    }, 500); // half duration of transition
+  }, 4000); // change every 4s
+</script>
+<script>
+  const counters = document.querySelectorAll(".stat-number");
+
+  counters.forEach(counter => {
+    const updateCount = () => {
+      const target = +counter.getAttribute("data-target");
+      const count = +counter.innerText.replace("+",""); 
+      const increment = target / 200;
+
+      if (count < target) {
+        counter.innerText = Math.ceil(count + increment);
+        setTimeout(updateCount, 10);
+      } else {
+        counter.innerText = target + "+";
+      }
+    };
+
+    updateCount();
+  });
+</script>
+
 </body>
 </html>

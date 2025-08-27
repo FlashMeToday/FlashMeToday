@@ -388,3 +388,29 @@ html, body {
       color: #fff;
       transform: scale(1.05);
     }
+
+    .stat-card {
+  background: #fff;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 25px rgba(111,66,193,0.2);
+}
+.glass {
+  background: rgba(255, 255, 255, 0.2); /* transparency */
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 25px rgba(111, 66, 193, 0.25);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.glass:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 35px rgba(241, 7, 163, 0.35);
+}
+.glass i, .glass h3 {
+  color: #6f42c1 !important;
+}
+
