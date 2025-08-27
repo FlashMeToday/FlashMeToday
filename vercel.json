@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "flash-me-today.vercel.app"
+        }
+      ],
+      "destination": "https://flashmetoday.com/$1",
+      "permanent": true
+    }
+  ]
+}
