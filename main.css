@@ -413,4 +413,44 @@ html, body {
 .glass i, .glass h3 {
   color: #6f42c1 !important;
 }
+.nav-pro {
+    color: #333;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    text-decoration: none;
+  }
 
+  .nav-pro:hover {
+    color: #5e17eb;
+    background: rgba(94, 23, 235, 0.08);
+  }
+
+  .nav-pro.active {
+    color: #5e17eb;
+    font-weight: 600;
+    border-bottom: 2px solid #5e17eb;
+    padding-bottom: 4px;
+  }
+
+  .border-purple {
+    border: 1px solid #6e42c159 !important;
+    border-radius: 12px;
+    padding: 20px;
+    transition: box-shadow 0.3s ease;
+  }
+
+  .bg-purple-light {
+    background-color: #6e42c1 !important;
+    color: white;
+    font-weight: 500;
+  }
+
+  .bg-purple {
+    background-color: #6f42c1;
+  }
+
+  .nav-link-subnav:hover {
+    text-decoration: underline;
+  }

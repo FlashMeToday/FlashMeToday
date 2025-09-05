@@ -361,8 +361,8 @@ document.getElementById("typeSelect").addEventListener("change", function () {
         <p class="text-purple fw-semibold mb-1">
           Price in <span id="pkgCityName">${currentCity}</span>
         </p>
-        <del>₹ ${Number(selectedPkg.price.original).toLocaleString()}</del>
-        <span class="fs-5 fw-bold text-purple ms-2">₹ ${Number(selectedPkg.price.offer).toLocaleString()}</span>
+        <del>₹ ${Number(selectedPkg.price.original).toLocaleString("en-IN")}</del>
+        <span class="fs-5 fw-bold text-purple ms-2">₹ ${Number(selectedPkg.price.offer).toLocaleString("en-IN")}</span>
       </div>
     </div>
   `;
