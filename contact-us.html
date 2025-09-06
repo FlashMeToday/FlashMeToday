@@ -176,7 +176,7 @@
                 </select>
             </div>
             <div class="col-12">
-              <textarea class="form-control" rows="5" placeholder="Describe your concern in detail" required></textarea>
+              <textarea class="form-control" rows="5" placeholder="Describe your concern in detail" required id="message"></textarea>
             </div>
           </div>
 
@@ -242,20 +242,6 @@
 
 <!-- Contact Form Validation Script -->
 <script>
-  document.getElementById("contactForm").addEventListener("submit", function(e) {
-    e.preventDefault();
-    const concern = document.getElementById("concern").value;
-    const typeError = document.getElementById("typeError");
-
-    if (!concern) {
-      typeError.classList.remove("d-none");
-    } else {
-      typeError.classList.add("d-none");
-      alert("Form submitted successfully!");
-    }
-  });
-</script>
-<script>
   // Pre-select concern option from URL
   const urlParams = new URLSearchParams(window.location.search);
   const selectedConcern = urlParams.get('concern');
@@ -267,5 +253,70 @@
     }
   }
 </script>
+
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function (e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const mobile = document.getElementById("mobile").value.trim();
+  const subject = document.getElementById("concern").value.trim();
+  const description = document.getElementById("message").value.trim();
+
+  // validation
+  let errors = [];
+
+  if (!name || name.length < 3) errors.push("Name must be at least 3 characters");
+  const emailRegex = /^\S+@\S+\.\S+$/;
+  if (!emailRegex.test(email)) errors.push("Enter a valid email address");
+  const mobileRegex = /^[0-9]{10}$/;
+  if (!mobileRegex.test(mobile)) errors.push("Mobile must be a 10-digit number");
+  if (!subject) errors.push("Please select a concern");
+  if (description.length < 2) errors.push("Message must be at least 2 characters");
+
+  if (errors.length > 0) {
+    alert("❌ Form validation failed:\n- " + errors.join("\n- "));
+    return;
+  }
+
+  // Payload
+  const data = {
+    name,
+    email,
+    mobile,
+    concern: subject,
+    message: description
+  };
+
+  try {
+    const response = await fetch("https://flashmetodaypro-2.onrender.com/api/contact/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data)
+    });
+
+    if (!response.ok) throw new Error("Network response was not ok");
+
+    const text = await response.text();
+
+    let result;
+    try {
+      result = JSON.parse(text);
+    } catch {
+      result = text;
+    }
+
+    console.log("Success:", result);
+    alert("✅ Form submitted successfully!");
+    document.getElementById("contactForm").reset();
+
+  } catch (error) {
+    console.error("Error:", error);
+    alert("❌ Failed to submit form. Please try again.");
+  }
+});
+</script>
+
 </body>
 </html>
