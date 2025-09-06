@@ -9,6 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="../main.css">
+    
 <!-- Font Awesome for WhatsApp icon -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Bootstrap Icons -->
@@ -109,11 +110,11 @@
       </button>
 
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav m-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link px-3" href="../index.html">Home</a></li>
-          <li class="nav-item"><a class="nav-link px-3" href="../wedding.html">Wedding</a></li>
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link px-1" href="../index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link px-1" href="../wedding.html">Wedding</a></li>
           <li class="nav-item dropdown">
-            <a class="nav-link px-3 dropdown-toggle" href="" data-bs-toggle="dropdown">Occasions</a>
+            <a class="nav-link px-1 dropdown-toggle" href="" data-bs-toggle="dropdown">Occasions</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="../Ocasions/pre-wedding.html">Pre Wedding</a></li>
               <li><a class="dropdown-item" href="../Ocasions/maternity.html">Maternity</a></li>
@@ -123,7 +124,7 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link px-3 dropdown-toggle active" href="" data-bs-toggle="dropdown">Business</a>
+            <a class="nav-link px-1 dropdown-toggle active" href="" data-bs-toggle="dropdown">Business</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="./food.html">Food</a></li>
               <li><a class="dropdown-item" href="./interior.html">Interior</a></li>
@@ -133,38 +134,37 @@
               <li><a class="dropdown-item" href="./profile-and-headshot.html">Profile & Headshot</a></li>
             </ul>
           </li>
-          <li class="nav-item"><a class="nav-link px-3" href="../ideas.html">Ideas</a></li>
-          <li class="nav-item"><a class="nav-link px-3" href="../blogs.html">Blog</a></li>
-          <li class="nav-item"><a class="nav-link px-3" href="../contact-us.html">Contact Us</a></li>
+          <li class="nav-item"><a class="nav-link px-1" href="../ideas.html">Ideas</a></li>
+          <li class="nav-item"><a class="nav-link px-1" href="../blogs.html">Blog</a></li>
+          <li class="nav-item"><a class="nav-link px-1" href="../contact-us.html">Contact Us</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
   <!-- Wedding Header Section -->
-  <section class="text-center py-5">
+  <section class="text-center py-5 m-3 rounded-5" style="background-image: url('../Images/Brand Video/Background.jpg'); background-size: cover; background-position: center; height: 300px; align-items: center; display: flex; justify-content: center; flex-direction: column; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.7);">
     <h1 class="fw-bold display-5">Brand Video<span style="color: #5e17eb;">.</span></h1>
-    <p class="text-muted fs-5">Make sure your business is understood visually!</p>
+    <p class="fs-4 fw-normal text-light lead">Make sure your business is understood visually!</p>
   </section>
 
   <!-- Sidebar + Accordion Layout -->
   <div class="container-fluid px-3">
-    <div class="row">
 
       <!-- Sidebar -->
-      <div class="col-md-4 mb-4">
-        <div class="sidebar sticky-sidebar">
-          <ul class="list-group list-group-flush">
-            <a href="#pricingPlans" style="text-decoration: none; color: white;"><li class="list-group-item active">Pricing Plans</li></a>
-            <a href="#photoshootIdeas" style="text-decoration: none; color: white;"><li class="list-group-item">Ideas</li></a>
-            <a href="#details" style="text-decoration: none; color: white;"><li class="list-group-item">Details</li></a>
-            <a href="#citiesAvailable" style="text-decoration: none; color: white;"><li class="list-group-item">Cities</li></a>
-          </ul>
+      <nav class="navbar navbar-expand-lg bg-light shadow-sm w-auto mb-5  bg-purple-light" style="border-radius: 30px;">
+        <div class="container-fluid justify-content-center">
+          <div class="d-flex flex-row align-items-center gap-4 px-3 py-2">
+            <a class="nav-link nav-link-subnav" href="#pricingPlans">Pricing  Plans</a>
+            <a class="nav-link nav-link-subnav"   href="#photoshootIdeas">Ideas</a>
+            <a class="nav-link nav-link-subnav" href="#details">Details</a>
+            <a class="nav-link nav-link-subnav"   href="#citiesAvailable">Cities</a>
+          </div>
         </div>
-      </div>
+      </nav>
 
       <!-- Main Content Column (Accordion, Images, etc.) -->
-      <div class="col-md-8">
+      <div class="col-lg-12">
         <!-- Pricing Plans Section Included -->
         <section id="pricingPlans">
           <h4 class="fw-bold mb-3">Pricing Plans<span style="color: #5e17eb;">.</span></h4>
@@ -328,21 +328,26 @@
               <p class="text-muted">Currently we are available 🤘 in the following cities:</p>
 
               <!-- Optional: Grid list of cities -->
-              <div class="row g-3 mt-2 mb-5">
-                <div class="col-6 col-md-3"><span class="badge bg-light text-dark px-3 py-2">Delhi</span></div>
-                <div class="col-6 col-md-3"><span class="badge bg-light text-dark px-3 py-2">Mumbai</span></div>
-                <div class="col-6 col-md-3"><span class="badge bg-light text-dark px-3 py-2">Jaipur</span></div>
-                <div class="col-6 col-md-3"><span class="badge bg-light text-dark px-3 py-2">Bangalore</span></div>
-                <div class="col-6 col-md-3"><span class="badge bg-light text-dark px-3 py-2">Hyderabad</span></div>
-                <div class="col-6 col-md-3"><span class="badge bg-light text-dark px-3 py-2">Ahmedabad</span></div>
-                <div class="col-6 col-md-3"><span class="badge bg-light text-dark px-3 py-2">Chandigarh</span></div>
-                <div class="col-6 col-md-3"><span class="badge bg-light text-dark px-3 py-2">Kolkata</span></div>
-              </div>
+            <div class="row g-3 mt-2 mb-5">
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Bahadurgarh</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Deoli</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Faridabad</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Ghaziabad</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Greater Noida</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Gurugram</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Loni</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Meerut</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Najafgarh</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Nangloi Jat</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Narela</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">New Delhi</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Noida</span></div>
+              <div class="col-6 col-md-3"><span class="badge bg-purple text-light text-center w-75 rounded-5 h-100 py-3">Sonipat</span></div>
+            </div>
         </section>
       </div>
-
-    </div>
   </div>
+
   <!-- Footer -->
   <footer class="bg-black text-white text-center py-5">
     <div class="container">
@@ -353,7 +358,7 @@
       </div>
 
       <h5 class="fw-bold mb-3">Starts with a click – ends with a notification.</h5>
-      <p class="text-white opacity-25 px-3 px-md-5 lead">
+      <p class="text-white opacity-50 px-1 px-md-5 lead">
         FlashMeToday has made professional photography service this easy to access. Doesn't matter if you want multiple shoots at a time or multiple locations at a time. We're present across 135 international destinations with multiple teams at every location.
       </p>
 
@@ -371,7 +376,7 @@
     </div>
   </footer>
 <!-- WhatsApp Floating Button -->
-<a href="https://wa.me/91XXXXXXXXXX" target="_blank" class="whatsapp-float" style="text-decoration: none;">
+<a href="https://wa.me/919967490542" target="_blank" class="whatsapp-float" style="text-decoration: none;">
   <i class="fab fa-whatsapp"></i>
 </a>
   <!-- Bootstrap JS -->
