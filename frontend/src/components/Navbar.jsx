@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronDown, FiMenu, FiX } from 'react-icons/fi';
 import { FaPhone } from 'react-icons/fa6';
+import { FaHome, FaInfoCircle, FaHeart, FaStar, FaBriefcase, FaCamera, FaRing, FaBaby, FaChild, FaPlane, FaBirthdayCake, FaUtensils, FaCouch, FaBox, FaBuilding, FaVideo, FaUserTie } from 'react-icons/fa';
 import logo from '../assets/Logo/logo.png';
 
 const Navbar = () => {
@@ -25,23 +26,23 @@ const Navbar = () => {
   }, []);
 
   const occasionsLinks = [
-    { name: 'Pre Wedding', href: '#' },
-    { name: 'Maternity', href: '#' },
-    { name: 'Baby & Kids', href: '#' },
-    { name: 'Vacations', href: '#' },
-    { name: 'Parties', href: '#' },
+    { name: 'Pre Wedding', href: '#', icon: FaRing },
+    { name: 'Maternity', href: '#', icon: FaBaby },
+    { name: 'Baby & Kids', href: '#', icon: FaChild },
+    { name: 'Vacations', href: '#', icon: FaPlane },
+    { name: 'Parties', href: '#', icon: FaBirthdayCake },
   ];
 
   const businessLinks = [
-    { name: 'Food', href: '#' },
-    { name: 'Interior', href: '#' },
-    { name: 'Product Shoot', href: '#' },
-    { name: 'Corporate Events', href: '#' },
-    { name: 'Brand Video', href: '#' },
-    { name: 'Profile & Headshot', href: '#' },
+    { name: 'Food', href: '#', icon: FaUtensils },
+    { name: 'Interior', href: '#', icon: FaCouch },
+    { name: 'Product Shoot', href: '#', icon: FaBox },
+    { name: 'Corporate Events', href: '#', icon: FaBuilding },
+    { name: 'Brand Video', href: '#', icon: FaVideo },
+    { name: 'Profile & Headshot', href: '#', icon: FaUserTie },
   ];
 
-  const NavLink = ({ title, href }) => {
+  const NavLink = ({ title, href, icon: Icon }) => {
     const isActive = activeLink === title;
     return (
       <a
@@ -50,18 +51,19 @@ const Navbar = () => {
           e.preventDefault(); // prevent default for dummy links
           setActiveLink(title);
         }}
-        className={`relative transition-colors duration-300 font-medium text-[15px] px-5 py-2 rounded-full ${
+        className={`relative flex items-center gap-2 transition-colors duration-300 font-medium text-[15px] px-4 xl:px-5 py-2 rounded-full ${
           isActive
             ? 'bg-[var(--color-primary)] text-white shadow-md shadow-[var(--color-primary)]/20'
             : 'text-gray-700 hover:bg-gray-100 hover:text-[var(--color-primary)]'
         }`}
       >
+        {Icon && <Icon className="text-base" />}
         {title}
       </a>
     );
   };
 
-  const Dropdown = ({ title, items, dropdownKey }) => {
+  const Dropdown = ({ title, items, dropdownKey, icon: Icon }) => {
     const isOpen = activeDropdown === dropdownKey;
 
     return (
@@ -70,11 +72,13 @@ const Navbar = () => {
         onMouseEnter={() => setActiveDropdown(dropdownKey)}
         onMouseLeave={() => setActiveDropdown(null)}
       >
-        <button className={`flex items-center gap-1 font-medium text-[15px] transition-colors duration-300 px-5 py-2 rounded-full ${isOpen ? 'bg-gray-100 text-[var(--color-primary)]' : 'text-gray-700 hover:bg-gray-100 hover:text-[var(--color-primary)]'}`}>
+        <button className={`flex items-center gap-2 font-medium text-[15px] transition-colors duration-300 px-4 xl:px-5 py-2 rounded-full ${isOpen ? 'bg-gray-100 text-[var(--color-primary)]' : 'text-gray-700 hover:bg-gray-100 hover:text-[var(--color-primary)]'}`}>
+          {Icon && <Icon className="text-base" />}
           {title}
           <motion.div
             animate={{ rotate: isOpen ? 180 : 0 }}
             transition={{ duration: 0.2 }}
+            className="ml-0.5"
           >
             <FiChevronDown className="mt-[2px]" />
           </motion.div>
@@ -90,15 +94,19 @@ const Navbar = () => {
               className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-56 z-50"
             >
               <div className="bg-white rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 p-2 overflow-hidden">
-                {items.map((item, idx) => (
-                  <a
-                    key={idx}
-                    href={item.href}
-                    className="block px-4 py-2.5 text-sm text-gray-600 hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 rounded-lg transition-colors duration-200"
-                  >
-                    {item.name}
-                  </a>
-                ))}
+                {items.map((item, idx) => {
+                  const ItemIcon = item.icon;
+                  return (
+                    <a
+                      key={idx}
+                      href={item.href}
+                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 rounded-lg transition-colors duration-200"
+                    >
+                      {ItemIcon && <ItemIcon className="text-base text-[var(--color-primary)]/80" />}
+                      {item.name}
+                    </a>
+                  );
+                })}
               </div>
             </motion.div>
           )}
@@ -110,27 +118,27 @@ const Navbar = () => {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-4 ${
-          scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-2.5 bg-white border-b-2 border-[var(--color-primary)]/40 ${
+          scrolled ? 'shadow-md border-[var(--color-primary)]/60' : 'shadow-sm'
         }`}
       >
         <div className="w-full px-6 lg:px-12 flex items-center justify-between">
           
           {/* Left: Logo */}
           <div className="flex-shrink-0">
-            <a href="#" className="inline-block group">
-              <img src={logo} alt="FlashMeToday" className="h-10 lg:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+            <a href="#" className="inline-block">
+              <img src={logo} alt="FlashMeToday" className="h-10 lg:h-12 w-auto object-contain" />
             </a>
           </div>
 
           {/* Center: Nav Links */}
-          <nav className="hidden lg:flex items-center gap-2">
-            <NavLink title="Home" href="#" />
-            <NavLink title="About" href="#" />
-            <NavLink title="Weddings" href="#" />
-            <Dropdown title="Occasions" items={occasionsLinks} dropdownKey="occasions" />
-            <Dropdown title="Business" items={businessLinks} dropdownKey="business" />
-            <NavLink title="Portfolio" href="#" />
+          <nav className="hidden lg:flex items-center gap-1">
+            <NavLink title="Home" href="#" icon={FaHome} />
+            <NavLink title="About" href="#" icon={FaInfoCircle} />
+            <NavLink title="Weddings" href="#" icon={FaHeart} />
+            <Dropdown title="Occasions" items={occasionsLinks} dropdownKey="occasions" icon={FaStar} />
+            <Dropdown title="Business" items={businessLinks} dropdownKey="business" icon={FaBriefcase} />
+            <NavLink title="Portfolio" href="#" icon={FaCamera} />
           </nav>
 
           {/* Right: Contact Us Button */}
@@ -166,15 +174,15 @@ const Navbar = () => {
             className="fixed top-[72px] left-0 right-0 bg-white shadow-xl z-40 lg:hidden overflow-hidden border-t border-gray-100"
           >
             <div className="flex flex-col px-6 py-4 gap-3">
-              <a href="#" className="text-gray-700 font-medium py-1.5">Home</a>
-              <a href="#" className="text-gray-700 font-medium py-1.5">About</a>
-              <a href="#" className="text-gray-700 font-medium py-1.5">Weddings</a>
+              <a href="#" className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaHome className="text-gray-400" /> Home</a>
+              <a href="#" className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaInfoCircle className="text-gray-400" /> About</a>
+              <a href="#" className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaHeart className="text-gray-400" /> Weddings</a>
               <div className="flex flex-col">
                 <button 
                   onClick={() => toggleMobileDropdown('occasions')}
                   className={`flex items-center justify-between font-medium py-1.5 ${mobileActiveDropdown === 'occasions' ? 'text-[var(--color-primary)]' : 'text-gray-700'}`}
                 >
-                  Occasions
+                  <span className="flex items-center gap-3"><FaStar className={mobileActiveDropdown === 'occasions' ? "text-[var(--color-primary)]" : "text-gray-400"} /> Occasions</span>
                   <motion.div animate={{ rotate: mobileActiveDropdown === 'occasions' ? 180 : 0 }}>
                     <FiChevronDown />
                   </motion.div>
@@ -188,9 +196,14 @@ const Navbar = () => {
                       className="overflow-hidden"
                     >
                       <div className="pl-4 py-2 flex flex-col gap-3 border-l-2 border-gray-100 my-1">
-                        {occasionsLinks.map((link) => (
-                          <a key={link.name} href={link.href} className="text-gray-500 text-sm">{link.name}</a>
-                        ))}
+                        {occasionsLinks.map((link) => {
+                          const ItemIcon = link.icon;
+                          return (
+                            <a key={link.name} href={link.href} className="flex items-center gap-3 text-gray-500 text-sm">
+                              {ItemIcon && <ItemIcon className="text-gray-400" />} {link.name}
+                            </a>
+                          );
+                        })}
                       </div>
                     </motion.div>
                   )}
@@ -201,7 +214,7 @@ const Navbar = () => {
                   onClick={() => toggleMobileDropdown('business')}
                   className={`flex items-center justify-between font-medium py-1.5 ${mobileActiveDropdown === 'business' ? 'text-[var(--color-primary)]' : 'text-gray-700'}`}
                 >
-                  Business
+                  <span className="flex items-center gap-3"><FaBriefcase className={mobileActiveDropdown === 'business' ? "text-[var(--color-primary)]" : "text-gray-400"} /> Business</span>
                   <motion.div animate={{ rotate: mobileActiveDropdown === 'business' ? 180 : 0 }}>
                     <FiChevronDown />
                   </motion.div>
@@ -215,15 +228,20 @@ const Navbar = () => {
                       className="overflow-hidden"
                     >
                       <div className="pl-4 py-2 flex flex-col gap-3 border-l-2 border-gray-100 my-1">
-                        {businessLinks.map((link) => (
-                          <a key={link.name} href={link.href} className="text-gray-500 text-sm">{link.name}</a>
-                        ))}
+                        {businessLinks.map((link) => {
+                          const ItemIcon = link.icon;
+                          return (
+                            <a key={link.name} href={link.href} className="flex items-center gap-3 text-gray-500 text-sm">
+                              {ItemIcon && <ItemIcon className="text-gray-400" />} {link.name}
+                            </a>
+                          );
+                        })}
                       </div>
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
-              <a href="#" className="text-gray-700 font-medium py-1.5">Portfolio</a>
+              <a href="#" className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaCamera className="text-gray-400" /> Portfolio</a>
               <a href="#" className="mt-3 bg-[var(--color-primary)] text-white text-center flex items-center justify-center gap-2 py-3 rounded-xl font-medium">
                 <FaPhone size={14} /> Contact Us
               </a>

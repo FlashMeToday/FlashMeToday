@@ -21,8 +21,8 @@ const Footer = () => {
           
           {/* Brand Info (50%) */}
           <div className="col-span-1 lg:col-span-6 pr-0 lg:pr-12 flex flex-col justify-center items-start">
-            <a href="#" className="inline-block mb-4 group">
-              <img src={logo} alt="FlashMeToday" className="h-12 lg:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105" />
+            <a href="#" className="inline-block mb-4">
+              <img src={logo} alt="FlashMeToday" className="h-12 lg:h-16 w-auto object-contain" />
             </a>
             <p className="text-gray-400 text-lg lg:text-xl font-light leading-relaxed mb-10 max-w-xl">
               Capturing your most precious moments with absolute elegance and cutting-edge creativity. We turn your memories into timeless, premium art.
