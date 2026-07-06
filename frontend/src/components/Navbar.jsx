@@ -40,7 +40,7 @@ const Navbar = () => {
     { name: 'Product Shoot', href: '/product-shoot', icon: FaBox },
     { name: 'Corporate Events', href: '/corporate-events', icon: FaBuilding },
     { name: 'Brand Video', href: '/brand-video', icon: FaVideo },
-    { name: 'Profile & Headshot', href: '#', icon: FaUserTie },
+    { name: 'Profile & Headshot', href: '/profile-and-headshot', icon: FaUserTie },
   ];
 
   const NavLink = ({ title, href, icon: Icon }) => {

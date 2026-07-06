@@ -14,6 +14,7 @@ import Interior from './pages/Interior'
 import ProductShoot from './pages/ProductShoot'
 import CorporateEvents from './pages/CorporateEvents'
 import BrandVideo from './pages/BrandVideo'
+import ProfileHeadshot from './pages/ProfileHeadshot'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
           <Route path="/product-shoot" element={<ProductShoot />} />
           <Route path="/corporate-events" element={<CorporateEvents />} />
           <Route path="/brand-video" element={<BrandVideo />} />
+          <Route path="/profile-and-headshot" element={<ProfileHeadshot />} />
         </Routes>
         <Footer />
         <FloatingWhatsApp />
