@@ -39,7 +39,7 @@ const Navbar = () => {
     { name: 'Interior', href: '/interior', icon: FaCouch },
     { name: 'Product Shoot', href: '/product-shoot', icon: FaBox },
     { name: 'Corporate Events', href: '/corporate-events', icon: FaBuilding },
-    { name: 'Brand Video', href: '#', icon: FaVideo },
+    { name: 'Brand Video', href: '/brand-video', icon: FaVideo },
     { name: 'Profile & Headshot', href: '#', icon: FaUserTie },
   ];
 
