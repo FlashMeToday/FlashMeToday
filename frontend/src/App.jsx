@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Wedding from './pages/Wedding'
 import PreWedding from './pages/PreWedding'
 import Maternity from './pages/Maternity'
+import BabyKids from './pages/BabyKids'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
           <Route path="/wedding" element={<Wedding />} />
           <Route path="/pre-wedding" element={<PreWedding />} />
           <Route path="/maternity" element={<Maternity />} />
+          <Route path="/baby-and-kids" element={<BabyKids />} />
         </Routes>
         <Footer />
         <FloatingWhatsApp />
