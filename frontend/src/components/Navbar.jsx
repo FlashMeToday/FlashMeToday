@@ -143,7 +143,7 @@ const Navbar = () => {
             <NavLink title="Weddings" href="/wedding" icon={FaHeart} />
             <Dropdown title="Occasions" items={occasionsLinks} dropdownKey="occasions" icon={FaStar} />
             <Dropdown title="Business" items={businessLinks} dropdownKey="business" icon={FaBriefcase} />
-            <NavLink title="Portfolio" href="#" icon={FaCamera} />
+            <NavLink title="Portfolio" href="/portfolio" icon={FaCamera} />
             <NavLink title="Blogs" href="/blogs" icon={FaPenNib} />
           </nav>
 
@@ -249,7 +249,7 @@ const Navbar = () => {
                   )}
                 </AnimatePresence>
               </div>
-              <Link to="#" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaCamera className="text-gray-400" /> Portfolio</Link>
+              <Link to="/portfolio" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaCamera className="text-gray-400" /> Portfolio</Link>
               <Link to="/blogs" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaPenNib className="text-gray-400" /> Blogs</Link>
               <a href="/contact" className="mt-3 bg-[var(--color-primary)] text-white text-center flex items-center justify-center gap-2 py-3 rounded-xl font-medium">
                 <FaPhone size={14} /> Contact Us

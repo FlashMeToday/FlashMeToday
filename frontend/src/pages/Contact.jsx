@@ -15,11 +15,11 @@ const Contact = () => {
   const dropdownRef = useRef(null);
   
   const concernOptions = [
+    "Travel Agent Signup",
+    "Corporate Shoot",
     "Personalized Shoot Plan",
-    "Wedding Query",
-    "Occasion Query",
-    "Business Query",
-    "General Support",
+    "Hotels and Attractions",
+    "Photographer",
     "Other"
   ];
 
@@ -46,36 +46,66 @@ const Contact = () => {
   };
 
   return (
-    <div className="bg-[#F9FAFB] min-h-screen pt-24 pb-24 px-4 sm:px-6 lg:px-8 font-sans selection:bg-[var(--color-primary)] selection:text-white">
+    <div className="relative bg-white min-h-screen font-sans selection:bg-[var(--color-primary)] selection:text-white">
       
-      {/* Centered Page Header */}
-      <motion.div 
-        initial={{ opacity: 0, y: 15 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto px-4 mb-14 text-center flex flex-col items-center justify-center"
-      >
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200 mb-6 shadow-sm">
-          <span className="relative flex h-2 w-2 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-primary)] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--color-primary)]"></span>
-          </span>
-          <h3 className="text-gray-900 font-bold text-xs tracking-[0.15em] uppercase mt-[1px]">
-            We're Here For You
-          </h3>
-        </div>
-        
-        <h2 className="text-4xl sm:text-5xl lg:text-[4rem] font-black text-gray-900 tracking-tight leading-[1.1]">
-          Get in <span className="text-[var(--color-primary)]">Touch.</span>
-        </h2>
-        
-        <p className="text-gray-500 max-w-2xl text-base mt-5 font-medium leading-relaxed">
-          Whether you're planning a grand wedding or a sleek corporate shoot, our team is ready to capture your vision perfectly.
-        </p>
-      </motion.div>
-
+      {/* Dark Theme Banner Hero */}
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="relative w-full rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#161430] to-[#0f172a] py-8 px-6 sm:px-10 sm:py-10 text-center flex flex-col items-center border border-white/5 shadow-2xl"
+        >
+          {/* Subtle Grid Overlay for the dark card */}
+          <div 
+            className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none z-0"
+          ></div>
+          
+          {/* Animated Background Gradients */}
+          <motion.div
+            animate={{ x: [0, 30, 0], y: [0, 20, 0], scale: [1, 1.1, 1] }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-32 -left-32 w-80 h-80 bg-purple-500/20 rounded-full blur-[80px] pointer-events-none z-0"
+          ></motion.div>
+          
+          <motion.div
+            animate={{ x: [0, -30, 0], y: [0, -20, 0], scale: [1, 1.15, 1] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -bottom-32 -right-32 w-[22rem] h-[22rem] bg-[var(--color-primary)]/20 rounded-full blur-[90px] pointer-events-none z-0"
+          ></motion.div>
+          
+          <div className="relative z-10 flex flex-col items-center">
+            {/* Modern Pill Badge Subtitle */}
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-6 shadow-sm">
+              <span className="relative flex h-2 w-2 shrink-0">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-primary)] opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-[var(--color-primary)]"></span>
+              </span>
+              <h3 className="text-gray-300 font-bold text-xs tracking-[0.15em] uppercase mt-[1px]">
+                We're Here For You
+              </h3>
+            </div>
+            
+            {/* Massive Modern Title */}
+            <h2 className="text-5xl sm:text-6xl lg:text-[5rem] font-black text-white tracking-tight leading-[1.1] mb-6">
+              Get in <span className="text-[var(--color-primary)] relative inline-block pb-2">
+                Touch.
+                {/* Subtle underline accent */}
+                <svg className="absolute bottom-0 left-0 w-full h-3 text-[var(--color-primary)]/40" viewBox="0 0 100 12" preserveAspectRatio="none">
+                  <path d="M0,10 Q50,0 100,10" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
+                </svg>
+              </span>
+            </h2>
+            
+            {/* Description */}
+            <p className="text-gray-300 max-w-2xl text-base sm:text-lg font-normal leading-relaxed">
+              From grand weddings to corporate shoots, our team is ready to capture your vision.
+            </p>
+          </div>
+        </motion.div>
+      </div>
       {/* Multi-Card Layout - Ultra Clean Corporate Style */}
-      <div className="max-w-[1100px] mx-auto flex flex-col lg:flex-row gap-6">
+      <div className="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 pb-24 flex flex-col lg:flex-row gap-6">
         
         {/* Left Column */}
         <div className="w-full lg:w-[35%] flex flex-col gap-6">
@@ -246,7 +276,7 @@ const Contact = () => {
                       animate={{ opacity: isDropdownOpen ? 1 : 0, y: isDropdownOpen ? 0 : -10 }}
                       className={`absolute z-50 w-full mt-2 bg-white border border-gray-100 rounded-xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] overflow-hidden ${isDropdownOpen ? 'pointer-events-auto' : 'pointer-events-none'}`}
                     >
-                      <ul className="py-2 max-h-60 overflow-auto">
+                      <ul className="py-2">
                         {concernOptions.map((option, idx) => (
                           <li key={idx}>
                             <button
