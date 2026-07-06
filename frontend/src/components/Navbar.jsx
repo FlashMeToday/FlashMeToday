@@ -35,7 +35,7 @@ const Navbar = () => {
   ];
 
   const businessLinks = [
-    { name: 'Food', href: '#', icon: FaUtensils },
+    { name: 'Food', href: '/food', icon: FaUtensils },
     { name: 'Interior', href: '#', icon: FaCouch },
     { name: 'Product Shoot', href: '#', icon: FaBox },
     { name: 'Corporate Events', href: '#', icon: FaBuilding },
