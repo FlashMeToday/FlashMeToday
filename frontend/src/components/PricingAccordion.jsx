@@ -2,13 +2,13 @@ import React from 'react';
 
 const PricingAccordion = ({ plans }) => {
   return (
-    <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-2 md:mt-8 relative z-10">
+    <div className={`w-full gap-6 mt-2 md:mt-8 relative z-10 ${plans.length <= 2 ? 'flex flex-col md:flex-row justify-center max-w-5xl mx-auto' : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
       {plans.map((plan, index) => {
         const isPremium = index === 1;
         return (
           <div 
             key={index} 
-            className={`w-full flex flex-col rounded-3xl overflow-hidden transition-all duration-500 ease-out group hover:border-[var(--color-primary)] ${
+            className={`w-full ${plans.length <= 2 ? 'md:max-w-[400px]' : ''} flex flex-col rounded-3xl overflow-hidden transition-all duration-500 ease-out group hover:border-[var(--color-primary)] ${
               isPremium 
                 ? 'bg-gray-900 border border-gray-800 shadow-[0_20px_50px_rgba(0,0,0,0.3)] scale-100 lg:scale-105 z-20' 
                 : 'bg-white border-2 md:border border-[var(--color-primary)] md:border-gray-100 shadow-xl'
