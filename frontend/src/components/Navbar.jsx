@@ -28,7 +28,7 @@ const Navbar = () => {
 
   const occasionsLinks = [
     { name: 'Pre Wedding', href: '/pre-wedding', icon: FaRing },
-    { name: 'Maternity', href: '#', icon: FaBaby },
+    { name: 'Maternity', href: '/maternity', icon: FaBaby },
     { name: 'Baby & Kids', href: '#', icon: FaChild },
     { name: 'Vacations', href: '#', icon: FaPlane },
     { name: 'Parties', href: '#', icon: FaBirthdayCake },
