@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronDown, FiMenu, FiX } from 'react-icons/fi';
 import { FaPhone } from 'react-icons/fa6';
-import { FaHome, FaInfoCircle, FaHeart, FaStar, FaBriefcase, FaCamera, FaRing, FaBaby, FaChild, FaPlane, FaBirthdayCake, FaUtensils, FaCouch, FaBox, FaBuilding, FaVideo, FaUserTie } from 'react-icons/fa';
+import { FaHome, FaInfoCircle, FaHeart, FaStar, FaBriefcase, FaCamera, FaRing, FaBaby, FaChild, FaPlane, FaBirthdayCake, FaUtensils, FaCouch, FaBox, FaBuilding, FaVideo, FaUserTie, FaPenNib } from 'react-icons/fa';
 import logo from '../assets/Logo/logo.png';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
-  const [activeLink, setActiveLink] = useState('Home');
   const [mobileActiveDropdown, setMobileActiveDropdown] = useState(null);
+  const location = useLocation();
 
   const toggleMobileDropdown = (key) => {
     setMobileActiveDropdown(mobileActiveDropdown === key ? null : key);
@@ -43,14 +44,10 @@ const Navbar = () => {
   ];
 
   const NavLink = ({ title, href, icon: Icon }) => {
-    const isActive = activeLink === title;
+    const isActive = href === '/' ? location.pathname === '/' : location.pathname.startsWith(href);
     return (
-      <a
-        href={href}
-        onClick={(e) => {
-          e.preventDefault(); // prevent default for dummy links
-          setActiveLink(title);
-        }}
+      <Link
+        to={href}
         className={`relative flex items-center gap-2 transition-colors duration-300 font-medium text-[15px] px-4 xl:px-5 py-2 rounded-full ${
           isActive
             ? 'bg-[var(--color-primary)] text-white shadow-md shadow-[var(--color-primary)]/20'
@@ -58,8 +55,8 @@ const Navbar = () => {
         }`}
       >
         {Icon && <Icon className="text-base" />}
-        {title}
-      </a>
+        <span className="mt-[1px]">{title}</span>
+      </Link>
     );
   };
 
@@ -133,12 +130,13 @@ const Navbar = () => {
 
           {/* Center: Nav Links */}
           <nav className="hidden lg:flex items-center gap-1">
-            <NavLink title="Home" href="#" icon={FaHome} />
-            <NavLink title="About" href="#" icon={FaInfoCircle} />
-            <NavLink title="Weddings" href="#" icon={FaHeart} />
+            <NavLink title="Home" href="/" icon={FaHome} />
+            <NavLink title="About" href="/about" icon={FaInfoCircle} />
+            <NavLink title="Weddings" href="/wedding" icon={FaHeart} />
             <Dropdown title="Occasions" items={occasionsLinks} dropdownKey="occasions" icon={FaStar} />
             <Dropdown title="Business" items={businessLinks} dropdownKey="business" icon={FaBriefcase} />
             <NavLink title="Portfolio" href="#" icon={FaCamera} />
+            <NavLink title="Blogs" href="/blogs" icon={FaPenNib} />
           </nav>
 
           {/* Right: Contact Us Button */}
@@ -171,12 +169,12 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="fixed top-[72px] left-0 right-0 bg-white shadow-xl z-40 lg:hidden overflow-hidden border-t border-gray-100"
+            className="fixed top-[62px] left-0 right-0 bg-white shadow-xl z-50 lg:hidden overflow-hidden border-t border-gray-100"
           >
             <div className="flex flex-col px-6 py-4 gap-3">
-              <a href="#" className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaHome className="text-gray-400" /> Home</a>
-              <a href="#" className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaInfoCircle className="text-gray-400" /> About</a>
-              <a href="#" className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaHeart className="text-gray-400" /> Weddings</a>
+              <Link to="/" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaHome className="text-gray-400" /> Home</Link>
+              <Link to="/about" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaInfoCircle className="text-gray-400" /> About</Link>
+              <Link to="/wedding" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaHeart className="text-gray-400" /> Weddings</Link>
               <div className="flex flex-col">
                 <button 
                   onClick={() => toggleMobileDropdown('occasions')}
@@ -199,9 +197,9 @@ const Navbar = () => {
                         {occasionsLinks.map((link) => {
                           const ItemIcon = link.icon;
                           return (
-                            <a key={link.name} href={link.href} className="flex items-center gap-3 text-gray-500 text-sm">
+                            <Link key={link.name} to={link.href} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-500 text-sm">
                               {ItemIcon && <ItemIcon className="text-gray-400" />} {link.name}
-                            </a>
+                            </Link>
                           );
                         })}
                       </div>
@@ -231,9 +229,9 @@ const Navbar = () => {
                         {businessLinks.map((link) => {
                           const ItemIcon = link.icon;
                           return (
-                            <a key={link.name} href={link.href} className="flex items-center gap-3 text-gray-500 text-sm">
+                            <Link key={link.name} to={link.href} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-500 text-sm">
                               {ItemIcon && <ItemIcon className="text-gray-400" />} {link.name}
-                            </a>
+                            </Link>
                           );
                         })}
                       </div>
@@ -241,7 +239,8 @@ const Navbar = () => {
                   )}
                 </AnimatePresence>
               </div>
-              <a href="#" className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaCamera className="text-gray-400" /> Portfolio</a>
+              <Link to="#" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaCamera className="text-gray-400" /> Portfolio</Link>
+              <Link to="/blogs" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaPenNib className="text-gray-400" /> Blogs</Link>
               <a href="#" className="mt-3 bg-[var(--color-primary)] text-white text-center flex items-center justify-center gap-2 py-3 rounded-xl font-medium">
                 <FaPhone size={14} /> Contact Us
               </a>

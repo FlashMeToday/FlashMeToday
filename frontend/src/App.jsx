@@ -1,16 +1,24 @@
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
+import Wedding from './pages/Wedding'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 
 function App() {
   return (
-    <div className="min-h-screen bg-white font-sans">
-      <Navbar />
-      <Home />
-      <Footer />
-      <FloatingWhatsApp />
-    </div>
+    <Router>
+      <div className="min-h-screen bg-white font-sans">
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/wedding" element={<Wedding />} />
+        </Routes>
+        <Footer />
+        <FloatingWhatsApp />
+      </div>
+    </Router>
   )
 }
 
