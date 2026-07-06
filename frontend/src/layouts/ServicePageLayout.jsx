@@ -65,7 +65,7 @@ const ServicePageLayout = ({ heroImage, title, subtitle, menuItems, children }) 
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.3 }}
-              className="text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-playfair italic font-medium text-white tracking-normal mb-4 md:mb-8 drop-shadow-2xl"
+              className="text-4xl sm:text-5xl md:text-8xl lg:text-9xl font-playfair italic font-medium text-white tracking-normal mb-4 md:mb-8 drop-shadow-2xl whitespace-nowrap"
             >
               {title}<span className="text-[var(--color-primary)] font-sans not-italic">.</span>
             </motion.h1>

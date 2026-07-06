@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import ServicePageLayout from '../layouts/ServicePageLayout';
 import PricingAccordion from '../components/PricingAccordion';
 import weddingHeroImg from '../assets/Images/Wedding/HeroBG.png';
@@ -120,15 +121,15 @@ const Wedding = () => {
                   <p className="text-gray-300 text-xs md:text-sm font-medium px-2 pt-2 pb-1 sm:pl-6 sm:pr-2 sm:py-2 text-center">
                     Need something unique?
                   </p>
-                  <button className="bg-white hover:bg-[var(--color-primary)] text-gray-900 hover:text-white font-sans font-bold py-2.5 md:py-3 px-6 md:px-8 rounded-full transition-all duration-300 text-xs md:text-sm tracking-wide shadow-md w-full sm:w-auto cursor-pointer">
-                    Get Custom Pricing
-                  </button>
+                  <Link to="/contact?concern=Personalized%20Shoot%20Plan" className="bg-white hover:bg-[var(--color-primary)] text-gray-900 hover:text-white font-sans font-bold py-2.5 md:py-3 px-6 md:px-8 rounded-full transition-all duration-300 text-xs md:text-sm tracking-wide shadow-md w-full sm:w-auto cursor-pointer inline-block text-center">
+                    Get Custom Quote
+                  </Link>
                 </div>
               </div>
             </div>
           </div>
           <div className="w-full max-w-[1600px] mx-auto px-4 lg:px-8">
-            <PricingAccordion plans={weddingPlans} />
+            <PricingAccordion plans={weddingPlans} serviceName="Wedding" />
           </div>
         </section>
 
@@ -174,9 +175,9 @@ const Wedding = () => {
           </div>
 
           <div className="mt-6 md:mt-12 flex justify-center">
-            <button className="bg-gray-900 text-white hover:bg-[var(--color-primary)] font-sans font-bold py-3.5 px-8 rounded-full transition-all duration-300 text-xs tracking-widest uppercase shadow-md cursor-pointer">
+            <Link to="/portfolio" className="bg-gray-900 text-white hover:bg-[var(--color-primary)] font-sans font-bold py-3.5 px-8 rounded-full transition-all duration-300 text-xs tracking-widest uppercase shadow-md cursor-pointer">
               Explore Full Gallery
-            </button>
+            </Link>
           </div>
         </section>
 

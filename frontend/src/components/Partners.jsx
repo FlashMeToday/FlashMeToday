@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { FaBuilding, FaCamera, FaPlane, FaHotel } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const partnersData = [
   {
@@ -8,28 +9,32 @@ const partnersData = [
     icon: FaBuilding,
     title: "Corporate.",
     description: "Seamless photography solutions for every scale and area.",
-    buttonText: "Talk to us"
+    buttonText: "Talk to us",
+    link: "/contact?concern=Corporate%20Shoot"
   },
   {
     id: 2,
     icon: FaCamera,
     title: "Photographers.",
     description: "Your talent deserves the spotlight – come onboard today.",
-    buttonText: "Join us"
+    buttonText: "Join us",
+    link: "/join"
   },
   {
     id: 3,
     icon: FaPlane,
     title: "Travel Agents.",
     description: "Give your clients more than a trip – give them memories.",
-    buttonText: "Sell with us"
+    buttonText: "Sell with us",
+    link: "/contact?concern=Travel%20Agent%20Signup"
   },
   {
     id: 4,
     icon: FaHotel,
     title: "Attractions & Hotels.",
     description: "Add value on-site, multiply reach online.",
-    buttonText: "Let's Plan"
+    buttonText: "Let's Plan",
+    link: "/contact?concern=Hotels%20and%20Attractions"
   }
 ];
 
@@ -108,9 +113,12 @@ const Partners = () => {
               </div>
 
               {/* Premium Button */}
-              <button className="w-full bg-[var(--color-primary)] text-white font-medium py-3.5 rounded-xl transition-all duration-300 shadow-[0_4px_15px_rgba(139,38,217,0.2)] hover:shadow-[0_8px_25px_rgba(139,38,217,0.4)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer relative z-20">
+              <Link 
+                to={partner.link}
+                className="w-full text-center block bg-[var(--color-primary)] text-white font-medium py-3.5 rounded-xl transition-all duration-300 shadow-[0_4px_15px_rgba(139,38,217,0.2)] hover:shadow-[0_8px_25px_rgba(139,38,217,0.4)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer relative z-20"
+              >
                 {partner.buttonText}
-              </button>
+              </Link>
 
             </motion.div>
           ))}

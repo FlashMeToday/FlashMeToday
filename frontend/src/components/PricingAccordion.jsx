@@ -1,6 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-const PricingAccordion = ({ plans }) => {
+const PricingAccordion = ({ plans, serviceName }) => {
   return (
     <div className={`w-full gap-6 mt-2 md:mt-8 relative z-10 ${plans.length <= 2 ? 'flex flex-col md:flex-row justify-center max-w-5xl mx-auto' : 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'}`}>
       {plans.map((plan, index) => {
@@ -54,15 +55,16 @@ const PricingAccordion = ({ plans }) => {
                 ))}
               </ul>
 
-              <button 
-                className={`w-full py-3.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-500 cursor-pointer ${
+              <Link 
+                to={`/booking?plan=${encodeURIComponent(serviceName || '')}&type=${encodeURIComponent(plan.name)}`}
+                className={`w-full block text-center py-3.5 rounded-full text-xs font-bold tracking-[0.2em] uppercase transition-all duration-500 cursor-pointer ${
                   isPremium 
                     ? 'bg-white text-gray-900 hover:bg-[var(--color-primary)] hover:text-white hover:shadow-[0_0_30px_rgba(var(--color-primary),0.3)]' 
                     : 'bg-transparent border border-gray-300 text-gray-900 hover:bg-gray-900 hover:border-gray-900 hover:text-white'
                 }`}
               >
                 Reserve Date
-              </button>
+              </Link>
             </div>
           </div>
         );

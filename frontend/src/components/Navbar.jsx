@@ -26,6 +26,11 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close dropdowns on route change
+  useEffect(() => {
+    setActiveDropdown(null);
+  }, [location.pathname]);
+
   const occasionsLinks = [
     { name: 'Pre Wedding', href: '/pre-wedding', icon: FaRing },
     { name: 'Maternity', href: '/maternity', icon: FaBaby },

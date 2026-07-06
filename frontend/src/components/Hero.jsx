@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaStar, FaPhone, FaCalendarAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import image1 from '../assets/Images/Slider/image_1.png';
 import image2 from '../assets/Images/Slider/image_2.png';
 import image3 from '../assets/Images/Slider/image_3.png';
@@ -64,7 +65,7 @@ const HeroContent = ({ isMobile }) => {
         transition={{ duration: 1, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
         className="mt-6 lg:mt-12 flex flex-row justify-center items-center gap-2 sm:gap-3 lg:gap-5 w-full px-4 lg:px-0"
       >
-        <button className={`relative overflow-hidden group flex-1 lg:flex-none lg:w-[220px] h-[48px] lg:h-[56px] flex items-center justify-center text-white text-[12px] sm:text-[15px] font-bold rounded-full cursor-pointer transition-all duration-500 ${
+        <Link to="/contact" className={`relative overflow-hidden group flex-1 lg:flex-none lg:w-[220px] h-[48px] lg:h-[56px] flex items-center justify-center text-white text-[12px] sm:text-[15px] font-bold rounded-full cursor-pointer transition-all duration-500 ${
           isMobile 
             ? 'bg-[var(--color-primary)] shadow-none' 
             : 'bg-gradient-to-br from-[var(--color-primary)] to-[#591494] shadow-none hover:shadow-[0_0_10px_rgba(139,38,217,0.6)]'
@@ -73,9 +74,9 @@ const HeroContent = ({ isMobile }) => {
             <FaPhone className="text-xs lg:text-sm scale-x-[-1]" /> Talk to an Expert
           </span>
           <div className="hidden lg:block absolute inset-0 border border-t-white/40 border-b-black/20 border-x-white/10 rounded-full pointer-events-none mix-blend-overlay"></div>
-        </button>
+        </Link>
         
-        <button className={`relative group flex-1 lg:flex-none lg:w-[220px] h-[48px] lg:h-[56px] flex items-center justify-center backdrop-blur-2xl text-[12px] sm:text-[15px] font-bold rounded-full cursor-pointer transition-all duration-500 ${
+        <Link to="/booking" className={`relative group flex-1 lg:flex-none lg:w-[220px] h-[48px] lg:h-[56px] flex items-center justify-center backdrop-blur-2xl text-[12px] sm:text-[15px] font-bold rounded-full cursor-pointer transition-all duration-500 ${
           isMobile 
             ? 'bg-white border border-gray-300 text-gray-800 hover:bg-gray-50 shadow-sm hover:shadow-md' 
             : 'bg-transparent border border-white text-white hover:bg-white/10 shadow-none hover:shadow-[0_0_10px_rgba(255,255,255,0.4)]'
@@ -83,7 +84,7 @@ const HeroContent = ({ isMobile }) => {
           <span className="relative z-10 flex items-center gap-1.5 lg:gap-2">
             <FaCalendarAlt className="text-xs lg:text-sm" /> Book a Shoot
           </span>
-        </button>
+        </Link>
       </motion.div>
     </div>
   );

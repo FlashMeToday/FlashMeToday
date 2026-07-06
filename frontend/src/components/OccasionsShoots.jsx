@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import preWedding from '../assets/Images/Occasions/pre-wedding.png';
 import wedding from '../assets/Images/Occasions/wedding.png';
@@ -15,36 +16,42 @@ const occasionsData = [
     title: 'Pre Wedding',
     subtitle: 'Where love meets timeless frames.',
     image: preWedding,
+    link: '/pre-wedding'
   },
   {
     id: 2,
     title: 'Wedding',
     subtitle: 'Preserve your most precious moments for eternity.',
     image: wedding,
+    link: '/wedding'
   },
   {
     id: 3,
     title: 'Baby & Kids',
     subtitle: 'Kids bring moments you’ll want to hold onto forever.',
     image: baby,
+    link: '/baby-and-kids'
   },
   {
     id: 4,
     title: 'Maternity',
     subtitle: 'Embrace every motherhood moment in beautiful frames.',
     image: maternity,
+    link: '/maternity'
   },
   {
     id: 5,
     title: 'Parties',
     subtitle: "Celebrate your parties night's in frames that last forever!",
     image: parties,
+    link: '/parties'
   },
   {
     id: 6,
     title: 'Vacation',
     subtitle: "Don't just travel, treasure it forever!",
     image: vacation,
+    link: '/vacations'
   }
 ];
 
@@ -129,9 +136,10 @@ const OccasionsShoots = () => {
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {occasionsData.map((item) => (
-            <div 
+            <Link 
+              to={item.link}
               key={item.id} 
-              className="relative snap-start shrink-0 w-full lg:w-[calc(25%-11.25px)] aspect-[3/4] lg:aspect-[4/5] rounded-3xl overflow-hidden group cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-700"
+              className="block relative snap-start shrink-0 w-full lg:w-[calc(25%-11.25px)] aspect-[3/4] lg:aspect-[4/5] rounded-3xl overflow-hidden group cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-700"
             >
               {/* Dramatic Cinematic Image Zoom */}
               <img 
@@ -152,7 +160,7 @@ const OccasionsShoots = () => {
                   {item.subtitle}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

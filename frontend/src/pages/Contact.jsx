@@ -1,13 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import { FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaArrowRight } from 'react-icons/fa';
 
 const Contact = () => {
+  const [searchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const urlConcern = searchParams.get('concern');
+
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
     phone: '',
-    concern: '',
+    concern: urlConcern || '',
     details: ''
   });
 
@@ -32,6 +38,12 @@ const Contact = () => {
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  useEffect(() => {
+    if (searchParams.toString()) {
+      navigate(location.pathname, { replace: true });
+    }
+  }, [searchParams, navigate, location.pathname]);
 
   const handleChange = (e) => {
     setFormData({
@@ -224,7 +236,7 @@ const Contact = () => {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleChange}
-                    className="block w-full bg-white border border-gray-300 rounded-xl py-3 px-4 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20 transition-shadow"
+                    className="block w-full bg-[#f8f9fb] border border-transparent hover:bg-[#f1f3f7] focus:bg-white rounded-xl py-3.5 px-4 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-[var(--color-primary)]/15 transition-all duration-300"
                     placeholder="John Doe"
                     required
                   />
@@ -237,7 +249,7 @@ const Contact = () => {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="block w-full bg-white border border-gray-300 rounded-xl py-3 px-4 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20 transition-shadow"
+                    className="block w-full bg-[#f8f9fb] border border-transparent hover:bg-[#f1f3f7] focus:bg-white rounded-xl py-3.5 px-4 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-[var(--color-primary)]/15 transition-all duration-300"
                     placeholder="john@example.com"
                     required
                   />
@@ -250,8 +262,11 @@ const Contact = () => {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="block w-full bg-white border border-gray-300 rounded-xl py-3 px-4 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20 transition-shadow"
-                    placeholder="+91 99999 00000"
+                    className="block w-full bg-[#f8f9fb] border border-transparent hover:bg-[#f1f3f7] focus:bg-white rounded-xl py-3.5 px-4 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-[var(--color-primary)]/15 transition-all duration-300"
+                    placeholder="9999900000"
+                    pattern="[0-9]{10}"
+                    title="Please enter a valid 10 digit phone number"
+                    maxLength="10"
                     required
                   />
                 </div>
@@ -265,7 +280,7 @@ const Contact = () => {
                     <button
                       type="button"
                       onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                      className={`flex items-center justify-between w-full bg-white border ${isDropdownOpen ? 'border-[var(--color-primary)] ring-2 ring-[var(--color-primary)]/20' : 'border-gray-300'} rounded-xl py-3 px-4 text-sm transition-shadow cursor-pointer ${formData.concern ? 'text-gray-900' : 'text-gray-400'}`}
+                      className={`flex items-center justify-between w-full bg-[#f8f9fb] border hover:bg-[#f1f3f7] ${isDropdownOpen ? 'bg-white border-[var(--color-primary)] ring-4 ring-[var(--color-primary)]/15' : 'border-transparent'} rounded-xl py-3.5 px-4 text-sm transition-all duration-300 cursor-pointer ${formData.concern ? 'text-gray-900' : 'text-gray-400'}`}
                     >
                       <span className="truncate">{formData.concern || 'Select an option'}</span>
                       <svg className={`w-4 h-4 text-gray-400 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -303,7 +318,7 @@ const Contact = () => {
                   name="details"
                   value={formData.details}
                   onChange={handleChange}
-                  className="block w-full bg-white border border-gray-300 rounded-xl py-3 px-4 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-2 focus:ring-[var(--color-primary)]/20 transition-shadow resize-y"
+                  className="block w-full bg-[#f8f9fb] border border-transparent hover:bg-[#f1f3f7] focus:bg-white rounded-xl py-3.5 px-4 text-gray-900 text-sm focus:outline-none focus:border-[var(--color-primary)] focus:ring-4 focus:ring-[var(--color-primary)]/15 transition-all duration-300 resize-none"
                   placeholder="Tell us more about what you need..."
                   rows="4"
                   required

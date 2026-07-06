@@ -2,6 +2,7 @@ import React from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
+import ScrollToTop from './components/ScrollToTop'
 import Home from './pages/Home'
 import Wedding from './pages/Wedding'
 import PreWedding from './pages/PreWedding'
@@ -15,13 +16,21 @@ import ProductShoot from './pages/ProductShoot'
 import CorporateEvents from './pages/CorporateEvents'
 import BrandVideo from './pages/BrandVideo'
 import ProfileHeadshot from './pages/ProfileHeadshot'
-import Contact from './pages/Contact'
 import Portfolio from './pages/Portfolio'
+import Contact from './pages/Contact'
+import Booking from './pages/Booking'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import TermsAndConditions from './pages/TermsAndConditions'
+import About from './pages/About'
+import Blogs from './pages/Blogs'
+import BlogPost from './pages/BlogPost'
+import Join from './pages/Join'
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-white font-sans">
         <Navbar />
         <Routes>
@@ -40,6 +49,13 @@ function App() {
           <Route path="/profile-and-headshot" element={<ProfileHeadshot />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/booking" element={<Booking />} />
+          <Route path="/about" element={<About />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
+          <Route path="/join" element={<Join />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/terms-conditions" element={<TermsAndConditions />} />
         </Routes>
         <Footer />
         <FloatingWhatsApp />

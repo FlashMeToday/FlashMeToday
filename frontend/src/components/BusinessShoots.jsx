@@ -1,6 +1,7 @@
 import React, { useRef, useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 import food from '../assets/Images/Business/food.png';
 import interior from '../assets/Images/Business/interior.png';
@@ -15,36 +16,42 @@ const businessData = [
     title: 'Food',
     subtitle: 'When frames turn into flavors.',
     image: food,
+    link: '/food'
   },
   {
     id: 2,
     title: 'Interior',
     subtitle: 'Make them feel at home before they enter the door.',
     image: interior,
+    link: '/interior'
   },
   {
     id: 3,
     title: 'Product Shoot',
     subtitle: 'Visibility drives sales, and we make your brand look stunning.',
     image: product,
+    link: '/product-shoot'
   },
   {
     id: 4,
     title: 'Events',
     subtitle: 'Take your event to audiences, near or far.',
     image: corporate,
+    link: '/corporate-events'
   },
   {
     id: 5,
     title: 'Brand Video',
     subtitle: 'Communicate your brand story with powerful visuals.',
     image: brand,
+    link: '/brand-video'
   },
   {
     id: 6,
     title: 'Profile & Headshots',
     subtitle: 'Make your first impression unforgettable.',
     image: profile,
+    link: '/profile-and-headshot'
   }
 ];
 
@@ -127,9 +134,10 @@ const BusinessShoots = () => {
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {businessData.map((item) => (
-            <div
+            <Link
+              to={item.link}
               key={item.id}
-              className="relative snap-start shrink-0 w-full lg:w-[calc(25%-11.25px)] aspect-[3/4] lg:aspect-[4/5] rounded-3xl overflow-hidden group cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-700"
+              className="block relative snap-start shrink-0 w-full lg:w-[calc(25%-11.25px)] aspect-[3/4] lg:aspect-[4/5] rounded-3xl overflow-hidden group cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-700"
             >
               {/* Dramatic Cinematic Image Zoom */}
               <img
@@ -150,7 +158,7 @@ const BusinessShoots = () => {
                   {item.subtitle}
                 </p>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 

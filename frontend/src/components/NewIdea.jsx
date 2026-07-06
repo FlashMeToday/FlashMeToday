@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { FaArrowRight } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 
 const TYPEWRITER_WORDS = ["every second.", "every moment.", "always ready."];
 
@@ -112,13 +113,13 @@ const NewIdea = () => {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, delay: 0.3 }}
         >
-          <button className="group relative flex justify-center items-center gap-3 px-8 sm:px-10 py-4 lg:py-5 rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[#591494] text-white font-bold text-sm lg:text-[15px] tracking-wide transition-all duration-500 hover:shadow-[0_0_40px_rgba(139,38,217,0.7)] hover:scale-105 border border-white/20 overflow-hidden cursor-pointer">
+          <Link to="/portfolio" className="group relative flex justify-center items-center gap-3 px-8 sm:px-10 py-4 lg:py-5 rounded-full bg-gradient-to-br from-[var(--color-primary)] to-[#591494] text-white font-bold text-sm lg:text-[15px] tracking-wide transition-all duration-500 hover:shadow-[0_0_40px_rgba(139,38,217,0.7)] hover:scale-105 border border-white/20 overflow-hidden cursor-pointer">
             <span className="relative z-10">Your Next Photoshoot Starts Here</span>
             <FaArrowRight className="relative z-10 text-xs transition-transform duration-300 group-hover:translate-x-1" />
             
             {/* Glass Shine Effect on Hover */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out"></div>
-          </button>
+          </Link>
         </motion.div>
 
       </div>

@@ -109,7 +109,7 @@ const Portfolio = () => {
                  <h3 className="text-3xl font-black text-gray-900 tracking-tight">{category.title}</h3>
                  <p className="text-gray-500 font-medium mt-2">Stunning moments captured for {category.title}.</p>
                </div>
-               <Link to="/contact" className="hidden md:inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] hover:bg-opacity-90 text-white px-8 py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all shadow-[0_4px_14px_0_rgba(107,33,168,0.39)] hover:shadow-[0_6px_20px_rgba(107,33,168,0.23)] hover:-translate-y-0.5 shrink-0">
+               <Link to={`/booking?plan=${encodeURIComponent(category.title)}`} className="hidden md:inline-flex items-center justify-center gap-2 bg-[var(--color-primary)] hover:bg-opacity-90 text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide transition-all shadow-[0_4px_14px_0_rgba(107,33,168,0.39)] hover:shadow-[0_6px_20px_rgba(107,33,168,0.23)] hover:-translate-y-0.5 shrink-0">
                  {category.bookText}
                </Link>
             </div>
@@ -136,7 +136,7 @@ const Portfolio = () => {
             
             {/* Mobile Book Button */}
             <div className="mt-8 md:hidden">
-               <Link to="/contact" className="flex w-full items-center justify-center gap-2 bg-[var(--color-primary)] hover:bg-opacity-90 text-white px-8 py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all shadow-[0_4px_14px_0_rgba(107,33,168,0.39)]">
+               <Link to={`/booking?plan=${encodeURIComponent(category.title)}`} className="flex w-full items-center justify-center gap-2 bg-[var(--color-primary)] hover:bg-opacity-90 text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide transition-all shadow-[0_4px_14px_0_rgba(107,33,168,0.39)]">
                  {category.bookText}
                </Link>
             </div>

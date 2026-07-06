@@ -1,5 +1,6 @@
 import React from 'react';
 import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn, FaPaperPlane } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import logo from '../assets/Logo/logo.png';
 
 const Footer = () => {
@@ -39,10 +40,10 @@ const Footer = () => {
           <div className="hidden lg:block lg:col-span-2">
             <h3 className="font-semibold text-white tracking-wide mb-3 uppercase text-xs opacity-80">Quick Links</h3>
             <ul className="flex flex-col gap-4">
-              <FooterLink text="Home" />
-              <FooterLink text="About Studio" />
-              <FooterLink text="Our Portfolio" />
-              <FooterLink text="Book a Session" />
+              <FooterLink text="Home" to="/" />
+              <FooterLink text="About Studio" to="/" />
+              <FooterLink text="Our Portfolio" to="/portfolio" />
+              <FooterLink text="Book a Session" to="/booking" />
             </ul>
           </div>
 
@@ -77,12 +78,12 @@ const Footer = () => {
             © {new Date().getFullYear()} <span className="font-bold text-white">FlashMeToday</span>. Crafted with excellence.
           </p>
           <div className="flex gap-8 text-sm font-medium text-gray-500">
-            <a href="#" className="hover:text-white hover:[text-shadow:0_0_0.6px_white] transition-all duration-300">
+            <Link to="/privacy-policy" className="hover:text-white hover:[text-shadow:0_0_0.6px_white] transition-all duration-300">
               Privacy Policy
-            </a>
-            <a href="#" className="hover:text-white hover:[text-shadow:0_0_0.6px_white] transition-all duration-300">
-              Terms of Service
-            </a>
+            </Link>
+            <Link to="/terms-conditions" className="hover:text-white hover:[text-shadow:0_0_0.6px_white] transition-all duration-300">
+              Terms & Conditions
+            </Link>
           </div>
         </div>
       </div>
@@ -90,12 +91,12 @@ const Footer = () => {
   );
 };
 
-const FooterLink = ({ text }) => (
+const FooterLink = ({ text, to }) => (
   <li>
-    <a href="#" className="text-sm font-medium text-gray-400 hover:text-[var(--color-primary)] transition-all duration-300 flex items-center gap-2 group">
-      <span className="w-0 h-[1px] bg-[var(--color-primary)] transition-all duration-300 group-hover:w-3"></span>
+    <Link to={to} className="text-sm font-medium text-gray-400 hover:text-white hover:font-bold transition-all duration-300 flex items-center gap-2 group">
+      <span className="w-0 h-[1px] bg-white transition-all duration-300 group-hover:w-3"></span>
       <span className="group-hover:translate-x-1 transition-transform duration-300">{text}</span>
-    </a>
+    </Link>
   </li>
 );
 

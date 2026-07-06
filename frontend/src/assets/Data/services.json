@@ -1,0 +1,503 @@
+[
+  {
+    "Occasions": [
+      {
+        "plan": "Wedding",
+        "packages": [
+          {
+            "type of shoot": "Royal Wedding",
+            "includes": "Photography + Videography + Drone with a 5-6 Member Professional Team.",
+            "packageDescp": [
+              "Covers 3 Functions (Sagan, Rituals, Wedding, Etc.).",
+              "Team Includes: 1 Traditional Photographer, 1 Traditional Videographer, 1 Candid Photographer, and 2 Cinematographers.",
+              "Deliverables Include: 1-2 Minute Teaser, 3-4 Minute Highlights, 3-4 Hour Traditional Video, 800-1000 Images, and 3 Instagram Reels."
+            ],
+            "aboutEquipment": "Full-Frame Cameras (Sony, Canon), Lens Kit, Gimbal, Lights, Etc.",
+            "price": {
+              "original": 170000,
+              "offer": 140000
+            }
+          },
+          {
+            "type of shoot": "Signature Wedding",
+            "includes": "Photography + Videography + Drone with a 6-7 Member Team.",
+            "packageDescp": [
+              "Covers 5 Functions (Sagan, Rituals, Wedding, Etc.).",
+              "Team Includes: 1 Traditional Photographer, 1 Traditional Videographer, 2 Candid Photographers, and 1 Cinematographer.",
+              "Deliverables Include: 2-3 Minute Teaser, 4-5 Minute Highlights, 4-5 Hour Traditional Video, 1000-1200 Images, and 3 Instagram Reels."
+            ],
+            "aboutEquipment": "Full-Frame Cameras (Sony, Canon), Lens Kit, Gimbal, Lights, Etc.",
+            "price": {
+              "original": 300000,
+              "offer": 240000
+            }
+          },
+          {
+            "type of shoot": "Maharaja Wedding",
+            "includes": "Photography + Videography + Drone + Selfie Booth + Flatframe with a 7-8 Member Team.",
+            "packageDescp": [
+              "Covers 7 Functions (Sagan, Rituals, Wedding, Etc.).",
+              "Team Includes: 1 Traditional Photographer, 1 Traditional Videographer, 2 Candid Photographers, and 2 Cinematographers.",
+              "Deliverables Include: 4 Minute Teaser, 5 Minute Highlights, 5-6 Hour Traditional Video, 1200-1500 Images, and 4 Instagram Reels."
+            ],
+            "aboutEquipment": " Full-Frame Cameras (Sony, Canon), Lens Kit, Gimbal, Lights, Etc.",
+            "price": {
+              "original": 400000,
+              "offer": 340000
+            }
+          }
+        ]
+      },
+      {
+        "plan": "Pre-wedding",
+        "packages": [
+          {
+            "type of shoot": "Influencer Shoot",
+            "includes": "Photography Only",
+            "packageDescp": [
+              "30 Edited Imagess",
+              "4-5 Hrs Shoot, 2 Locations & 2 Dresses Changes"
+            ],
+            "aboutEquipment": "Full Frame Camera &  Lenses, Lights with 1 Experienced Photographer",
+            "price": {
+              "original": 17999,
+              "offer": 13999
+            }
+          },
+          {
+            "type of shoot": "Grand Shoot",
+            "includes": "Photography + Videography",
+            "packageDescp": [
+              "50 Edited Images",
+              "2-3 Minutes Cinematic Video",
+              "7-8 Hours Shoot with Unlimited Dress Changes at Locations"
+            ],
+            "aboutEquipment": "Full Frame Cameras, Lenses ,Gimbles, Lights with 2  Experienced Photographer & Helpers",
+            "price": {
+              "original": 37999,
+              "offer": 31999
+            }
+          },
+          {
+            "type of shoot": "Exclusive Shoot",
+            "includes": "Photography + Videography + Drone",
+            "packageDescp": [
+              "60 Edited Images",
+              "3-4 Minutes Cinematic Video",
+              "1 Teaser Video",
+              "8 Hours Shoot with Unlimited Dress Changes at Locations"
+            ],
+            "aboutEquipment": "Full Frame Cameras, Lenses ,Gimbles, Lights & Drone with 3 Experienced Photographer & Helpers",
+            "price": {
+              "original": 49999,
+              "offer": 41999
+            }
+          }
+        ]
+      },
+      {
+        "plan": "Maternity",
+        "packages": [
+          {
+            "type of shoot": "Insta Maternity Shoot",
+            "includes": "Photography Only",
+            "packageDescp": [
+              "1 Location",
+              "3 Hours Shoot with 3 Dress Changes at Locations",
+              "20 Edited Images"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras , Lenses and Lights",
+            "price": {
+              "original": 14999,
+              "offer": 11999
+            }
+          },
+          {
+            "type of shoot": "Grand Maternity Shoot",
+            "includes": "Photo + Reels",
+            "packageDescp": [
+              "2 Location",
+              "4 Hours Shoot with 5 Dress Changes at Locations",
+              "30 Edited Images + 2 Reels"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras , Lenses and Lights",
+            "price": {
+              "original": 19999,
+              "offer": 16999
+            }
+          },
+          {
+            "type of shoot": "Exclusive Maternity Shoot",
+            "includes": "Photo + Reels + Dress",
+            "packageDescp": [
+              "4 Locations",
+              "6 Hours Shoot with 7-8 Dress Changes at Locations",
+              "50 Edited Images + 4 Reels"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras , Lenses, Gimbal and Lights",
+            "price": {
+              "original": 26999,
+              "offer": 21999
+            }
+          }
+        ]
+      },
+      {
+        "plan": "Baby & Kids",
+        "packages": [
+          {
+            "type of shoot": "Insta Baby Shoot",
+            "includes": "Photographer Only",
+            "packageDescp": [
+              "1 Location",
+              "3 Hours Shoot with 3 Dress Changes at Locations",
+              "20 Edited Images"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras , Lenses and Lights",
+            "price": {
+              "original": 14999,
+              "offer": 11999
+            }
+          },
+          {
+            "type of shoot": "Grand Baby Shoot",
+            "includes": "Photos + Reels",
+            "packageDescp": [
+              "2 Location",
+              "4 Hours Shoot with 5 Dress Changes at Locations",
+              "30 Edited Images + 2 Reels"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras , Lenses and Lights",
+            "price": {
+              "original": 19999,
+              "offer": 16999
+            }
+          },
+          {
+            "type of shoot": "Exclusive Baby Shoot",
+            "includes": "Photos + Reels + Dress",
+            "packageDescp": [
+              "4 Locations",
+              "6 Hours Shoot with 7-8 Dress Changes at Locations",
+              "50 Edited Images + 4 Reels"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras , Lenses, Gimbal and Lights",
+            "price": {
+              "original": 26999,
+              "offer": 21999
+            }
+          }
+        ]
+      },
+      {
+        "plan": "Vacation",
+        "packages": [
+          {
+            "type of shoot": "Insta Shoot",
+            "includes": "Photographer Only",
+            "packageDescp": [
+              "1 Location",
+              "1-2 Hours Shoot",
+              "20 Edited Images"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras & Lenses",
+            "price": {
+              "original": 7999,
+              "offer": 4999
+            }
+          },
+          {
+            "type of shoot": "Grand Shoot",
+            "includes": "Photos + Reels",
+            "packageDescp": [
+              "1 Locations",
+              "2 Hours Shoots",
+              "25 Edited Images + 2 Reels"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras & Lenses",
+            "price": {
+              "original": 12999,
+              "offer": 10999
+            }
+          }
+        ]
+      },
+      {
+        "plan": "Parties",
+        "packages": [
+          {
+            "type of shoot": "Insta Parties Shoot",
+            "includes": "Photographer Only",
+            "packageDescp": [
+              "1 Location",
+              "2 Hours Shoot",
+              " 60 Edited Images"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras & Lenses",
+            "price": {
+              "original": 9999,
+              "offer": 7999
+            }
+          },
+          {
+            "type of shoot": "Grand Parties Shoot",
+            "includes": "Photos + Reels",
+            "packageDescp": [
+              "1 Locations",
+              "4 Hours Shoots",
+              "200 Edited Images + 2 Reels"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras & Lenses",
+            "price": {
+              "original": 16999,
+              "offer": 11999
+            }
+          }
+        ]
+      }
+    ],
+    "Business": [
+      {
+        "plan": "Food",
+        "packages": [
+          {
+            "type of shoot": "Insta Food Shoot",
+            "includes": "Photographer Only",
+            "packageDescp": [
+              "15 Dishes",
+              "3 Shots Per Dish",
+              "50 Edited Images"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras, Lenses & Lights ",
+            "price": {
+              "original": 15999,
+              "offer": 12999
+            }
+          },
+          {
+            "type of shoot": "Grand Food Shoot",
+            "includes": "Photos + Reels",
+            "packageDescp": [
+              "15 Dishes",
+              "3 Exclusive Shots Per Dish",
+              "50 Edited Images + 2 Reels"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras , Lenses & Lights",
+            "price": {
+              "original": 27999,
+              "offer": 22999
+            }
+          }
+        ]
+      },
+      {
+        "plan": "Interior",
+        "packages": [
+          {
+            "type of shoot": "Insta Interior Shoot",
+            "includes": "Photographer Only",
+            "packageDescp": [
+              "50 Edited Images",
+              "4 Shots Per Rooms",
+              " Coverage - Full 3-4 BHK Property (Inner + Outdoor Shots)"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras, Lenses & Lights",
+            "price": {
+              "original": 15999,
+              "offer": 9999
+            }
+          },
+          {
+            "type of shoot": "Grand Interior Shoot",
+            "includes": "Photos + Reels",
+            "packageDescp": [
+              "50 Edited Images + 2 Reels",
+              "4 Shots Per Rooms",
+              "Coverage - Full 3-4 BHK Property (Inner + Outdoor Shots)"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras , Lenses & Lights",
+            "price": {
+              "original": 18999,
+              "offer": 15999
+            }
+          }
+        ]
+      },
+      {
+        "plan": "Product Shoot",
+        "packages": [
+          {
+            "type of shoot": "White Background Shoot",
+            "includes": "N/A",
+            "packageDescp": [
+              "50 Images",
+              "4 Click (Angled Shot (45), Top Shot, Front Shot (135)"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras , Lenses & Lights",
+            "price": {
+              "original": 21000,
+              "offer": 15999
+            }
+          },
+          {
+            "type of shoot": "Creative Shoot",
+            "includes": "N/A",
+            "packageDescp": [
+              "15 Products",
+              "2 Exclusive Click",
+              "30 Edited Image"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras , Lenses & Lights",
+            "price": {
+              "original": 23999,
+              "offer": 21999
+            }
+          },
+          {
+            "type of shoot": "Apparel Shoot",
+            "includes": "N/A",
+            "packageDescp": [
+              "15 Dresses",
+              "4 Angles Click",
+              "60 Edited Images"
+            ],
+            "aboutEquipment": "1 Photographer with Full Frame Cameras , Lenses & Lights",
+            "price": {
+              "original": 29999,
+              "offer": 24999
+            }
+          }
+        ]
+      },
+      {
+        "plan": "Corporate Event",
+        "packages": [
+          {
+            "type of shoot": "Half Day Photoshoot",
+            "includes": "Photography Only",
+            "packageDescp": [
+              "4 Hour Coverage",
+              "150 Edited Images"
+            ],
+            "aboutEquipment": "Photographer with Prime Lens and Flash on Full Frame Camera",
+            "price": {
+              "original": 19999,
+              "offer": 14999
+            }
+          },
+          {
+            "type of shoot": "Half Day Photoshoot + Video",
+            "includes": "Photography + Videography",
+            "packageDescp": [
+              "4 Hour Coverage",
+              "150 Edited Images",
+              "2-3 Minutes Cinematic Video or Full Event Video"
+            ],
+            "aboutEquipment": "Photographer & Cinematographer with Prime Lens and Flash on Full Frame Camera",
+            "price": {
+              "original": 29999,
+              "offer": 24999
+            }
+          },
+          {
+            "type of shoot": "Full Day Photoshoot + Video",
+            "includes": "Photography + Videography",
+            "packageDescp": [
+              "8 Hour Coverage",
+              "150 Edited Images",
+              "2-3 Minutes Cinematic Video or Full Event Video"
+            ],
+            "aboutEquipment": "Photographer with Prime Lens and Flash on Full Frame Camera",
+            "price": {
+              "original": 44999,
+              "offer": 39999
+            }
+          }
+        ]
+      },
+      {
+        "plan": "Brand Video",
+        "packages": [
+          {
+            "type of shoot": "Brand Video",
+            "includes": "Videography Only",
+            "packageDescp": [
+              "2-3 Minutes Cinematic Video of Brand ",
+              "Including Bites From Founder's / Directors / Employees / Customer",
+              "1 Location / Office / Retail Store / Factory ",
+              " Upto 8 Hours Shoot"
+            ],
+            "aboutEquipment": "Cinematography Team  with Prime Lens and Lights on Full Frame Camera with Gimbal ",
+            "price": {
+              "original": 50000,
+              "offer": 24999
+            }
+          },
+          {
+            "type of shoot": "Brand Video & Photos",
+            "includes": "Photography + Videography",
+            "packageDescp": [
+              "20 Brand Photos",
+              "2-3 Minutes Cinematic Video of Brand  Including Bites From Founder's / Directors / Employees / Customer",
+              "1 Location / Office / Retail Store / Factory ",
+              "Upto 8 Hours Shoot "
+            ],
+            "aboutEquipment": "Cinematography Team & Crative Director with Prime Lens and Lights on Full Frame Camera with Gimbal",
+            "price": {
+              "original": 85000,
+              "offer": 49999
+            }
+          },
+          {
+            "type of shoot": "Premium Brand Video & Photos",
+            "includes": "Photography + Videography",
+            "packageDescp": [
+              "50 Brand Photos",
+              "2-3 Minutes Cinematic Video of Brand  Including Bites From Founder's / Directors / Employees / Customer",
+              "2 Location / Office / Retail Store / Factory ",
+              "Upto 8 Hours Shoot "
+            ],
+            "aboutEquipment": "Premium Cinematography Team & Seniour Creative Director with Prime Lens and Lights on Full Frame Camera with Gimbal & Drone",
+            "price": {
+              "original": 150000,
+              "offer": 99999
+            }
+          }
+        ]
+      },
+      {
+        "plan": "Profile & Headshots",
+        "packages": [
+          {
+            "type of shoot": "Corporate Profile & Headshot",
+            "includes": "20 Edited Profile Images Combination of Full Length & Headshots",
+            "packageDescp": [
+              "2 Location",
+              "2 Dress Changes",
+              "4 Hours of Shoot"
+            ],
+            "aboutEquipment": "",
+            "price": {
+              "original": 20000,
+              "offer": 9999
+            }
+          },
+          {
+            "type of shoot": "Politician Profile & Headshot",
+            "includes": "20 Edited Profile Images Combination of Full Length & Headshots",
+            "packageDescp": [
+              "2 Location",
+              "4 Dress Changes",
+              "8 Hours of Shoot"
+            ],
+            "aboutEquipment": "",
+            "price": {
+              "original": 20000,
+              "offer": 19999
+            }
+          }
+        ]
+      }
+    ]
+  }
+]
