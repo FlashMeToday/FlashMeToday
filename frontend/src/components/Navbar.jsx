@@ -27,7 +27,7 @@ const Navbar = () => {
   }, []);
 
   const occasionsLinks = [
-    { name: 'Pre Wedding', href: '#', icon: FaRing },
+    { name: 'Pre Wedding', href: '/pre-wedding', icon: FaRing },
     { name: 'Maternity', href: '#', icon: FaBaby },
     { name: 'Baby & Kids', href: '#', icon: FaChild },
     { name: 'Vacations', href: '#', icon: FaPlane },
@@ -62,6 +62,7 @@ const Navbar = () => {
 
   const Dropdown = ({ title, items, dropdownKey, icon: Icon }) => {
     const isOpen = activeDropdown === dropdownKey;
+    const isParentActive = items.some(item => item.href !== '#' && (location.pathname === item.href || location.pathname.startsWith(item.href + '/')));
 
     return (
       <div 
@@ -69,7 +70,13 @@ const Navbar = () => {
         onMouseEnter={() => setActiveDropdown(dropdownKey)}
         onMouseLeave={() => setActiveDropdown(null)}
       >
-        <button className={`flex items-center gap-2 font-medium text-[15px] transition-colors duration-300 px-4 xl:px-5 py-2 rounded-full ${isOpen ? 'bg-gray-100 text-[var(--color-primary)]' : 'text-gray-700 hover:bg-gray-100 hover:text-[var(--color-primary)]'}`}>
+        <button className={`flex items-center gap-2 font-medium text-[15px] transition-colors duration-300 px-4 xl:px-5 py-2 rounded-full ${
+          isParentActive
+            ? 'bg-[var(--color-primary)] text-white shadow-md shadow-[var(--color-primary)]/20'
+            : isOpen
+              ? 'bg-gray-100 text-[var(--color-primary)]'
+              : 'text-gray-700 hover:bg-gray-100 hover:text-[var(--color-primary)]'
+        }`}>
           {Icon && <Icon className="text-base" />}
           {title}
           <motion.div
@@ -90,18 +97,19 @@ const Navbar = () => {
               transition={{ duration: 0.2, ease: "easeOut" }}
               className="absolute top-full left-1/2 -translate-x-1/2 pt-4 w-56 z-50"
             >
-              <div className="bg-white rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 p-2 overflow-hidden">
+              <div className="bg-white rounded-xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 p-2 flex flex-col gap-1 overflow-hidden">
                 {items.map((item, idx) => {
                   const ItemIcon = item.icon;
+                  const isItemActive = item.href !== '#' && (location.pathname === item.href || location.pathname.startsWith(item.href + '/'));
                   return (
-                    <a
+                    <Link
                       key={idx}
-                      href={item.href}
-                      className="flex items-center gap-3 px-4 py-2.5 text-sm text-gray-600 hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5 rounded-lg transition-colors duration-200"
+                      to={item.href}
+                      className={`flex items-center gap-3 px-4 py-2.5 text-sm rounded-lg transition-colors duration-200 ${isItemActive ? 'bg-[var(--color-primary)] text-white shadow-md font-medium' : 'text-gray-600 hover:text-[var(--color-primary)] hover:bg-[var(--color-primary)]/5'}`}
                     >
-                      {ItemIcon && <ItemIcon className="text-base text-[var(--color-primary)]/80" />}
+                      {ItemIcon && <ItemIcon className={`text-base ${isItemActive ? 'text-white' : 'text-[var(--color-primary)]/80'}`} />}
                       {item.name}
-                    </a>
+                    </Link>
                   );
                 })}
               </div>
@@ -178,9 +186,9 @@ const Navbar = () => {
               <div className="flex flex-col">
                 <button 
                   onClick={() => toggleMobileDropdown('occasions')}
-                  className={`flex items-center justify-between font-medium py-1.5 ${mobileActiveDropdown === 'occasions' ? 'text-[var(--color-primary)]' : 'text-gray-700'}`}
+                  className={`flex items-center justify-between font-medium py-1.5 ${mobileActiveDropdown === 'occasions' || occasionsLinks.some(l => l.href !== '#' && (location.pathname === l.href || location.pathname.startsWith(l.href + '/'))) ? 'text-[var(--color-primary)]' : 'text-gray-700'}`}
                 >
-                  <span className="flex items-center gap-3"><FaStar className={mobileActiveDropdown === 'occasions' ? "text-[var(--color-primary)]" : "text-gray-400"} /> Occasions</span>
+                  <span className="flex items-center gap-3"><FaStar className={mobileActiveDropdown === 'occasions' || occasionsLinks.some(l => l.href !== '#' && (location.pathname === l.href || location.pathname.startsWith(l.href + '/'))) ? "text-[var(--color-primary)]" : "text-gray-400"} /> Occasions</span>
                   <motion.div animate={{ rotate: mobileActiveDropdown === 'occasions' ? 180 : 0 }}>
                     <FiChevronDown />
                   </motion.div>
@@ -196,9 +204,10 @@ const Navbar = () => {
                       <div className="pl-4 py-2 flex flex-col gap-3 border-l-2 border-gray-100 my-1">
                         {occasionsLinks.map((link) => {
                           const ItemIcon = link.icon;
+                          const isItemActive = link.href !== '#' && (location.pathname === link.href || location.pathname.startsWith(link.href + '/'));
                           return (
-                            <Link key={link.name} to={link.href} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-500 text-sm">
-                              {ItemIcon && <ItemIcon className="text-gray-400" />} {link.name}
+                            <Link key={link.name} to={link.href} onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-3 text-sm ${isItemActive ? 'text-[var(--color-primary)] font-semibold' : 'text-gray-500'}`}>
+                              {ItemIcon && <ItemIcon className={isItemActive ? 'text-[var(--color-primary)]' : 'text-gray-400'} />} {link.name}
                             </Link>
                           );
                         })}
@@ -210,9 +219,9 @@ const Navbar = () => {
               <div className="flex flex-col">
                 <button 
                   onClick={() => toggleMobileDropdown('business')}
-                  className={`flex items-center justify-between font-medium py-1.5 ${mobileActiveDropdown === 'business' ? 'text-[var(--color-primary)]' : 'text-gray-700'}`}
+                  className={`flex items-center justify-between font-medium py-1.5 ${mobileActiveDropdown === 'business' || businessLinks.some(l => l.href !== '#' && (location.pathname === l.href || location.pathname.startsWith(l.href + '/'))) ? 'text-[var(--color-primary)]' : 'text-gray-700'}`}
                 >
-                  <span className="flex items-center gap-3"><FaBriefcase className={mobileActiveDropdown === 'business' ? "text-[var(--color-primary)]" : "text-gray-400"} /> Business</span>
+                  <span className="flex items-center gap-3"><FaBriefcase className={mobileActiveDropdown === 'business' || businessLinks.some(l => l.href !== '#' && (location.pathname === l.href || location.pathname.startsWith(l.href + '/'))) ? "text-[var(--color-primary)]" : "text-gray-400"} /> Business</span>
                   <motion.div animate={{ rotate: mobileActiveDropdown === 'business' ? 180 : 0 }}>
                     <FiChevronDown />
                   </motion.div>
@@ -228,9 +237,10 @@ const Navbar = () => {
                       <div className="pl-4 py-2 flex flex-col gap-3 border-l-2 border-gray-100 my-1">
                         {businessLinks.map((link) => {
                           const ItemIcon = link.icon;
+                          const isItemActive = link.href !== '#' && (location.pathname === link.href || location.pathname.startsWith(link.href + '/'));
                           return (
-                            <Link key={link.name} to={link.href} onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-500 text-sm">
-                              {ItemIcon && <ItemIcon className="text-gray-400" />} {link.name}
+                            <Link key={link.name} to={link.href} onClick={() => setMobileMenuOpen(false)} className={`flex items-center gap-3 text-sm ${isItemActive ? 'text-[var(--color-primary)] font-semibold' : 'text-gray-500'}`}>
+                              {ItemIcon && <ItemIcon className={isItemActive ? 'text-[var(--color-primary)]' : 'text-gray-400'} />} {link.name}
                             </Link>
                           );
                         })}

@@ -4,6 +4,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import Home from './pages/Home'
 import Wedding from './pages/Wedding'
+import PreWedding from './pages/PreWedding'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/wedding" element={<Wedding />} />
+          <Route path="/pre-wedding" element={<PreWedding />} />
         </Routes>
         <Footer />
         <FloatingWhatsApp />
