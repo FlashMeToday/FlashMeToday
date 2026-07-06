@@ -152,7 +152,7 @@ const Navbar = () => {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              href="#"
+              href="/contact"
               className="bg-[var(--color-primary)] hover:bg-[#721bb8] text-white px-6 py-2.5 rounded-full font-medium text-sm transition-colors shadow-lg shadow-[var(--color-primary)]/30 flex items-center gap-2"
             >
               <FaPhone className="text-sm" />
@@ -251,7 +251,7 @@ const Navbar = () => {
               </div>
               <Link to="#" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaCamera className="text-gray-400" /> Portfolio</Link>
               <Link to="/blogs" onClick={() => setMobileMenuOpen(false)} className="flex items-center gap-3 text-gray-700 font-medium py-1.5"><FaPenNib className="text-gray-400" /> Blogs</Link>
-              <a href="#" className="mt-3 bg-[var(--color-primary)] text-white text-center flex items-center justify-center gap-2 py-3 rounded-xl font-medium">
+              <a href="/contact" className="mt-3 bg-[var(--color-primary)] text-white text-center flex items-center justify-center gap-2 py-3 rounded-xl font-medium">
                 <FaPhone size={14} /> Contact Us
               </a>
             </div>
