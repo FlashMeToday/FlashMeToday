@@ -31,7 +31,7 @@ const Navbar = () => {
     { name: 'Maternity', href: '/maternity', icon: FaBaby },
     { name: 'Baby & Kids', href: '/baby-and-kids', icon: FaChild },
     { name: 'Vacations', href: '/vacations', icon: FaPlane },
-    { name: 'Parties', href: '#', icon: FaBirthdayCake },
+    { name: 'Parties', href: '/parties', icon: FaBirthdayCake },
   ];
 
   const businessLinks = [
