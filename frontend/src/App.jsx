@@ -12,6 +12,7 @@ import Parties from './pages/Parties'
 import Food from './pages/Food'
 import Interior from './pages/Interior'
 import ProductShoot from './pages/ProductShoot'
+import CorporateEvents from './pages/CorporateEvents'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
           <Route path="/food" element={<Food />} />
           <Route path="/interior" element={<Interior />} />
           <Route path="/product-shoot" element={<ProductShoot />} />
+          <Route path="/corporate-events" element={<CorporateEvents />} />
         </Routes>
         <Footer />
         <FloatingWhatsApp />
