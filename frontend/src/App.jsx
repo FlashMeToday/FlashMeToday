@@ -10,6 +10,7 @@ import BabyKids from './pages/BabyKids'
 import Vacations from './pages/Vacations'
 import Parties from './pages/Parties'
 import Food from './pages/Food'
+import Interior from './pages/Interior'
 import FloatingWhatsApp from './components/FloatingWhatsApp'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/vacations" element={<Vacations />} />
           <Route path="/parties" element={<Parties />} />
           <Route path="/food" element={<Food />} />
+          <Route path="/interior" element={<Interior />} />
         </Routes>
         <Footer />
         <FloatingWhatsApp />
