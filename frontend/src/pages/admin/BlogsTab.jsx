@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
 import { API_URL } from '../../config/api';
+import { 
   FiFileText, FiPlus, FiEdit2, FiTrash2, FiSearch, 
   FiX, FiChevronRight, FiChevronLeft, FiCheck, FiImage
 } from 'react-icons/fi';

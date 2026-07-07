@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
 import { API_URL } from '../config/api';
+import { 
   FaUpload, FaCheckCircle, FaExclamationCircle, FaArrowRight, FaArrowLeft,
   FaUser, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaRoute, FaLink, FaInstagram,
   FaCamera, FaSuitcase, FaStar, FaBriefcase, FaLaptopCode, FaTimes
