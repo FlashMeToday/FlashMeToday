@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 import { FaArrowRight, FaArrowLeft } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
-import food from '../assets/Images/Business/food.png';
-import interior from '../assets/Images/Business/interior.png';
-import product from '../assets/Images/Business/product-shoot.png';
-import corporate from '../assets/Images/Business/corporate-events.png';
-import brand from '../assets/Images/Business/brand-video.png';
-import profile from '../assets/Images/Business/profile-headshot.png';
+import food from '../assets/Images/Business/food.webp';
+import interior from '../assets/Images/Business/interior.webp';
+import product from '../assets/Images/Business/product-shoot.webp';
+import corporate from '../assets/Images/Business/corporate-events.webp';
+import brand from '../assets/Images/Business/brand-video.webp';
+import profile from '../assets/Images/Business/profile-headshot.webp';
 
 const businessData = [
   {
@@ -92,7 +92,6 @@ const BusinessShoots = () => {
     <section className="w-full pt-0 pb-0 lg:pt-0 lg:pb-0 bg-[#fcfcff] relative overflow-hidden">
       <div className="max-w-5xl mx-auto px-[15px] mb-6 lg:mb-8 text-center flex flex-col items-center justify-center">
 
-        {/* Modern Pill Badge Subtitle */}
         <div className="inline-flex items-center gap-2 sm:gap-3 px-3 py-1.5 sm:px-5 sm:py-2 rounded-full bg-gradient-to-r from-[var(--color-primary)]/5 to-[var(--color-primary)]/15 border border-[var(--color-primary)]/20 mb-3 shadow-sm whitespace-nowrap">
           <span className="relative flex h-2 w-2 shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-primary)] opacity-75"></span>
@@ -103,7 +102,6 @@ const BusinessShoots = () => {
           </h3>
         </div>
 
-        {/* Massive Modern Title */}
         <h2 className="text-4xl sm:text-5xl lg:text-[4.5rem] font-black text-gray-900 tracking-tighter leading-[1.1]">
           Business <span className="text-[var(--color-primary)]">Shoots</span>
         </h2>
@@ -115,7 +113,6 @@ const BusinessShoots = () => {
 
       <div className="relative w-full max-w-[1550px] mx-auto px-[15px]">
 
-        {/* Left Nav Button */}
         {canScrollLeft && (
           <button
             onClick={() => scroll('left')}
@@ -126,7 +123,6 @@ const BusinessShoots = () => {
           </button>
         )}
 
-        {/* Slider Container */}
         <div
           ref={sliderRef}
           onScroll={updateScrollButtons}
@@ -139,17 +135,13 @@ const BusinessShoots = () => {
               key={item.id}
               className="block relative snap-start shrink-0 w-full lg:w-[calc(25%-11.25px)] aspect-[3/4] lg:aspect-[4/5] rounded-3xl overflow-hidden group cursor-pointer shadow-[0_4px_20px_rgba(0,0,0,0.05)] hover:shadow-[0_8px_30px_rgba(0,0,0,0.12)] transition-all duration-700"
             >
-              {/* Dramatic Cinematic Image Zoom */}
-              <img
-                src={item.image}
+              <img loading="lazy" src={item.image}
                 alt={item.title}
                 className="w-full h-full object-cover transition-transform duration-[1500ms] ease-out group-hover:scale-110"
               />
 
-              {/* Cinematic Dark Overlay: 100% on mobile, 60% on desktop (intensifies on hover) */}
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-100 lg:opacity-60 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none"></div>
 
-              {/* Dramatic Text Reveal */}
               <div className="absolute bottom-0 left-0 w-full p-6 lg:p-8 flex flex-col justify-end text-center z-10 overflow-hidden">
                 <h4 className="text-2xl lg:text-3xl font-serif text-white mb-2 drop-shadow-[0_4px_8px_rgba(0,0,0,0.6)] transform transition-transform duration-700 ease-out lg:translate-y-8 group-hover:translate-y-0">
                   {item.title}
@@ -162,7 +154,6 @@ const BusinessShoots = () => {
           ))}
         </div>
 
-        {/* Right Nav Button */}
         {canScrollRight && (
           <button
             onClick={() => scroll('right')}
@@ -173,7 +164,6 @@ const BusinessShoots = () => {
           </button>
         )}
 
-        {/* Mobile Right Nav Button */}
         {canScrollRight && (
           <button
             onClick={() => scroll('right')}
@@ -184,7 +174,6 @@ const BusinessShoots = () => {
           </button>
         )}
 
-        {/* Mobile Left Nav Button */}
         {canScrollLeft && (
           <button
             onClick={() => scroll('left')}

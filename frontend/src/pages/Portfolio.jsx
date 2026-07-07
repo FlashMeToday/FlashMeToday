@@ -2,33 +2,33 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 
-import wedding1 from '../assets/Images/Wedding/1.png';
-import wedding2 from '../assets/Images/Wedding/2.png';
-import wedding3 from '../assets/Images/Wedding/3.png';
-import wedding4 from '../assets/Images/Wedding/4.png';
-import wedding5 from '../assets/Images/Wedding/5.png';
-import wedding6 from '../assets/Images/Wedding/6.png';
+import wedding1 from '../assets/Images/Wedding/1.webp';
+import wedding2 from '../assets/Images/Wedding/2.webp';
+import wedding3 from '../assets/Images/Wedding/3.webp';
+import wedding4 from '../assets/Images/Wedding/4.webp';
+import wedding5 from '../assets/Images/Wedding/5.webp';
+import wedding6 from '../assets/Images/Wedding/6.webp';
 
-import baby1 from '../assets/Images/Occasions/BabyKids/1.png';
-import baby2 from '../assets/Images/Occasions/BabyKids/2.png';
-import baby3 from '../assets/Images/Occasions/BabyKids/3.png';
-import baby4 from '../assets/Images/Occasions/BabyKids/4.png';
-import baby5 from '../assets/Images/Occasions/BabyKids/5.png';
-import baby6 from '../assets/Images/Occasions/BabyKids/6.png';
+import baby1 from '../assets/Images/Occasions/BabyKids/1.webp';
+import baby2 from '../assets/Images/Occasions/BabyKids/2.webp';
+import baby3 from '../assets/Images/Occasions/BabyKids/3.webp';
+import baby4 from '../assets/Images/Occasions/BabyKids/4.webp';
+import baby5 from '../assets/Images/Occasions/BabyKids/5.webp';
+import baby6 from '../assets/Images/Occasions/BabyKids/6.webp';
 
-import food1 from '../assets/Images/Business/Food/1.png';
-import food2 from '../assets/Images/Business/Food/2.png';
-import food3 from '../assets/Images/Business/Food/3.png';
-import food4 from '../assets/Images/Business/Food/4.png';
-import food5 from '../assets/Images/Business/Food/5.png';
-import food6 from '../assets/Images/Business/Food/6.png';
+import food1 from '../assets/Images/Business/Food/1.webp';
+import food2 from '../assets/Images/Business/Food/2.webp';
+import food3 from '../assets/Images/Business/Food/3.webp';
+import food4 from '../assets/Images/Business/Food/4.webp';
+import food5 from '../assets/Images/Business/Food/5.webp';
+import food6 from '../assets/Images/Business/Food/6.webp';
 
-import int1 from '../assets/Images/Business/Interior/1.png';
-import int2 from '../assets/Images/Business/Interior/2.png';
-import int3 from '../assets/Images/Business/Interior/3.png';
-import int4 from '../assets/Images/Business/Interior/4.png';
-import int5 from '../assets/Images/Business/Interior/5.png';
-import int6 from '../assets/Images/Business/Interior/6.png';
+import int1 from '../assets/Images/Business/Interior/1.webp';
+import int2 from '../assets/Images/Business/Interior/2.webp';
+import int3 from '../assets/Images/Business/Interior/3.webp';
+import int4 from '../assets/Images/Business/Interior/4.webp';
+import int5 from '../assets/Images/Business/Interior/5.webp';
+import int6 from '../assets/Images/Business/Interior/6.webp';
 
 const categories = [
   { id: 'wedding', title: 'Wedding', images: [wedding1, wedding2, wedding3, wedding4, wedding5, wedding6], bookText: 'Book Wedding Shoot' },
@@ -40,9 +40,7 @@ const categories = [
 const Portfolio = () => {
   return (
     <div className="relative bg-white min-h-screen font-sans selection:bg-[var(--color-primary)] selection:text-white">
-      
 
-      {/* Dark Theme Banner Hero */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -50,12 +48,10 @@ const Portfolio = () => {
           transition={{ duration: 0.8 }}
           className="relative w-full rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#161430] to-[#0f172a] py-8 px-6 sm:px-10 sm:py-10 text-center flex flex-col items-center border border-white/5 shadow-2xl"
         >
-          {/* Subtle Grid Overlay for the dark card */}
           <div 
             className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none z-0"
           ></div>
           
-          {/* Animated Background Gradients */}
           <motion.div
             animate={{ x: [0, 30, 0], y: [0, 20, 0], scale: [1, 1.1, 1] }}
             transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -69,7 +65,6 @@ const Portfolio = () => {
           ></motion.div>
           
           <div className="relative z-10 flex flex-col items-center">
-            {/* Modern Pill Badge Subtitle */}
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-6 shadow-sm">
               <span className="relative flex h-2 w-2 shrink-0">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-primary)] opacity-75"></span>
@@ -80,30 +75,25 @@ const Portfolio = () => {
               </h3>
             </div>
             
-            {/* Massive Modern Title */}
             <h2 className="text-5xl sm:text-6xl lg:text-[5rem] font-black text-white tracking-tight leading-[1.1] mb-6">
               Our <span className="text-[var(--color-primary)] relative inline-block pb-2">
                 Portfolio.
-                {/* Subtle underline accent */}
                 <svg className="absolute bottom-0 left-0 w-full h-3 text-[var(--color-primary)]/40" viewBox="0 0 100 12" preserveAspectRatio="none">
                   <path d="M0,10 Q50,0 100,10" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
                 </svg>
               </span>
             </h2>
             
-            {/* Description */}
             <p className="text-gray-300 max-w-2xl text-base sm:text-lg font-normal leading-relaxed">
               Explore our handpicked portfolio of stunning moments captured beautifully in time.
             </p>
           </div>
         </motion.div>
       </div>
-      {/* Portfolio Categories */}
       <section className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-24">
         {categories.map((category, index) => (
           <div key={category.id} className="mb-24 last:mb-0">
             
-            {/* Category Header */}
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 border-b border-gray-100 pb-6">
                <div>
                  <h3 className="text-3xl font-black text-gray-900 tracking-tight">{category.title}</h3>
@@ -114,7 +104,6 @@ const Portfolio = () => {
                </Link>
             </div>
           
-            {/* Category Image Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {category.images.map((img, idx) => (
                 <motion.div 
@@ -125,7 +114,7 @@ const Portfolio = () => {
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
                   className="bg-gray-100 rounded-3xl aspect-[4/5] relative overflow-hidden group cursor-pointer shadow-sm hover:shadow-xl transition-all duration-500"
                 >
-                  <img src={img} alt={`${category.title} Portfolio`} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
+                  <img loading="lazy" src={img} alt={`${category.title} Portfolio`} className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex flex-col justify-end p-8">
                     <h4 className="text-white font-bold text-2xl translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">{category.title} {idx + 1}</h4>
                     <p className="text-white/80 text-sm font-medium mt-1 translate-y-4 group-hover:translate-y-0 transition-transform duration-500 delay-75 ease-out">Beautiful moments</p>
@@ -134,7 +123,6 @@ const Portfolio = () => {
               ))}
             </div>
             
-            {/* Mobile Book Button */}
             <div className="mt-8 md:hidden">
                <Link to={`/booking?plan=${encodeURIComponent(category.title)}`} className="flex w-full items-center justify-center gap-2 bg-[var(--color-primary)] hover:bg-opacity-90 text-white px-8 py-3.5 rounded-full font-bold text-sm tracking-wide transition-all shadow-[0_4px_14px_0_rgba(107,33,168,0.39)]">
                  {category.bookText}

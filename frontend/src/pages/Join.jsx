@@ -264,7 +264,6 @@ const Join = () => {
     selectedSkills.forEach(skill => formPayload.append('selectedSkills', skill));
     formPayload.append('isMobileContentCreator', selectedSkills.includes('mobile-content'));
 
-    // Append files
     Array.from(uploadedPhotos).forEach(file => {
       formPayload.append('photos', file);
     });
@@ -312,7 +311,6 @@ const Join = () => {
   return (
     <div className="min-h-screen bg-[#fafafc] pt-24 pb-24 font-sans selection:bg-[var(--color-primary)] selection:text-white">
       
-      {/* Dark Theme Banner Hero */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-16">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -352,14 +350,12 @@ const Join = () => {
         </motion.div>
       </div>
 
-      {/* Main Luxury Form Area */}
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-2">
         
         <form onSubmit={handleSubmit} className="bg-white rounded-[2rem] shadow-[0_8px_40px_rgb(0,0,0,0.04)] border border-gray-100 p-8 sm:p-14 relative overflow-hidden">
           
           <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-purple-50 to-transparent rounded-full blur-3xl pointer-events-none -translate-y-1/2 translate-x-1/2"></div>
           
-          {/* Robust App-Like Stepper */}
           <div className="mb-20 flex items-center justify-between w-full max-w-2xl mx-auto relative px-4">
             {[
               { num: 1, label: 'Personal', icon: FaUser },
@@ -367,7 +363,6 @@ const Join = () => {
               { num: 3, label: 'Portfolio', icon: FaUpload }
             ].map((step, index) => (
               <React.Fragment key={step.num}>
-                {/* Step Circle */}
                 <div className="flex flex-col items-center relative z-10 w-20 sm:w-24">
                   <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-full flex items-center justify-center border-[3px] transition-all duration-500 ease-out bg-white ${
                     currentStep > step.num 
@@ -385,7 +380,6 @@ const Join = () => {
                   </span>
                 </div>
 
-                {/* Connecting Line */}
                 {index < 2 && (
                   <div className="flex-1 h-[3px] mx-2 sm:mx-4 relative top-[-10px] bg-gray-100 rounded-full overflow-hidden">
                     <div className="absolute left-0 top-0 h-full bg-[var(--color-primary)] transition-all duration-700 ease-in-out" style={{ width: currentStep > step.num ? '100%' : '0%' }}></div>
@@ -398,7 +392,6 @@ const Join = () => {
           <div className="relative min-h-[400px]">
             <AnimatePresence mode="wait">
               
-              {/* Step 1: Personal Details */}
               {currentStep === 1 && (
                 <motion.div key="step1" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="space-y-8">
                   <div className="mb-10">
@@ -449,7 +442,6 @@ const Join = () => {
                     />
                   </div>
 
-                  {/* Custom Floating Tags Input for Nearby Cities */}
                   <div className="relative w-full group mt-3">
                     <div className={`absolute inset-y-0 left-0 flex items-center pl-4 pointer-events-none transition-colors z-10 ${isNearbyCitiesActive ? 'text-[var(--color-primary)]' : 'text-gray-400 group-hover:text-gray-500'}`}>
                       <FaRoute className="w-5 h-5" />
@@ -514,7 +506,6 @@ const Join = () => {
                 </motion.div>
               )}
 
-              {/* Step 2: Expertise */}
               {currentStep === 2 && (
                 <motion.div key="step2" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="space-y-12">
                   <div className="mb-10">
@@ -522,7 +513,6 @@ const Join = () => {
                     <p className="text-gray-500 font-medium mt-2">What magical roles do you perform best?</p>
                   </div>
 
-                  {/* Luxury Skill Selector */}
                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
                     {[
                       { id: 'photographer', label: 'Photographer', icon: '📸' },
@@ -747,7 +737,6 @@ const Join = () => {
                 </motion.div>
               )}
 
-              {/* Step 3: Photo Submission */}
               {currentStep === 3 && (
                 <motion.div key="step3" variants={stepVariants} initial="hidden" animate="visible" exit="exit" className="space-y-10">
                   <div className="mb-10 text-center">
@@ -794,8 +783,7 @@ const Join = () => {
                                 exit={{ opacity: 0, scale: 0.8 }}
                                 className="relative aspect-square rounded-xl overflow-hidden shadow-sm group/item border border-gray-200 bg-white"
                               >
-                                <img 
-                                  src={URL.createObjectURL(file)} 
+                                <img loading="lazy" src={URL.createObjectURL(file)} 
                                   alt={`Preview ${idx}`} 
                                   className="w-full h-full object-cover"
                                 />
@@ -822,7 +810,6 @@ const Join = () => {
             </AnimatePresence>
           </div>
 
-          {/* Status Messages */}
           <div className="mt-10">
             <AnimatePresence>
               {submitStatus === 'error' && (
@@ -833,7 +820,6 @@ const Join = () => {
             </AnimatePresence>
           </div>
 
-          {/* Luxury Navigation Buttons */}
           <div className="flex justify-between items-center pt-10 mt-10 border-t border-gray-100">
             {currentStep > 1 ? (
               <button 

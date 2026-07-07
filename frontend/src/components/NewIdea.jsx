@@ -36,8 +36,7 @@ const NewIdea = () => {
       
       {/* Background Image */}
       <div className="absolute inset-0 z-0 overflow-hidden">
-        <img 
-          src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2000&auto=format&fit=crop" 
+        <img loading="lazy" src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?q=80&w=2000&auto=format&fit=crop" 
           alt="Creative photoshoot ideas" 
           className="w-full h-full object-cover object-[center_30%]"
         />
@@ -106,7 +105,6 @@ const NewIdea = () => {
           Inspiration never stops flowing. We've curated trending poses, creative fits, and stunning locations to flawlessly bring your vision to life.
         </motion.p>
         
-        {/* Elevated Action Button */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -117,7 +115,6 @@ const NewIdea = () => {
             <span className="relative z-10">Your Next Photoshoot Starts Here</span>
             <FaArrowRight className="relative z-10 text-xs transition-transform duration-300 group-hover:translate-x-1" />
             
-            {/* Glass Shine Effect on Hover */}
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-700 ease-in-out"></div>
           </Link>
         </motion.div>

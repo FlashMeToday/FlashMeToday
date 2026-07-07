@@ -44,10 +44,8 @@ const Partners = () => {
       
       <div className="w-full max-w-[1700px] mx-auto px-4 lg:px-5 relative z-10 flex flex-col items-center">
         
-        {/* Top: Header perfectly matching Stats.jsx */}
         <div className="max-w-5xl mx-auto mb-6 lg:mb-8 text-center flex flex-col items-center justify-center relative z-20">
           
-          {/* Modern Pill Badge Subtitle */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -84,7 +82,6 @@ const Partners = () => {
           </motion.p>
         </div>
 
-        {/* Bottom: 4 Cards Grid */}
         <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 relative z-20">
           {partnersData.map((partner, index) => (
             <motion.div
@@ -96,13 +93,11 @@ const Partners = () => {
               className="group bg-white rounded-2xl border border-gray-200 hover:border-[var(--color-primary)] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(139,38,217,0.12)] transition-all duration-500 flex flex-col p-8 overflow-hidden relative"
             >
               
-              {/* Top Icon Container */}
               <div className="w-16 h-16 mx-auto bg-gradient-to-br from-[var(--color-primary)]/10 to-[var(--color-primary)]/5 rounded-2xl flex items-center justify-center mb-6 text-[var(--color-primary)] text-3xl group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 border border-[var(--color-primary)]/20 shadow-sm relative">
                 <div className="absolute inset-0 rounded-2xl bg-[var(--color-primary)] opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-500"></div>
                 <partner.icon className="relative z-10" />
               </div>
 
-              {/* Title & Description */}
               <div className="flex flex-col text-center flex-grow">
                 <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[var(--color-primary)] transition-colors duration-300">
                   {partner.title}
@@ -112,7 +107,6 @@ const Partners = () => {
                 </p>
               </div>
 
-              {/* Premium Button */}
               <Link 
                 to={partner.link}
                 className="w-full text-center block bg-[var(--color-primary)] text-white font-medium py-3.5 rounded-xl transition-all duration-300 shadow-[0_4px_15px_rgba(139,38,217,0.2)] hover:shadow-[0_8px_25px_rgba(139,38,217,0.4)] hover:-translate-y-0.5 active:translate-y-0 cursor-pointer relative z-20"

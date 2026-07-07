@@ -9,7 +9,6 @@ const statsData = [
   { id: 4, icon: FaImages, number: 50000, label: "Images Processed", suffix: "+" }
 ];
 
-// Custom Hook Component for the counting animation
 const CountUpAnimation = ({ number, suffix }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
@@ -18,14 +17,14 @@ const CountUpAnimation = ({ number, suffix }) => {
   useEffect(() => {
     if (isInView) {
       let start = 0;
-      const duration = 2000; // 2 seconds
+      const duration = 2000; 
       const frameRate = 1000 / 60;
       const totalFrames = Math.round(duration / frameRate);
       
       const counter = setInterval(() => {
         start += 1;
         const progress = start / totalFrames;
-        const easeOutProgress = 1 - Math.pow(1 - progress, 3); // Cubic ease out
+        const easeOutProgress = 1 - Math.pow(1 - progress, 3); 
         
         setCount(Math.floor(easeOutProgress * number));
         
@@ -48,10 +47,8 @@ const Stats = () => {
       
       <div className="w-full max-w-[1700px] mx-auto px-4 lg:px-5 relative z-10 flex flex-col items-center">
         
-        {/* Top: Header perfectly matching BusinessShoots */}
         <div className="max-w-5xl mx-auto mb-6 lg:mb-8 text-center flex flex-col items-center justify-center relative z-20">
           
-          {/* Modern Pill Badge Subtitle */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -88,7 +85,6 @@ const Stats = () => {
           </motion.p>
         </div>
 
-        {/* Bottom: 4 Cards in 1 Row on Desktop, 2 per row on Mobile */}
         <div className="w-full grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 relative z-20">
           {statsData.map((stat, index) => (
             <motion.div
@@ -100,7 +96,6 @@ const Stats = () => {
               className="group bg-white rounded-2xl sm:rounded-[2rem] border border-gray-200 hover:border-[var(--color-primary)] shadow-[0_4px_20px_rgba(0,0,0,0.03)] hover:shadow-[0_20px_40px_rgba(139,38,217,0.12)] flex flex-col justify-between p-5 sm:p-8 xl:p-10 min-h-[180px] sm:min-h-[260px] transition-all duration-500 overflow-hidden relative cursor-default"
             >
               
-              {/* Top Left Icon Container */}
               <div className="w-10 h-10 sm:w-14 sm:h-14 bg-gradient-to-br from-[var(--color-primary)]/10 to-[var(--color-primary)]/5 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-8 text-[var(--color-primary)] text-lg sm:text-2xl group-hover:scale-110 group-hover:rotate-6 transition-transform duration-500 border border-[var(--color-primary)]/20 shadow-sm relative">
                 <div className="absolute inset-0 rounded-xl sm:rounded-2xl bg-[var(--color-primary)] opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-500"></div>
                 <stat.icon className="relative z-10" />
@@ -114,8 +109,6 @@ const Stats = () => {
                   {stat.label}
                 </p>
               </div>
-
-
 
             </motion.div>
           ))}

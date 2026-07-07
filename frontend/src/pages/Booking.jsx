@@ -11,7 +11,6 @@ const Booking = () => {
   const urlPlan = searchParams.get('plan');
   const urlType = searchParams.get('type');
 
-  // Extract all plans
   const allPlans = useMemo(() => {
     try {
       const data = bookingDataRaw[0];
@@ -106,7 +105,7 @@ const Booking = () => {
     setSubmitError('');
     
     try {
-      const response = await fetch('http://localhost:5000/api/bookings', {
+      const response = await fetch('http:
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -118,7 +117,7 @@ const Booking = () => {
       
       if (data.success) {
         setSubmitSuccess(true);
-        // Reset form except defaults
+        
         setFormData({
           name: '',
           email: '',
@@ -234,7 +233,6 @@ const Booking = () => {
                     </div>
                   )}
                   
-                  {/* Premium Checklist */}
                   <div className="space-y-4">
                     {selectedPackage.packageDescp.map((item, i) => (
                       <div key={i} className="flex items-start gap-4">
@@ -247,7 +245,6 @@ const Booking = () => {
                   </div>
                 </div>
 
-                {/* Price Block at bottom */}
                 <div className="bg-gray-50 p-6 sm:px-8 sm:py-6 mt-auto relative z-10 border-t border-gray-100">
                   <div className="flex justify-between items-center mb-2">
                     <p className="text-xs font-bold text-gray-500 uppercase tracking-widest">
@@ -272,7 +269,6 @@ const Booking = () => {
           )}
         </AnimatePresence>
 
-        {/* Right Column (now Left): Booking Form */}
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -284,7 +280,6 @@ const Booking = () => {
             <form onSubmit={handleSubmit} className="flex flex-col gap-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-4 md:gap-y-7">
                 
-                {/* Name */}
                 <div>
                   <label className="block text-[11px] font-bold tracking-[0.1em] uppercase text-gray-500 mb-2">Name</label>
                   <div className="relative group">
@@ -295,7 +290,6 @@ const Booking = () => {
                   </div>
                 </div>
                 
-                {/* Email */}
                 <div>
                   <label className="block text-[11px] font-bold tracking-[0.1em] uppercase text-gray-500 mb-2">Email</label>
                   <div className="relative group">
@@ -306,7 +300,6 @@ const Booking = () => {
                   </div>
                 </div>
                 
-                {/* Mobile */}
                 <div>
                   <label className="block text-[11px] font-bold tracking-[0.1em] uppercase text-gray-500 mb-2">Mobile <span className="text-[#6f42c1] ml-1">WhatsApp</span></label>
                   <div className="relative group">
@@ -317,7 +310,6 @@ const Booking = () => {
                   </div>
                 </div>
                 
-                {/* Time of Shoot */}
                 <div>
                   <label className="block text-[11px] font-bold tracking-[0.1em] uppercase text-gray-500 mb-2">Time of Shoot</label>
                   <div className="relative group">
@@ -328,7 +320,6 @@ const Booking = () => {
                   </div>
                 </div>
                 
-                {/* Custom Plan Dropdown */}
                 <div>
                   <label className="block text-[11px] font-bold tracking-[0.1em] uppercase text-gray-500 mb-2">Plan</label>
                   <div className="relative group" ref={planRef}>
@@ -357,7 +348,6 @@ const Booking = () => {
                   </div>
                 </div>
 
-                {/* Custom Type of Shoot Dropdown */}
                 <div className={!formData.plan ? 'opacity-50 pointer-events-none grayscale' : 'transition-opacity duration-300'}>
                   <label className="block text-[11px] font-bold tracking-[0.1em] uppercase text-gray-500 mb-2">Type of Shoot</label>
                   <div className="relative group" ref={typeRef}>
@@ -386,7 +376,6 @@ const Booking = () => {
                   </div>
                 </div>
 
-                {/* Custom City Dropdown */}
                 <div>
                   <label className="block text-[11px] font-bold tracking-[0.1em] uppercase text-gray-500 mb-2">City</label>
                   <div className="relative group" ref={cityRef}>
@@ -415,7 +404,6 @@ const Booking = () => {
                   </div>
                 </div>
                 
-                {/* Location */}
                 <div>
                   <label className="block text-[11px] font-bold tracking-[0.1em] uppercase text-gray-500 mb-2">Location</label>
                   <div className="relative group">
@@ -428,7 +416,6 @@ const Booking = () => {
               </div>
 
               <div className="mt-6 pt-6 border-t border-gray-100">
-                {/* Error & Success Messages */}
                 <AnimatePresence>
                   {submitError && (
                     <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="text-red-500 text-sm font-medium p-3 bg-red-50 rounded-xl border border-red-100 mb-4">
@@ -442,7 +429,6 @@ const Booking = () => {
                   )}
                 </AnimatePresence>
 
-                {/* Submit Button */}
                 <div className="pt-2">
                   <button 
                     type="submit" 

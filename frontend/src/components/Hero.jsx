@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaStar, FaPhone, FaCalendarAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import image1 from '../assets/Images/Slider/image_1.png';
-import image2 from '../assets/Images/Slider/image_2.png';
-import image3 from '../assets/Images/Slider/image_3.png';
-import image4 from '../assets/Images/Slider/image_4.png';
+import image1 from '../assets/Images/Slider/image_1.webp';
+import image2 from '../assets/Images/Slider/image_2.webp';
+import image3 from '../assets/Images/Slider/image_3.webp';
+import image4 from '../assets/Images/Slider/image_4.webp';
 
 const sliderImages = [image1, image2, image3, image4];
 
@@ -13,7 +13,6 @@ const HeroContent = ({ isMobile }) => {
   return (
     <div className={`relative z-10 w-full flex flex-col items-center text-center px-0 lg:px-4 ${!isMobile ? 'max-w-5xl mx-auto' : 'py-0'}`}>
       
-      {/* Badge */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -30,7 +29,6 @@ const HeroContent = ({ isMobile }) => {
         </span>
       </motion.div>
 
-      {/* Headline */}
       <motion.h1 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -46,7 +44,6 @@ const HeroContent = ({ isMobile }) => {
         </span>
       </motion.h1>
       
-      {/* Description */}
       <motion.p 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -58,7 +55,6 @@ const HeroContent = ({ isMobile }) => {
         From stunning weddings to premium real estate, we bring your most important moments to life with absolute elegance.
       </motion.p>
       
-      {/* Action Buttons */}
       <motion.div 
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
@@ -103,10 +99,8 @@ const Hero = () => {
   return (
     <section className="relative w-full h-auto lg:h-[100vh] pt-[87px] lg:pt-[85px] px-3 pb-3 flex flex-col items-center justify-start lg:justify-center lg:items-stretch bg-white lg:flex-row">
       
-      {/* MOBILE ONLY: Text Content Block (Flow block) */}
       <div className="relative z-20 flex flex-col lg:hidden justify-center items-center text-center w-full mb-3 pt-1 pb-4 overflow-hidden bg-white">
         
-        {/* Large Purple Grid Background */}
         <div 
           className="absolute inset-0 opacity-[0.12] pointer-events-none"
           style={{ 
@@ -116,16 +110,13 @@ const Hero = () => {
           }}
         ></div>
         
-        {/* Subtle Fade at top and bottom so the grid blends into the white background */}
         <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white pointer-events-none"></div>
 
         <HeroContent isMobile={true} />
       </div>
 
-      {/* Slider Container */}
       <div className="relative w-full aspect-video lg:aspect-auto lg:h-full lg:flex-1 rounded-3xl overflow-hidden bg-[#080112] group">
         
-        {/* 1. Background Images with Ken Burns */}
         <AnimatePresence>
           <motion.img
             key={currentSlide}
@@ -142,18 +133,15 @@ const Hero = () => {
           />
         </AnimatePresence>
 
-        {/* 2. Thin Black Layer + Gradients for Readability */}
         <div className="hidden lg:block absolute inset-0 bg-black/60 z-10 pointer-events-none"></div>
         <div className="hidden lg:block absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20 z-10 pointer-events-none"></div>
 
-        {/* 3. Desktop Only: Text Overlay */}
         <div className="hidden lg:flex absolute inset-0 z-20 flex-col justify-center items-center pointer-events-none">
           <div className="pointer-events-auto w-full">
             <HeroContent isMobile={false} />
           </div>
         </div>
 
-        {/* 4. Slider Indicators inside the frame */}
         <div className="absolute bottom-4 left-1/2 -translate-x-1/2 lg:bottom-8 lg:left-auto lg:translate-x-0 lg:right-8 flex gap-2 z-30">
           {sliderImages.map((_, idx) => (
             <button 
@@ -169,7 +157,6 @@ const Hero = () => {
           ))}
         </div>
 
-        {/* Inner Border glow for framing */}
         <div className="absolute inset-0 border border-white/10 rounded-3xl pointer-events-none z-20 mix-blend-overlay"></div>
       </div>
     </section>

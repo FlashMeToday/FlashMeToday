@@ -5,14 +5,13 @@ import { FaPhone, FaPhoneAlt, FaEnvelope, FaCamera, FaMapMarkerAlt } from 'react
 import { State, City } from 'country-state-city';
 
 const PhotographersTab = () => {
-  // --- Data & Infinite Scroll States ---
+  
   const [photographers, setPhotographers] = useState([]);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
   const [loading, setLoading] = useState(false);
   const [totalCount, setTotalCount] = useState(0);
 
-  // --- Search & Filter States ---
   const [searchTerm, setSearchTerm] = useState('');
   const [debouncedSearch, setDebouncedSearch] = useState('');
   const [isSearchOpen, setIsSearchOpen] = useState(false);
@@ -83,7 +82,6 @@ const PhotographersTab = () => {
     setAllIndianCities(City.getCitiesOfCountry('IN'));
   }, []);
 
-  // Update Cities when State changes in form
   useEffect(() => {
     if (formData.state) {
       const stateCode = availableStates.find(s => s.name === formData.state)?.isoCode;
@@ -97,7 +95,6 @@ const PhotographersTab = () => {
     }
   }, [formData.state, availableStates]);
 
-  // Fetch Photographers
   const fetchPhotographers = async () => {
     setLoading(true);
     try {
@@ -134,7 +131,6 @@ const PhotographersTab = () => {
     fetchPhotographers();
   }, [page, debouncedSearch, filters]);
 
-  // Form Handlers
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     
@@ -192,18 +188,15 @@ const PhotographersTab = () => {
     try {
       const token = localStorage.getItem('adminToken');
       const data = new FormData();
-      
-      // Append all text fields
+
       Object.keys(formData).forEach(key => {
         if (key !== 'profileImage' && key !== 'profileImagePreview' && key !== 'nearbyCities') {
           data.append(key, formData[key]);
         }
       });
-      
-      // Handle nearbyCities (already an array now)
+
       data.append('nearbyCities', JSON.stringify(formData.nearbyCities));
 
-      // Append file if exists
       if (formData.profileImage instanceof File) {
         data.append('profileImage', formData.profileImage);
       }
@@ -262,7 +255,7 @@ const PhotographersTab = () => {
     setSelectedPhotographer(photographer);
     setFormData({
       ...photographer,
-      profileImage: null, // Keep existing if not changed
+      profileImage: null, 
       profileImagePreview: photographer.profileImage,
       nearbyCities: photographer.nearbyCities || []
     });
@@ -285,7 +278,6 @@ const PhotographersTab = () => {
         </div>
         
         <div className="flex items-center gap-3 w-full md:w-auto mt-2 md:mt-0">
-          {/* Sleek Search Pill */}
           <div className="relative flex items-center justify-end">
             <div className={`transition-all duration-300 ease-in-out overflow-hidden flex items-center bg-white rounded-full border ${isSearchOpen ? 'w-64 md:w-80 border-gray-200 opacity-100 pr-12 shadow-sm' : 'w-0 border-transparent opacity-0'}`}>
               <input 
@@ -304,7 +296,6 @@ const PhotographersTab = () => {
             </button>
           </div>
 
-          {/* Filter Button */}
           <button 
             onClick={() => setIsFilterModalOpen(true)}
             className={`w-11 h-11 rounded-full flex items-center justify-center border transition-all duration-300 shrink-0 shadow-sm ${filters.state || filters.status || filters.expertise ? 'bg-purple-100 border-purple-200 text-purple-700' : 'bg-white border-gray-200 text-gray-500 hover:text-gray-900 hover:bg-gray-50'}`}
@@ -312,7 +303,6 @@ const PhotographersTab = () => {
             <FiFilter className="text-lg" />
           </button>
 
-          {/* Add Button */}
           <button 
             onClick={() => {
               setSelectedPhotographer(null);
@@ -328,7 +318,6 @@ const PhotographersTab = () => {
         </div>
       </div>
 
-      {/* Grid List */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
         {photographers.map((p, index) => {
           const isLast = index === photographers.length - 1;
@@ -347,7 +336,7 @@ const PhotographersTab = () => {
               <div className="flex items-center gap-4 mb-7 relative z-10 mt-2">
                 <div className="w-14 h-14 rounded-full bg-slate-50 shadow-sm border border-slate-100 shrink-0 overflow-hidden ring-4 ring-slate-50/50">
                   {p.profileImage ? (
-                    <img src={p.profileImage} alt={p.fullName} className="w-full h-full object-cover" />
+                    <img loading="lazy" src={p.profileImage} alt={p.fullName} className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-slate-400 font-bold text-xl">
                       {p.fullName.charAt(0)}
@@ -368,7 +357,6 @@ const PhotographersTab = () => {
                 </div>
               </div>
 
-              {/* Expertise Capsule */}
               <div className="mb-8 relative z-10 flex items-center">
                 <div className="inline-flex items-center gap-3 bg-white border border-slate-200 rounded-full px-5 py-2 shadow-[0_2px_10px_-4px_rgba(0,0,0,0.05)]">
                   <span className="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Expertise</span>
@@ -377,7 +365,6 @@ const PhotographersTab = () => {
                 </div>
               </div>
 
-              {/* Action Buttons */}
               <div className="flex items-center justify-between pt-5 border-t border-slate-100 mt-auto relative z-10">
                 <div className="flex gap-3">
                   <button 
@@ -496,7 +483,6 @@ const PhotographersTab = () => {
             </div>
             
             <div className="p-6 overflow-y-auto flex-1">
-              {/* Stepper Dots */}
               <div className="flex items-center justify-center gap-2 mb-8">
                 {[1, 2, 3].map(step => (
                   <div key={step} className={`h-2 rounded-full transition-all duration-300 ${addStep === step ? 'w-8 bg-purple-600' : 'w-2 bg-gray-200'}`} />
@@ -509,7 +495,7 @@ const PhotographersTab = () => {
                     <div className="flex flex-col items-center mb-6">
                       <div className="w-24 h-24 rounded-full bg-gray-100 border-2 border-dashed border-gray-300 flex items-center justify-center overflow-hidden relative group">
                         {formData.profileImagePreview ? (
-                          <img src={formData.profileImagePreview} alt="Preview" className="w-full h-full object-cover" />
+                          <img loading="lazy" src={formData.profileImagePreview} alt="Preview" className="w-full h-full object-cover" />
                         ) : (
                           <FiUpload className="text-2xl text-gray-400 group-hover:text-purple-500 transition-colors" />
                         )}
@@ -657,15 +643,12 @@ const PhotographersTab = () => {
         </div>
       )}
 
-      {/* View Photographer Modal */}
       {isViewModalOpen && selectedPhotographer && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6">
           <div className="absolute inset-0 bg-slate-900/60 backdrop-blur-md" onClick={() => setIsViewModalOpen(false)}></div>
           <motion.div initial={{ opacity: 0, scale: 0.98, y: 10 }} animate={{ opacity: 1, scale: 1, y: 0 }} className="relative bg-white rounded-[32px] w-full max-w-5xl shadow-[0_30px_100px_-15px_rgba(0,0,0,0.5)] overflow-hidden flex flex-col md:flex-row max-h-[90vh]">
             
-            {/* Left Sidebar - Profile Summary */}
             <div className="md:w-[35%] bg-gradient-to-br from-indigo-950 via-purple-900 to-indigo-950 p-10 flex flex-col items-center text-center relative overflow-hidden">
-              {/* Decorative subtle glow */}
               <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-purple-500/20 via-transparent to-transparent pointer-events-none"></div>
 
               <button onClick={() => setIsViewModalOpen(false)} className="md:hidden absolute top-4 right-4 text-white/50 hover:bg-white/10 p-2 rounded-full transition-colors z-10">
@@ -675,7 +658,7 @@ const PhotographersTab = () => {
               <div className="w-32 h-32 rounded-full bg-white shadow-[0_0_40px_rgba(168,85,247,0.4)] mx-auto overflow-hidden relative mb-6 ring-4 ring-white/20 z-10 p-1">
                 <div className="w-full h-full rounded-full overflow-hidden bg-indigo-100">
                   {selectedPhotographer.profileImage ? (
-                    <img src={selectedPhotographer.profileImage} alt={selectedPhotographer.fullName} className="w-full h-full object-cover" />
+                    <img loading="lazy" src={selectedPhotographer.profileImage} alt={selectedPhotographer.fullName} className="w-full h-full object-cover" />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center text-3xl font-bold text-indigo-900">
                       {selectedPhotographer.fullName.charAt(0)}
@@ -709,7 +692,6 @@ const PhotographersTab = () => {
               </div>
             </div>
 
-            {/* Right Content Area */}
             <div className="md:w-[65%] p-10 overflow-y-auto relative bg-white">
               <button onClick={() => setIsViewModalOpen(false)} className="hidden md:flex absolute top-8 right-8 w-10 h-10 items-center justify-center bg-slate-50 text-slate-400 hover:bg-slate-100 hover:text-slate-900 rounded-full transition-colors border border-slate-200 shadow-sm">
                 <FiX className="text-xl" />
@@ -771,7 +753,6 @@ const PhotographersTab = () => {
         </div>
       )}
 
-      {/* Delete Confirmation Modal */}
       {isDeleteModalOpen && (
         <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-gray-900/40 backdrop-blur-sm" onClick={() => setIsDeleteModalOpen(false)}></div>

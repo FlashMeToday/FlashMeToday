@@ -44,7 +44,6 @@ const BlogPost = () => {
     );
   }
 
-  // Very simple Markdown-like parser for paragraphs and headers
   const formatContent = (content) => {
     return content.split('\n\n').map((paragraph, idx) => {
       if (paragraph.startsWith('### ')) {
@@ -96,8 +95,7 @@ const BlogPost = () => {
           </h1>
 
           <div className="w-full h-[400px] md:h-[500px] rounded-3xl overflow-hidden mb-12 shadow-xl">
-            <img 
-              src={blog.image} 
+            <img loading="lazy" src={blog.image} 
               alt={blog.title} 
               className="w-full h-full object-cover"
             />

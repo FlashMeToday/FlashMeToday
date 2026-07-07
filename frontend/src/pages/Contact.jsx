@@ -62,7 +62,7 @@ const Contact = () => {
     setErrorMessage('');
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('http:
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -74,7 +74,7 @@ const Contact = () => {
 
       if (response.ok && data.success) {
         setShowSuccessModal(true);
-        // Reset form
+        
         setFormData({
           fullName: '',
           email: '',
@@ -160,31 +160,25 @@ const Contact = () => {
               </h3>
             </div>
             
-            {/* Massive Modern Title */}
             <h2 className="text-5xl sm:text-6xl lg:text-[5rem] font-black text-white tracking-tight leading-[1.1] mb-6">
               Get in <span className="text-[var(--color-primary)] relative inline-block pb-2">
                 Touch.
-                {/* Subtle underline accent */}
                 <svg className="absolute bottom-0 left-0 w-full h-3 text-[var(--color-primary)]/40" viewBox="0 0 100 12" preserveAspectRatio="none">
                   <path d="M0,10 Q50,0 100,10" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
                 </svg>
               </span>
             </h2>
             
-            {/* Description */}
             <p className="text-gray-300 max-w-2xl text-base sm:text-lg font-normal leading-relaxed">
               From grand weddings to corporate shoots, our team is ready to capture your vision.
             </p>
           </div>
         </motion.div>
       </div>
-      {/* Multi-Card Layout - Ultra Clean Corporate Style */}
       <div className="relative z-10 max-w-[1100px] mx-auto px-4 sm:px-6 lg:px-8 pb-24 flex flex-col lg:flex-row gap-6">
         
-        {/* Left Column */}
         <div className="w-full lg:w-[35%] flex flex-col gap-6">
           
-          {/* Card 1: Customer Care */}
           <motion.div 
             initial={{ opacity: 0, x: -15 }}
             animate={{ opacity: 1, x: 0 }}
@@ -231,7 +225,6 @@ const Contact = () => {
             </div>
           </motion.div>
 
-          {/* Card 2: Our Offices */}
           <motion.div 
             initial={{ opacity: 0, x: -15 }}
             animate={{ opacity: 1, x: 0 }}
@@ -274,7 +267,6 @@ const Contact = () => {
 
         </div>
 
-        {/* Right Column: Form */}
         <motion.div 
           initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
@@ -336,7 +328,6 @@ const Contact = () => {
                 <div>
                   <label className="block text-xs font-bold text-gray-700 uppercase tracking-wide mb-2">Subject</label>
                   <div className="relative" ref={dropdownRef}>
-                    {/* Hidden input to maintain native HTML5 validation */}
                     <input type="text" name="concern" value={formData.concern} onChange={()=>{}} className="absolute opacity-0 w-0 h-0 -z-10" required />
                     
                     <button

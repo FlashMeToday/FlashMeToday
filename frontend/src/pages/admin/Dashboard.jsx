@@ -20,7 +20,7 @@ import {
   FiEye,
   FiX
 } from 'react-icons/fi';
-import logo from '../../assets/Logo/logo.png';
+import logo from '../../assets/Logo/logo.webp';
 import PhotographersTab from './PhotographersTab';
 import BookingsTab from './BookingsTab';
 import BlogsTab from './BlogsTab';
@@ -60,7 +60,7 @@ const SettingsTab = () => {
       if (data.success) {
         setMessage('Credentials updated successfully!');
         if (data.token) {
-          localStorage.setItem('adminToken', data.token); // Update token if a new one is sent
+          localStorage.setItem('adminToken', data.token); 
         }
         setOldPassword('');
         setNewEmail('');
@@ -195,7 +195,7 @@ const ContactTab = () => {
       if (data.success) {
         setDeleteModalOpen(false);
         setMessageToDelete(null);
-        // Refresh the current page to ensure we always show 10 items if available
+        
         fetchMessages(currentPage);
       } else {
         alert(data.message || 'Failed to delete message');
@@ -607,7 +607,6 @@ const JoiningRequestTab = () => {
         </div>
       )}
 
-      {/* Pagination Controls */}
       {!loading && totalPages > 1 && (
         <div className="p-4 border-t border-gray-100 bg-white flex items-center justify-between">
           <p className="text-sm text-gray-500">
@@ -632,7 +631,6 @@ const JoiningRequestTab = () => {
         </div>
       )}
 
-      {/* View Application Modal */}
       {viewModalOpen && requestToView && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div 
@@ -654,7 +652,6 @@ const JoiningRequestTab = () => {
               </button>
             </div>
             
-            {/* Modal Body without Tab Bar */}
             <div className="overflow-y-auto flex-1 pr-2 pb-4 mt-2">
               {activeModalStep === 1 && (
                 <div className="space-y-6">
@@ -783,7 +780,7 @@ const JoiningRequestTab = () => {
                             className="bg-white hover:bg-gray-50 border border-gray-200 p-2 rounded-xl flex flex-col items-center justify-center transition-all cursor-pointer group shadow-sm hover:shadow-md"
                           >
                             <div className="w-full aspect-square bg-gray-100 rounded-lg overflow-hidden mb-2 relative">
-                              <img src={photo} alt={`Upload ${idx+1}`} className="w-full h-full object-cover" />
+                              <img loading="lazy" src={photo} alt={`Upload ${idx+1}`} className="w-full h-full object-cover" />
                               <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors flex items-center justify-center">
                                 <span className="opacity-0 group-hover:opacity-100 bg-white/90 text-gray-900 text-[10px] font-bold px-2 py-1 rounded-md shadow-sm transition-opacity">
                                   View
@@ -852,7 +849,6 @@ const JoiningRequestTab = () => {
         </div>
       )}
 
-      {/* Fullscreen Image Viewer Modal */}
       <AnimatePresence>
         {fullscreenImage && (
           <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
@@ -874,8 +870,7 @@ const JoiningRequestTab = () => {
               exit={{ opacity: 0, scale: 0.9 }}
               className="relative z-[210] max-w-5xl max-h-[85vh] w-full flex items-center justify-center"
             >
-              <img 
-                src={fullscreenImage} 
+              <img loading="lazy" src={fullscreenImage} 
                 alt="Fullscreen" 
                 className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl" 
               />
@@ -884,7 +879,6 @@ const JoiningRequestTab = () => {
         )}
       </AnimatePresence>
 
-      {/* Delete Confirmation Modal */}
       {deleteModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
           <div 
@@ -983,7 +977,6 @@ const DashboardContent = () => {
 
   return (
     <>
-      {/* Stats Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {stats.map((stat, index) => (
           <motion.div 
@@ -1013,7 +1006,6 @@ const DashboardContent = () => {
         ))}
       </div>
 
-      {/* Recent Activity Section */}
       <motion.div 
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -1138,10 +1130,9 @@ const Dashboard = () => {
   return (
     <div className="min-h-screen bg-slate-50 flex overflow-hidden font-sans">
       
-      {/* Sidebar */}
       <aside className="w-64 bg-white border-r border-gray-100 flex flex-col shadow-sm z-10 hidden md:flex">
         <div className="p-6 pt-8 flex justify-center items-center">
-          <img src={logo} alt="FlashMe" className="h-12 w-auto object-contain" />
+          <img loading="lazy" src={logo} alt="FlashMe" className="h-12 w-auto object-contain" />
         </div>
 
         <nav className="flex-1 px-4 py-4 space-y-1.5 overflow-y-auto">
@@ -1185,10 +1176,8 @@ const Dashboard = () => {
         </div>
       </aside>
 
-      {/* Main Content */}
       <main className="flex-1 flex flex-col h-screen overflow-y-auto">
         
-        {/* Top Header */}
         <header className="bg-white/80 backdrop-blur-md border-b border-gray-100 sticky top-0 z-10 px-8 py-4 flex justify-between items-center">
           <div className="flex items-center gap-4 bg-gray-50 px-4 py-2.5 rounded-full border border-gray-100 w-96 focus-within:ring-2 focus-within:ring-purple-100 focus-within:border-purple-300 transition-all">
             <FiSearch className="text-gray-400" />
@@ -1219,7 +1208,6 @@ const Dashboard = () => {
           </div>
         </header>
 
-        {/* Dashboard Content */}
         <div className="p-8 max-w-7xl mx-auto w-full">
           {activeTab !== 'Photographers' && activeTab !== 'Bookings' && activeTab !== 'Blogs' && (
             <motion.div 

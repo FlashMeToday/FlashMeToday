@@ -1,16 +1,14 @@
 import React from 'react';
 import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn, FaPaperPlane } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-import logo from '../assets/Logo/logo.png';
+import logo from '../assets/Logo/logo.webp';
 
 const Footer = () => {
   return (
     <footer className="relative bg-[#080112] pt-12 lg:pt-24 pb-8 overflow-hidden border-t border-white/5 shadow-[0_-20px_50px_-20px_rgba(139,38,217,0.15)]">
       
-      {/* Premium Top Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[var(--color-primary)] to-transparent opacity-50 blur-[1px]"></div>
       
-      {/* Background Watermark */}
       <div className="absolute bottom-[-2%] left-0 right-0 hidden md:flex justify-center pointer-events-none select-none overflow-hidden opacity-[0.03] z-0">
         <span className="text-[12vw] font-black tracking-tight text-white uppercase leading-none whitespace-nowrap blur-[3px]">
           FLASHMETODAY
@@ -20,10 +18,9 @@ const Footer = () => {
       <div className="relative z-10 w-full px-6 lg:px-16 xl:px-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 lg:gap-8 mb-10 lg:mb-20">
           
-          {/* Brand Info (50%) */}
           <div className="col-span-1 lg:col-span-6 pr-0 lg:pr-12 flex flex-col justify-center items-start">
             <a href="#" className="inline-block mb-4">
-              <img src={logo} alt="FlashMeToday" className="h-12 lg:h-16 w-auto object-contain" />
+              <img loading="lazy" src={logo} alt="FlashMeToday" className="h-12 lg:h-16 w-auto object-contain" />
             </a>
             <p className="text-gray-400 text-lg lg:text-xl font-light leading-relaxed mb-10 max-w-xl">
               Capturing your most precious moments with absolute elegance and cutting-edge creativity. We turn your memories into timeless, premium art.
@@ -36,7 +33,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links (2 columns) */}
           <div className="hidden lg:block lg:col-span-2">
             <h3 className="font-semibold text-white tracking-wide mb-3 uppercase text-xs opacity-80">Quick Links</h3>
             <ul className="flex flex-col gap-4">
@@ -47,7 +43,6 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Newsletter (Part of remaining 50%) */}
           <div className="col-span-1 lg:col-span-4">
             <h3 className="font-semibold text-white tracking-wide mb-3 uppercase text-xs opacity-80">Newsletter</h3>
             <p className="text-sm text-gray-400 mb-6 leading-relaxed">
@@ -69,10 +64,8 @@ const Footer = () => {
           </div>
         </div>
 
-        {/* Custom Premium Divider */}
         <div className="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8"></div>
 
-        {/* Copyright */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-sm text-gray-500 font-medium tracking-wide">
             © {new Date().getFullYear()} <span className="font-bold text-white">FlashMeToday</span>. Crafted with excellence.

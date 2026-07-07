@@ -11,7 +11,6 @@ const BookingsTab = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [filterStatus, setFilterStatus] = useState('All');
 
-  // Modals
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [selectedBooking, setSelectedBooking] = useState(null);
 
@@ -101,7 +100,6 @@ const BookingsTab = () => {
 
   return (
     <div className="w-full h-full flex flex-col">
-      {/* Header aligned perfectly with other tabs */}
       <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-6">
         <div>
           <div className="flex items-center gap-4">
@@ -113,9 +111,7 @@ const BookingsTab = () => {
           <p className="text-gray-500 mt-1">Manage and track all shoot bookings.</p>
         </div>
 
-        {/* Action Buttons */}
         <div className="flex flex-wrap items-center gap-3 w-full md:w-auto">
-          {/* Status Filter */}
           <select 
             value={filterStatus}
             onChange={(e) => setFilterStatus(e.target.value)}
@@ -128,7 +124,6 @@ const BookingsTab = () => {
             <option value="Cancelled">Cancelled</option>
           </select>
 
-          {/* Search */}
           <div className="relative group flex-1 md:w-64">
             <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
               <FiSearch className="text-gray-400 group-focus-within:text-[var(--color-primary)] transition-colors" />
@@ -144,7 +139,6 @@ const BookingsTab = () => {
         </div>
       </div>
 
-      {/* Bookings List */}
       <div className="flex-1 overflow-y-auto pr-2 pb-10 space-y-4">
         {loading && bookings.length === 0 ? (
           <div className="flex justify-center items-center h-40">
@@ -164,7 +158,6 @@ const BookingsTab = () => {
               animate={{ opacity: 1, y: 0 }}
               className="bg-white rounded-3xl p-6 lg:p-8 border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all relative overflow-hidden"
             >
-              {/* Top Row: Status & Time */}
               <div className="flex justify-between items-center mb-6 pb-6 border-b border-gray-50">
                 <div className={`px-4 py-1.5 rounded-full text-[11px] font-black uppercase tracking-widest border ${getStatusColor(booking.status)}`}>
                   {booking.status}
@@ -175,7 +168,6 @@ const BookingsTab = () => {
               </div>
               
               <div className="flex flex-col lg:flex-row gap-8 lg:gap-10">
-                {/* User Info */}
                 <div className="lg:w-[35%] flex items-start gap-5">
                   <div className="w-14 h-14 rounded-full bg-gradient-to-tr from-purple-100 to-indigo-100 flex items-center justify-center flex-shrink-0 text-purple-700 border border-purple-200 shadow-sm">
                     <span className="text-xl font-black">{booking.name.charAt(0)}</span>
@@ -190,7 +182,6 @@ const BookingsTab = () => {
                   </div>
                 </div>
 
-                {/* Shoot Details */}
                 <div className="lg:w-[35%] border-l-0 lg:border-l border-gray-100 lg:pl-10">
                   <h4 className="text-[10px] font-black text-gray-400 uppercase tracking-widest mb-5 flex items-center gap-2">
                     <FaCamera className="text-gray-300" /> Shoot Details
@@ -219,7 +210,6 @@ const BookingsTab = () => {
                   </div>
                 </div>
 
-                {/* Actions */}
                 <div className="lg:w-[30%] border-l-0 lg:border-l border-gray-100 lg:pl-10 flex flex-col justify-center gap-3">
                   {booking.status !== 'Confirmed' && booking.status !== 'Completed' && (
                     <button 
@@ -260,7 +250,6 @@ const BookingsTab = () => {
         )}
       </div>
 
-      {/* Delete Confirmation Modal */}
       <AnimatePresence>
         {isDeleteModalOpen && (
           <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">

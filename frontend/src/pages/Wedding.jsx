@@ -2,20 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ServicePageLayout from '../layouts/ServicePageLayout';
 import PricingAccordion from '../components/PricingAccordion';
-import weddingHeroImg from '../assets/Images/Wedding/HeroBG.png';
-import weddingDetailImg from '../assets/Images/Wedding/DetailBG.png';
-import idea1 from '../assets/Images/Wedding/1.png';
-import idea2 from '../assets/Images/Wedding/2.png';
-import idea3 from '../assets/Images/Wedding/3.png';
-import idea4 from '../assets/Images/Wedding/4.png';
-import idea5 from '../assets/Images/Wedding/5.png';
-import idea6 from '../assets/Images/Wedding/6.png';
-import idea7 from '../assets/Images/Wedding/7.png';
-import idea8 from '../assets/Images/Wedding/8.png';
-import idea9 from '../assets/Images/Wedding/9.png';
-import idea10 from '../assets/Images/Wedding/10.png';
-import idea11 from '../assets/Images/Wedding/11.png';
-import idea12 from '../assets/Images/Wedding/12.png';
+import weddingHeroImg from '../assets/Images/Wedding/HeroBG.webp';
+import weddingDetailImg from '../assets/Images/Wedding/DetailBG.webp';
+import idea1 from '../assets/Images/Wedding/1.webp';
+import idea2 from '../assets/Images/Wedding/2.webp';
+import idea3 from '../assets/Images/Wedding/3.webp';
+import idea4 from '../assets/Images/Wedding/4.webp';
+import idea5 from '../assets/Images/Wedding/5.webp';
+import idea6 from '../assets/Images/Wedding/6.webp';
+import idea7 from '../assets/Images/Wedding/7.webp';
+import idea8 from '../assets/Images/Wedding/8.webp';
+import idea9 from '../assets/Images/Wedding/9.webp';
+import idea10 from '../assets/Images/Wedding/10.webp';
+import idea11 from '../assets/Images/Wedding/11.webp';
+import idea12 from '../assets/Images/Wedding/12.webp';
 import { FaMapMarkerAlt, FaTag, FaRegLightbulb, FaInfoCircle } from 'react-icons/fa';
 
 const weddingPlans = [
@@ -85,17 +85,14 @@ const Wedding = () => {
     >
       <div className="flex flex-col gap-4 md:gap-32">
 
-        {/* Pricing Section */}
         <section id="pricing-plans" className="w-full scroll-mt-40 flex flex-col items-center">
           <div className="w-full px-4 lg:px-8">
             <div className="relative overflow-hidden rounded-[2rem] bg-gray-900 w-full px-6 md:px-12 py-4 md:py-8 flex flex-col items-center justify-center text-center shadow-2xl mb-4 md:mb-8 group md:-mt-16">
-              {/* Background animated gradient blobs */}
               <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[60%] rounded-full bg-[var(--color-primary)]/20 blur-[100px] group-hover:bg-[var(--color-primary)]/30 transition-all duration-700 ease-in-out transform group-hover:scale-110"></div>
                 <div className="absolute -bottom-[20%] -right-[10%] w-[40%] h-[50%] rounded-full bg-blue-500/20 blur-[100px] group-hover:bg-blue-500/30 transition-all duration-700 ease-in-out transform group-hover:-translate-x-10"></div>
               </div>
 
-              {/* Purple Grid Background Overlay */}
               <div
                 className="absolute inset-0 pointer-events-none opacity-20 mix-blend-screen"
                 style={{
@@ -133,11 +130,8 @@ const Wedding = () => {
           </div>
         </section>
 
-        {/* Ideas Section */}
         <section id="ideas" className="w-full max-w-[1600px] mx-auto px-4 lg:px-8 scroll-mt-40">
-          {/* Ultra-Premium Editorial Header */}
           <div className="w-full flex flex-col items-center text-center mb-8 mt-0 md:-mt-16">
-            {/* Capsule Badge with Dot */}
             <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-full px-5 py-2.5 mb-3 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] shadow-[0_0_8px_var(--color-primary)]"></span>
               <p className="text-gray-600 font-sans font-bold tracking-[0.2em] uppercase text-[10px] mt-0.5">
@@ -149,22 +143,18 @@ const Wedding = () => {
             </h2>
           </div>
 
-          {/* 6-Column Grid (2 Rows of 6 Images, 9:16 Aspect Ratio) */}
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3 md:gap-4">
             {photoshootIdeas.map((img, idx) => (
               <div
                 key={idx}
                 className="relative w-full aspect-[4/5] rounded-xl overflow-hidden group shadow-sm bg-gray-100"
               >
-                <img
-                  src={img}
+                <img loading="lazy" src={img}
                   alt={`Idea ${idx + 1}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                {/* Mobile basic overlay */}
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 md:hidden"></div>
                 
-                {/* Desktop hover gradient film & text */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-300 hidden md:flex flex-col justify-end p-5">
                   <span className="text-white font-sans font-medium tracking-[0.2em] uppercase text-xs md:text-sm transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500 ease-out">
                     Image {idx + 1}
@@ -181,21 +171,16 @@ const Wedding = () => {
           </div>
         </section>
 
-        {/* Details Section - Cinematic Parallax */}
         <section id="details" className="relative w-full h-[50vh] md:h-[55vh] flex items-center justify-center mt-0 md:-mt-20 overflow-hidden scroll-mt-40 z-10">
-          {/* Fixed Parallax Background */}
           <div className="absolute inset-0 w-full h-full bg-black">
-            <img src={weddingDetailImg} alt="Wedding Background" className="w-full h-full object-cover opacity-50 transition-transform duration-[10000ms] scale-110 hover:scale-100" />
+            <img loading="lazy" src={weddingDetailImg} alt="Wedding Background" className="w-full h-full object-cover opacity-50 transition-transform duration-[10000ms] scale-110 hover:scale-100" />
           </div>
 
-          {/* Thin Black Film Overlay */}
           <div className="absolute inset-0 bg-black/30"></div>
           <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60"></div>
 
-          {/* Centered Typography Content */}
           <div className="relative z-10 max-w-5xl mx-auto px-4 lg:px-8 text-center flex flex-col items-center justify-center h-full">
 
-            {/* Capsule Badge */}
             <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full px-5 py-2 mb-3 shadow-xl">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] shadow-[0_0_8px_var(--color-primary)]"></span>
               <p className="text-gray-200 font-sans font-bold tracking-[0.2em] uppercase text-[10px] mt-0.5">
@@ -225,7 +210,6 @@ const Wedding = () => {
         <section id="cities" className="w-full max-w-5xl mx-auto px-4 lg:px-8 scroll-mt-40 mb-0 mt-0 md:-mt-20">
           <div className="w-full flex flex-col items-center text-center">
 
-            {/* Capsule Badge */}
             <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-full px-5 py-2.5 mb-3 shadow-sm">
               <span className="w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] shadow-[0_0_8px_var(--color-primary)]"></span>
               <p className="text-gray-600 font-sans font-bold tracking-[0.2em] uppercase text-[10px] mt-0.5">
@@ -233,17 +217,14 @@ const Wedding = () => {
               </p>
             </div>
 
-            {/* Standardized Heading */}
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-playfair text-gray-900 tracking-wide">
               Available <span className="text-[var(--color-primary)]">In.</span>
             </h2>
 
-            {/* Description */}
             <p className="text-gray-500 text-base md:text-lg font-light tracking-wide max-w-2xl mx-auto leading-relaxed mt-4 mb-6 md:mb-8">
               We are currently capturing memories in the following cities. More locations coming soon.
             </p>
 
-            {/* Premium Pill Tags for Cities */}
             <div className="flex flex-wrap justify-center gap-3 md:gap-4 max-w-4xl mx-auto">
               {availableCities.map((city, idx) => (
                 <div

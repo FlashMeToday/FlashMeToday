@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiChevronDown, FiMenu, FiX } from 'react-icons/fi';
 import { FaPhone } from 'react-icons/fa6';
 import { FaHome, FaInfoCircle, FaHeart, FaStar, FaBriefcase, FaCamera, FaRing, FaBaby, FaChild, FaPlane, FaBirthdayCake, FaUtensils, FaCouch, FaBox, FaBuilding, FaVideo, FaUserTie, FaPenNib } from 'react-icons/fa';
-import logo from '../assets/Logo/logo.png';
+import logo from '../assets/Logo/logo.webp';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -17,11 +17,10 @@ const Navbar = () => {
     setMobileActiveDropdown(mobileActiveDropdown === key ? null : key);
   };
 
-  // Handle scroll and click outside effects
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
-      setActiveDropdown(null); // Close dropdown on scroll
+      setActiveDropdown(null); 
     };
     
     const handleClickOutside = (e) => {
@@ -39,7 +38,6 @@ const Navbar = () => {
     };
   }, []);
 
-  // Close dropdowns on route change
   useEffect(() => {
     setActiveDropdown(null);
   }, [location.pathname]);
@@ -152,14 +150,12 @@ const Navbar = () => {
       >
         <div className="w-full px-6 lg:px-12 flex items-center justify-between">
           
-          {/* Left: Logo */}
           <div className="flex-shrink-0">
             <a href="#" className="inline-block">
-              <img src={logo} alt="FlashMeToday" className="h-10 lg:h-12 w-auto object-contain" />
+              <img loading="lazy" src={logo} alt="FlashMeToday" className="h-10 lg:h-12 w-auto object-contain" />
             </a>
           </div>
 
-          {/* Center: Nav Links */}
           <nav className="hidden lg:flex items-center gap-1">
             <NavLink title="Home" href="/" icon={FaHome} />
             <NavLink title="About" href="/about" icon={FaInfoCircle} />
@@ -170,7 +166,6 @@ const Navbar = () => {
             <NavLink title="Blogs" href="/blogs" icon={FaPenNib} />
           </nav>
 
-          {/* Right: Contact Us Button */}
           <div className="hidden lg:flex flex-shrink-0">
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -183,7 +178,6 @@ const Navbar = () => {
             </motion.a>
           </div>
 
-          {/* Mobile Menu Toggle */}
           <button
             className="lg:hidden text-gray-700 p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -193,7 +187,6 @@ const Navbar = () => {
         </div>
       </header>
 
-      {/* Mobile Menu Dropdown (Simplified for this exercise) */}
       <AnimatePresence>
         {mobileMenuOpen && (
           <motion.div

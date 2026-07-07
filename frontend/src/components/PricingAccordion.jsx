@@ -15,7 +15,6 @@ const PricingAccordion = ({ plans, serviceName }) => {
                 : 'bg-white border-2 md:border border-[var(--color-primary)] md:border-gray-100 shadow-xl'
             }`}
           >
-            {/* Header Area */}
             <div className={`p-6 lg:p-8 border-b relative ${isPremium ? 'border-gray-800' : 'border-gray-50'}`}>
               {isPremium && (
                 <div className="absolute top-0 right-0 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-primary)]/80 text-white text-[9px] font-bold uppercase tracking-[0.2em] px-4 py-1.5 rounded-bl-3xl shadow-md">
@@ -39,7 +38,6 @@ const PricingAccordion = ({ plans, serviceName }) => {
               </div>
             </div>
 
-            {/* Features Area */}
             <div className={`p-6 lg:p-8 flex-1 flex flex-col ${isPremium ? 'bg-gray-900/40' : 'bg-gray-50/30'}`}>
               <p className={`text-[10px] uppercase tracking-[0.2em] font-semibold mb-4 ${isPremium ? 'text-[var(--color-primary)]' : 'text-[var(--color-primary)]'}`}>
                 What's Included

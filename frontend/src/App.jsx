@@ -62,7 +62,6 @@ function AppContent() {
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-conditions" element={<TermsAndConditions />} />
           
-          {/* Admin Routes */}
           <Route path="/admin/login" element={<Login />} />
           <Route path="/admin" element={<Dashboard />} />
         </Routes>

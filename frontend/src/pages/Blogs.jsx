@@ -27,7 +27,6 @@ const Blogs = () => {
     <div className="bg-[#f8f9fb] min-h-screen pt-24 pb-20 font-sans selection:bg-[var(--color-primary)] selection:text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Dark Theme Banner Hero */}
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-0 pb-16">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
@@ -35,12 +34,10 @@ const Blogs = () => {
             transition={{ duration: 0.8 }}
             className="relative w-full rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-[#161430] to-[#0f172a] py-8 px-6 sm:px-10 sm:py-10 text-center flex flex-col items-center border border-white/5 shadow-2xl"
           >
-            {/* Subtle Grid Overlay for the dark card */}
             <div 
               className="absolute inset-0 bg-[linear-gradient(to_right,#ffffff15_1px,transparent_1px),linear-gradient(to_bottom,#ffffff15_1px,transparent_1px)] bg-[size:60px_60px] pointer-events-none z-0"
             ></div>
             
-            {/* Animated Background Gradients */}
             <motion.div
               animate={{ x: [0, 30, 0], y: [0, 20, 0], scale: [1, 1.1, 1] }}
               transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
@@ -54,7 +51,6 @@ const Blogs = () => {
             ></motion.div>
             
             <div className="relative z-10 flex flex-col items-center">
-              {/* Modern Pill Badge Subtitle */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 backdrop-blur-sm border border-white/10 mb-6 shadow-sm">
                 <span className="relative flex h-2 w-2 shrink-0">
                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[var(--color-primary)] opacity-75"></span>
@@ -65,18 +61,15 @@ const Blogs = () => {
                 </h3>
               </div>
               
-              {/* Massive Modern Title */}
               <h2 className="text-5xl sm:text-6xl lg:text-[5rem] font-black text-white tracking-tight leading-[1.1] mb-6">
                 Insights & <span className="text-[var(--color-primary)] relative inline-block pb-2">
                   Stories.
-                  {/* Subtle underline accent */}
                   <svg className="absolute bottom-0 left-0 w-full h-3 text-[var(--color-primary)]/40" viewBox="0 0 100 12" preserveAspectRatio="none">
                     <path d="M0,10 Q50,0 100,10" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round"/>
                   </svg>
                 </span>
               </h2>
               
-              {/* Description */}
               <p className="text-gray-300 max-w-2xl text-base sm:text-lg font-normal leading-relaxed">
                 Discover photography tips, behind-the-scenes stories, and the latest trends in the world of visual storytelling.
               </p>
@@ -84,7 +77,6 @@ const Blogs = () => {
           </motion.div>
         </div>
 
-        {/* Blog Grid */}
         {loading ? (
           <div className="flex justify-center items-center py-20">
             <div className="w-10 h-10 border-4 border-[var(--color-primary)]/30 border-t-[var(--color-primary)] rounded-full animate-spin"></div>
@@ -101,8 +93,7 @@ const Blogs = () => {
             >
               <div className="relative h-64 overflow-hidden">
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-300 z-10"></div>
-                <img 
-                  src={blog.image} 
+                <img loading="lazy" src={blog.image} 
                   alt={blog.title} 
                   className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
                 />

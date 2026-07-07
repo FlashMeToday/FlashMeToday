@@ -42,7 +42,6 @@ const Reviews = () => {
   return (
     <section className="w-full sm:w-[calc(100%-60px)] max-w-[1700px] mx-auto my-[30px] py-12 lg:py-16 bg-[#0a0a0a] rounded-none sm:rounded-[2rem] lg:rounded-[3rem] relative overflow-hidden flex justify-center">
       
-      {/* Premium Fade Grid */}
       <div 
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -54,9 +53,7 @@ const Reviews = () => {
       ></div>
       <div className="w-full max-w-[1550px] mx-auto px-6 lg:px-12 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
         
-        {/* Left Side: Content */}
         <div className="flex flex-col items-center sm:items-start text-center sm:text-left">
-          {/* Luxury Pill Badge */}
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -69,7 +66,6 @@ const Reviews = () => {
             </h3>
           </motion.div>
 
-          {/* Massive Premium Headline */}
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -81,7 +77,6 @@ const Reviews = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-300 to-[var(--color-primary)]">by all.</span>
           </motion.h2>
 
-          {/* Elegant Description */}
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -92,7 +87,6 @@ const Reviews = () => {
             FlashMeToday has been a part of countless stories. Hear from the people who turned their memories into magic with us.
           </motion.p>
 
-          {/* Luxury Glowing CTA Button */}
           <motion.a 
             href="#"
             initial={{ opacity: 0, y: 20 }}
@@ -101,7 +95,6 @@ const Reviews = () => {
             transition={{ delay: 0.3 }}
             className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-[var(--color-primary)] to-[#5e12b0] text-white font-bold text-lg rounded-full overflow-hidden shadow-[0_10px_30px_rgba(139,38,217,0.4)] hover:shadow-[0_20px_50px_rgba(139,38,217,0.6)] hover:scale-[1.03] transition-all duration-500 ease-out"
           >
-            {/* Elegant Shine Sweep */}
             <div className="absolute top-0 -left-[120%] w-[100%] h-full bg-gradient-to-r from-transparent via-white/30 to-transparent skew-x-[-25deg] group-hover:left-[120%] transition-all duration-700 ease-in-out"></div>
             
             <FaTripadvisor className="text-2xl relative z-10" />
@@ -109,15 +102,12 @@ const Reviews = () => {
           </motion.a>
         </div>
 
-        {/* Right Side: Review Card Component */}
         <div className="w-full flex flex-col items-center lg:items-end">
           
           <div className="w-full max-w-[650px] min-h-[340px] bg-gradient-to-br from-[#120a23] to-[#0a0514] border border-purple-500/20 rounded-[2rem] px-6 pt-6 pb-5 lg:px-8 lg:pt-8 lg:pb-6 shadow-[0_20px_60px_rgba(0,0,0,0.6),inset_0_2px_2px_rgba(255,255,255,0.05)] relative overflow-hidden group flex flex-col justify-between">
             
-            {/* Ambient Inner Glow */}
             <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none z-0"></div>
             
-            {/* Giant watermark quote */}
             <FaQuoteLeft className="absolute top-8 right-10 text-[8rem] text-white/[0.02] pointer-events-none z-0" />
             
             <AnimatePresence mode="wait">
@@ -129,11 +119,9 @@ const Reviews = () => {
                 transition={{ duration: 0.3 }}
                 className="flex flex-col h-full"
               >
-                {/* User Header */}
                 <div className="flex items-center gap-4 mb-6 sm:mb-8 relative z-10 w-full">
                   <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden border-2 border-purple-400/30 p-0.5 shrink-0">
-                    <img 
-                      src={reviewsData[currentIndex].image} 
+                    <img loading="lazy" src={reviewsData[currentIndex].image} 
                       alt={reviewsData[currentIndex].name}
                       className="w-full h-full rounded-full object-cover"
                     />
@@ -144,7 +132,6 @@ const Reviews = () => {
                       {reviewsData[currentIndex].name}
                     </h4>
                     
-                    {/* Stars at Top Right on Desktop, Below Name on Mobile */}
                     <div className="flex items-center gap-1 sm:gap-1.5 text-[#eab308] text-base sm:text-xl drop-shadow-[0_0_8px_rgba(234,179,8,0.4)] mt-1 sm:mt-0">
                       {[...Array(reviewsData[currentIndex].rating)].map((_, i) => (
                         <FaStar key={i} />
@@ -153,12 +140,10 @@ const Reviews = () => {
                   </div>
                 </div>
 
-                {/* Review Text */}
                 <p className="text-gray-300 text-base lg:text-lg leading-[1.6] mb-8 font-medium relative z-10">
                   "{reviewsData[currentIndex].text}"
                 </p>
 
-                {/* Location */}
                 <div className="mt-auto">
                   <p className="text-purple-300/60 text-xs font-bold uppercase tracking-[0.2em] relative z-10">
                     {reviewsData[currentIndex].location}
@@ -169,7 +154,6 @@ const Reviews = () => {
 
           </div>
 
-          {/* Slider Indicators */}
           <div className="flex items-center gap-3 mt-6 w-full max-w-[650px] justify-center">
             {reviewsData.map((_, index) => (
               <button

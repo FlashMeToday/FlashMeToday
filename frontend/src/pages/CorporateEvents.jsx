@@ -2,20 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import ServicePageLayout from '../layouts/ServicePageLayout';
 import PricingAccordion from '../components/PricingAccordion';
-import corporateEventsHeroImg from '../assets/Images/Business/CorporateEvents/HeroBG.png';
-import corporateEventsDetailImg from '../assets/Images/Business/CorporateEvents/DetailBG.png';
-import idea1 from '../assets/Images/Business/CorporateEvents/1.png';
-import idea2 from '../assets/Images/Business/CorporateEvents/2.png';
-import idea3 from '../assets/Images/Business/CorporateEvents/3.png';
-import idea4 from '../assets/Images/Business/CorporateEvents/4.png';
-import idea5 from '../assets/Images/Business/CorporateEvents/5.png';
-import idea6 from '../assets/Images/Business/CorporateEvents/6.png';
-import idea7 from '../assets/Images/Business/CorporateEvents/7.png';
-import idea8 from '../assets/Images/Business/CorporateEvents/8.png';
-import idea9 from '../assets/Images/Business/CorporateEvents/9.png';
-import idea10 from '../assets/Images/Business/CorporateEvents/10.png';
-import idea11 from '../assets/Images/Business/CorporateEvents/11.png';
-import idea12 from '../assets/Images/Business/CorporateEvents/12.png';
+import corporateEventsHeroImg from '../assets/Images/Business/CorporateEvents/HeroBG.webp';
+import corporateEventsDetailImg from '../assets/Images/Business/CorporateEvents/DetailBG.webp';
+import idea1 from '../assets/Images/Business/CorporateEvents/1.webp';
+import idea2 from '../assets/Images/Business/CorporateEvents/2.webp';
+import idea3 from '../assets/Images/Business/CorporateEvents/3.webp';
+import idea4 from '../assets/Images/Business/CorporateEvents/4.webp';
+import idea5 from '../assets/Images/Business/CorporateEvents/5.webp';
+import idea6 from '../assets/Images/Business/CorporateEvents/6.webp';
+import idea7 from '../assets/Images/Business/CorporateEvents/7.webp';
+import idea8 from '../assets/Images/Business/CorporateEvents/8.webp';
+import idea9 from '../assets/Images/Business/CorporateEvents/9.webp';
+import idea10 from '../assets/Images/Business/CorporateEvents/10.webp';
+import idea11 from '../assets/Images/Business/CorporateEvents/11.webp';
+import idea12 from '../assets/Images/Business/CorporateEvents/12.webp';
 import { FaMapMarkerAlt, FaTag, FaRegLightbulb, FaInfoCircle } from 'react-icons/fa';
 
 const corporateEventsPlans = [
@@ -83,17 +83,14 @@ const CorporateEvents = () => {
       ]}
     >
       <div className="flex flex-col gap-4 md:gap-32">
-        {/* Pricing Section */}
         <section id="pricing-plans" className="w-full scroll-mt-40 flex flex-col items-center">
           <div className="w-full px-4 lg:px-8">
             <div className="relative overflow-hidden rounded-[2rem] bg-gray-900 w-full px-6 md:px-12 py-4 md:py-8 flex flex-col items-center justify-center text-center shadow-2xl mb-4 md:mb-8 group md:-mt-16">
-              {/* Background animated gradient blobs */}
               <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
                 <div className="absolute -top-[20%] -left-[10%] w-[50%] h-[60%] rounded-full bg-[var(--color-primary)]/20 blur-[100px] group-hover:bg-[var(--color-primary)]/30 transition-all duration-700 ease-in-out transform group-hover:scale-110"></div>
                 <div className="absolute -bottom-[20%] -right-[10%] w-[40%] h-[50%] rounded-full bg-blue-500/20 blur-[100px] group-hover:bg-blue-500/30 transition-all duration-700 ease-in-out transform group-hover:-translate-x-10"></div>
               </div>
 
-              {/* Purple Grid Background Overlay */}
               <div
                 className="absolute inset-0 pointer-events-none opacity-20 mix-blend-screen"
                 style={{
@@ -131,7 +128,6 @@ const CorporateEvents = () => {
           </div>
         </section>
 
-        {/* Ideas Section */}
         <section id="ideas" className="w-full max-w-[1600px] mx-auto px-4 lg:px-8 scroll-mt-40">
           <div className="w-full flex flex-col items-center text-center mb-8 mt-0 md:-mt-16">
             <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-full px-5 py-2.5 mb-3 shadow-sm">
@@ -151,8 +147,7 @@ const CorporateEvents = () => {
                 key={idx}
                 className="relative w-full aspect-[4/5] rounded-xl overflow-hidden group shadow-sm bg-gray-100"
               >
-                <img
-                  src={img}
+                <img loading="lazy" src={img}
                   alt={`Idea ${idx + 1}`}
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
@@ -173,10 +168,9 @@ const CorporateEvents = () => {
           </div>
         </section>
 
-        {/* Details Section - Cinematic Parallax */}
         <section id="details" className="relative w-full h-[50vh] md:h-[55vh] flex items-center justify-center mt-0 md:-mt-20 overflow-hidden scroll-mt-40 z-10">
           <div className="absolute inset-0 w-full h-full bg-black">
-            <img src={corporateEventsDetailImg} alt="Corporate Events Background" className="w-full h-full object-cover opacity-50 transition-transform duration-[10000ms] scale-110 hover:scale-100" />
+            <img loading="lazy" src={corporateEventsDetailImg} alt="Corporate Events Background" className="w-full h-full object-cover opacity-50 transition-transform duration-[10000ms] scale-110 hover:scale-100" />
           </div>
 
           <div className="absolute inset-0 bg-black/30"></div>

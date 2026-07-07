@@ -18,7 +18,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await fetch('http://localhost:5000/api/admin/login', {
+      const res = await fetch('http:
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -68,7 +68,6 @@ const Login = () => {
 
         <form className="mt-8 space-y-5" onSubmit={handleLogin}>
           <div className="space-y-4">
-            {/* Email Input */}
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-[6px] flex items-center pointer-events-none">
                 <div className="w-10 h-10 rounded-full bg-purple-100/80 flex items-center justify-center">
@@ -88,7 +87,6 @@ const Login = () => {
               />
             </div>
 
-            {/* Password Input */}
             <div className="relative group">
               <div className="absolute inset-y-0 left-0 pl-[6px] flex items-center pointer-events-none">
                 <div className="w-10 h-10 rounded-full bg-purple-100/80 flex items-center justify-center">

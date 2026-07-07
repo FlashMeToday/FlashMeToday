@@ -32,7 +32,7 @@ const ServicePageLayout = ({ heroImage, title, subtitle, menuItems, children }) 
     };
 
     window.addEventListener('scroll', handleScroll);
-    handleScroll(); // Check on initial load
+    handleScroll(); 
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, [menuItems, activeSection]);
@@ -40,26 +40,21 @@ const ServicePageLayout = ({ heroImage, title, subtitle, menuItems, children }) 
   return (
     <div className="w-full bg-[#FAFAFC] min-h-screen">
 
-      {/* Cinematic Hero Section with Padding & Slightly Rounded Corners */}
       <div className="w-full px-4 lg:px-8 pt-[80px] md:pt-[100px] pb-0">
         <div className="relative w-full aspect-video md:aspect-auto md:h-[55vh] flex items-center justify-center overflow-hidden rounded-3xl shadow-2xl">
-          {/* Background Image with Parallax feel */}
           <motion.div
             initial={{ scale: 1.05 }}
             animate={{ scale: 1 }}
             transition={{ duration: 2, ease: "easeOut" }}
             className="absolute inset-0 w-full h-full"
           >
-            <img src={heroImage} alt={title} className="w-full h-full object-cover" />
+            <img loading="lazy" src={heroImage} alt={title} className="w-full h-full object-cover" />
           </motion.div>
 
-          {/* Deep Luxury Gradient Overlay */}
           <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black/90"></div>
 
-          {/* Delicate Inner Frame */}
           <div className="absolute inset-4 md:inset-6 border border-white/20 z-10 pointer-events-none rounded-2xl"></div>
 
-          {/* Hero Content */}
           <div className="relative z-20 text-center px-4 max-w-5xl mx-auto flex flex-col items-center justify-center h-full">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -81,7 +76,6 @@ const ServicePageLayout = ({ heroImage, title, subtitle, menuItems, children }) 
         </div>
       </div>
 
-      {/* Solid Sticky Navigation */}
       <div className="sticky top-[62px] md:top-[80px] z-40 w-full px-2 sm:px-4 lg:px-8 py-4 -mt-8 md:-mt-[43px] flex justify-center">
         <div className="bg-white border border-gray-200 shadow-[0_8px_30px_rgba(0,0,0,0.12)] rounded-full p-1 sm:p-2 flex justify-center items-center gap-1 sm:gap-2 overflow-hidden sm:overflow-x-auto hide-scrollbar w-auto max-w-full">
           {menuItems.map((item, index) => {
@@ -123,7 +117,6 @@ const ServicePageLayout = ({ heroImage, title, subtitle, menuItems, children }) 
         </div>
       </div>
 
-      {/* Page Content */}
       <div className="w-full pt-2 pb-12 md:py-24">
         {children}
       </div>

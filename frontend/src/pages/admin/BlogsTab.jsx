@@ -34,7 +34,7 @@ const BlogsTab = () => {
   const fetchBlogs = async () => {
     try {
       setLoading(true);
-      // Admin gets all blogs (no status filter)
+      
       const token = localStorage.getItem('adminToken');
       const response = await fetch('http://localhost:5000/api/blogs?limit=50', {
         headers: {
@@ -177,7 +177,6 @@ const BlogsTab = () => {
       animate={{ opacity: 1, y: 0 }}
       className="space-y-6"
     >
-      {/* Header & Controls */}
       <div className="bg-white rounded-[1.5rem] shadow-[0_8px_30px_rgb(0,0,0,0.04)] border border-gray-100 p-6 flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="flex items-center gap-4 w-full md:w-auto">
           <div className="bg-gray-50 px-4 py-2.5 rounded-xl border border-gray-100 flex items-center gap-3 min-w-[280px] focus-within:ring-2 focus-within:ring-purple-100 focus-within:border-purple-300 transition-all">
@@ -199,7 +198,6 @@ const BlogsTab = () => {
         </button>
       </div>
 
-      {/* Blogs Grid */}
       {loading ? (
         <div className="flex justify-center items-center h-40">
           <div className="w-8 h-8 border-4 border-purple-200 border-t-purple-600 rounded-full animate-spin"></div>
@@ -215,7 +213,7 @@ const BlogsTab = () => {
           {filteredBlogs.map((blog) => (
             <div key={blog._id} className="bg-white rounded-3xl overflow-hidden border border-gray-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] transition-all group flex flex-col">
               <div className="relative h-48 overflow-hidden bg-gray-100">
-                <img src={blog.image} alt={blog.title} className="w-full h-full object-cover" />
+                <img loading="lazy" src={blog.image} alt={blog.title} className="w-full h-full object-cover" />
                 <div className="absolute top-3 right-3 flex gap-2">
                   <span className={`px-3 py-1 text-[10px] font-black uppercase tracking-widest rounded-full backdrop-blur-md shadow-sm ${blog.status === 'Published' ? 'bg-emerald-500/90 text-white' : 'bg-yellow-500/90 text-white'}`}>
                     {blog.status}
@@ -246,7 +244,6 @@ const BlogsTab = () => {
         </div>
       )}
 
-      {/* Multi-Step Creation/Edit Modal */}
       <AnimatePresence>
         {isModalOpen && (
           <div className="fixed inset-0 z-[200] flex items-center justify-center p-4 sm:p-6">
@@ -257,7 +254,6 @@ const BlogsTab = () => {
               exit={{ opacity: 0, scale: 0.95 }} 
               className="relative bg-white rounded-3xl w-full max-w-2xl max-h-[90vh] flex flex-col shadow-2xl overflow-hidden"
             >
-              {/* Modal Header */}
               <div className="flex justify-between items-center p-6 border-b border-gray-100 bg-gray-50/50">
                 <h2 className="text-xl font-black text-gray-900">
                   {selectedBlog ? 'Edit Blog Post' : 'Create New Blog'}
@@ -267,7 +263,6 @@ const BlogsTab = () => {
                 </button>
               </div>
 
-              {/* Progress Bar */}
               <div className="flex items-center justify-center gap-2 sm:gap-4 px-10 py-6 bg-white border-b border-gray-50">
                 {[1, 2, 3].map((num) => (
                   <React.Fragment key={num}>
@@ -283,7 +278,6 @@ const BlogsTab = () => {
                 ))}
               </div>
 
-              {/* Form Content Scrollable Area */}
               <div className="p-6 sm:p-8 overflow-y-auto flex-1">
                 {step === 1 && (
                   <motion.div initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -20 }} className="space-y-5">
@@ -318,7 +312,7 @@ const BlogsTab = () => {
                         </div>
                       ) : (
                         <div className="relative mt-2 h-48 rounded-2xl overflow-hidden border border-gray-200 bg-gray-50 group">
-                          <img src={formData.image} alt="Preview" className="w-full h-full object-cover" />
+                          <img loading="lazy" src={formData.image} alt="Preview" className="w-full h-full object-cover" />
                           <div className="absolute inset-0 bg-black/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
                             <button 
                               onClick={() => setFormData({...formData, image: ''})}
@@ -374,7 +368,6 @@ const BlogsTab = () => {
                 )}
               </div>
 
-              {/* Modal Footer Controls */}
               <div className="p-6 border-t border-gray-100 bg-gray-50/50 flex justify-between items-center">
                 <div className="w-[100px]">
                   <button 
@@ -407,7 +400,6 @@ const BlogsTab = () => {
         )}
       </AnimatePresence>
 
-      {/* Delete Confirmation Modal */}
       <AnimatePresence>
         {isDeleteModalOpen && (
           <div className="fixed inset-0 z-[200] flex items-center justify-center p-4">
