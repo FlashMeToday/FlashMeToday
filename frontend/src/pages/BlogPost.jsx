@@ -1,15 +1,37 @@
-import React, { useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaArrowLeft } from 'react-icons/fa';
-import blogsData from '../assets/data/blogs.json';
 
 const BlogPost = () => {
   const { id } = useParams();
-  
-  const blog = useMemo(() => {
-    return blogsData.find(b => b.id === id);
+  const [blog, setBlog] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBlog = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/blogs/${id}`);
+        const data = await response.json();
+        if (data.success) {
+          setBlog(data.data);
+        }
+      } catch (error) {
+        console.error('Error fetching blog:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlog();
   }, [id]);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen pt-32 pb-20 flex justify-center items-center">
+        <div className="w-10 h-10 border-4 border-[var(--color-primary)]/30 border-t-[var(--color-primary)] rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   if (!blog) {
     return (
@@ -62,7 +84,7 @@ const BlogPost = () => {
         >
           <div className="flex items-center gap-4 mb-6">
             <span className="bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-              {blog.date}
+              {blog.date || new Date(blog.createdAt).toLocaleDateString()}
             </span>
             <span className="text-[var(--color-primary)] text-sm font-bold">
               By {blog.author}

@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import ScrollToTop from './components/ScrollToTop'
@@ -26,13 +26,18 @@ import About from './pages/About'
 import Blogs from './pages/Blogs'
 import BlogPost from './pages/BlogPost'
 import Join from './pages/Join'
+import Login from './pages/admin/Login'
+import Dashboard from './pages/admin/Dashboard'
 
-function App() {
+function AppContent() {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith('/admin');
+
   return (
-    <Router>
+    <>
       <ScrollToTop />
       <div className="min-h-screen bg-white font-sans">
-        <Navbar />
+        {!isAdminRoute && <Navbar />}
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/wedding" element={<Wedding />} />
@@ -56,10 +61,22 @@ function App() {
           <Route path="/join" element={<Join />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
           <Route path="/terms-conditions" element={<TermsAndConditions />} />
+          
+          {/* Admin Routes */}
+          <Route path="/admin/login" element={<Login />} />
+          <Route path="/admin" element={<Dashboard />} />
         </Routes>
-        <Footer />
-        <FloatingWhatsApp />
+        {!isAdminRoute && <Footer />}
+        {!isAdminRoute && <FloatingWhatsApp />}
       </div>
+    </>
+  )
+}
+
+function App() {
+  return (
+    <Router>
+      <AppContent />
     </Router>
   )
 }

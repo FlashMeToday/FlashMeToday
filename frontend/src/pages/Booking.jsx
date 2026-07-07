@@ -58,6 +58,10 @@ const Booking = () => {
   const [isTypeDropdownOpen, setIsTypeDropdownOpen] = useState(false);
   const [isCityDropdownOpen, setIsCityDropdownOpen] = useState(false);
   
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState('');
+  
   const planRef = useRef(null);
   const typeRef = useRef(null);
   const cityRef = useRef(null);
@@ -96,10 +100,48 @@ const Booking = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted locally:", formData);
-    // API logic will go here later
+    setIsSubmitting(true);
+    setSubmitError('');
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/bookings', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        setSubmitSuccess(true);
+        // Reset form except defaults
+        setFormData({
+          name: '',
+          email: '',
+          mobile: '',
+          shootTime: formatInitialTime(),
+          plan: '',
+          typeOfShoot: '',
+          city: 'New Delhi',
+          location: ''
+        });
+        
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 5000);
+      } else {
+        setSubmitError(data.message || 'Failed to submit booking request.');
+      }
+    } catch (err) {
+      setSubmitError('Failed to connect to the server. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -386,10 +428,35 @@ const Booking = () => {
               </div>
 
               <div className="mt-6 pt-6 border-t border-gray-100">
-                <button type="submit" className="group w-full bg-gradient-to-r from-[var(--color-primary)] to-[#4b2884] hover:from-[#4b2884] hover:to-[var(--color-primary)] text-white font-bold py-4 px-6 rounded-full transition-all duration-300 shadow-lg shadow-purple-500/25 hover:shadow-xl hover:shadow-purple-500/50 hover:scale-[1.02] flex justify-center items-center gap-2">
-                  <span>Confirm Booking</span>
-                  <FaArrowRight className="text-sm group-hover:translate-x-1 transition-transform" />
-                </button>
+                {/* Error & Success Messages */}
+                <AnimatePresence>
+                  {submitError && (
+                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="text-red-500 text-sm font-medium p-3 bg-red-50 rounded-xl border border-red-100 mb-4">
+                      {submitError}
+                    </motion.div>
+                  )}
+                  {submitSuccess && (
+                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} exit={{ opacity: 0, height: 0 }} className="text-green-600 text-sm font-medium p-3 bg-green-50 rounded-xl border border-green-100 flex items-center gap-2 mb-4">
+                      <FaCheckCircle /> Booking request submitted successfully! We will contact you soon.
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+
+                {/* Submit Button */}
+                <div className="pt-2">
+                  <button 
+                    type="submit" 
+                    disabled={isSubmitting || !formData.plan || !formData.typeOfShoot}
+                    className="w-full bg-[var(--color-primary)] hover:bg-[#6b21a8] text-white font-black py-4 px-8 rounded-xl shadow-lg shadow-purple-500/30 transition-all active:scale-[0.98] flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed group text-lg"
+                  >
+                    {isSubmitting ? 'Submitting...' : 'Request Booking'}
+                    {!isSubmitting && <FaArrowRight className="group-hover:translate-x-1 transition-transform" />}
+                  </button>
+                  <p className="text-center text-xs text-gray-500 mt-4 flex items-center justify-center gap-1">
+                    <FaLock className="text-[10px]" /> Your data is secure and will only be used for booking purposes.
+                  </p>
+                </div>
+
                 <div className="text-[13px] text-gray-500 mt-5 space-y-2 font-medium">
                   <p className="flex items-center gap-2"><FaInfoCircle className="text-gray-400" /> Booking is subject to availability.</p>
                   <p className="flex items-start gap-2"><FaCheckCircle className="text-gray-400 flex-shrink-0 mt-1" /> <span>By proceeding, you agree to <Link to="/terms-conditions" className="text-[var(--color-primary)] hover:underline font-bold">Terms & Conditions</Link>.</span></p>

@@ -1,10 +1,28 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
-import blogsData from '../assets/data/blogs.json';
 
 const Blogs = () => {
+  const [blogsData, setBlogsData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchBlogs = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/blogs?status=Published');
+        const data = await response.json();
+        if (data.success) {
+          setBlogsData(data.data);
+        }
+      } catch (error) {
+        console.error('Error fetching blogs:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBlogs();
+  }, []);
   return (
     <div className="bg-[#f8f9fb] min-h-screen pt-24 pb-20 font-sans selection:bg-[var(--color-primary)] selection:text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -67,10 +85,15 @@ const Blogs = () => {
         </div>
 
         {/* Blog Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {blogsData.map((blog, index) => (
-            <motion.div 
-              key={blog.id}
+        {loading ? (
+          <div className="flex justify-center items-center py-20">
+            <div className="w-10 h-10 border-4 border-[var(--color-primary)]/30 border-t-[var(--color-primary)] rounded-full animate-spin"></div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {blogsData.map((blog, index) => (
+              <motion.div 
+                key={blog._id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -98,7 +121,7 @@ const Blogs = () => {
                 
                 <div className="mt-auto pt-6 border-t border-gray-100">
                   <Link 
-                    to={`/blog/${blog.id}`}
+                    to={`/blog/${blog._id}`}
                     className="inline-flex items-center gap-2 text-[var(--color-primary)] font-bold text-sm tracking-wide group/link"
                   >
                     Read Article 
@@ -106,9 +129,10 @@ const Blogs = () => {
                   </Link>
                 </div>
               </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
+        )}
         
       </div>
     </div>

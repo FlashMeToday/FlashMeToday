@@ -17,6 +17,10 @@ const Contact = () => {
     details: ''
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
   
@@ -52,13 +56,71 @@ const Contact = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(formData);
+    setIsSubmitting(true);
+    setErrorMessage('');
+
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        setShowSuccessModal(true);
+        // Reset form
+        setFormData({
+          fullName: '',
+          email: '',
+          phone: '',
+          concern: '',
+          details: ''
+        });
+      } else {
+        setErrorMessage(data.message || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setErrorMessage('Failed to connect to the server. Please try again later.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <div className="relative bg-white min-h-screen font-sans selection:bg-[var(--color-primary)] selection:text-white">
+      
+      {/* Success Modal */}
+      {showSuccessModal && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
+          <div 
+            className="absolute inset-0 bg-gray-900/40 backdrop-blur-sm"
+            onClick={() => setShowSuccessModal(false)}
+          ></div>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95, y: 20 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            className="relative bg-white rounded-3xl p-8 md:p-10 shadow-2xl max-w-md w-full text-center border border-gray-100"
+          >
+            <div className="w-20 h-20 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+              <svg className="w-10 h-10 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7"></path></svg>
+            </div>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">Message Sent!</h3>
+            <p className="text-gray-500 mb-8">Thank you for reaching out to us. Our team will get back to you shortly.</p>
+            <button 
+              onClick={() => setShowSuccessModal(false)}
+              className="w-full bg-[var(--color-primary)] hover:bg-opacity-90 text-white font-bold py-3.5 rounded-xl transition-all"
+            >
+              Continue
+            </button>
+          </motion.div>
+        </div>
+      )}
       
       {/* Dark Theme Banner Hero */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-16">
@@ -326,13 +388,17 @@ const Contact = () => {
               </div>
               
               <div className="mt-2 flex flex-col sm:flex-row items-center justify-between gap-4">
-                <p className="text-xs text-gray-500 font-medium">Your details are completely secure.</p>
+                <div className="flex flex-col gap-1">
+                  <p className="text-xs text-gray-500 font-medium">Your details are completely secure.</p>
+                  {errorMessage && <p className="text-xs text-red-500 font-medium">{errorMessage}</p>}
+                </div>
                 <button 
                   type="submit" 
-                  className="group flex items-center justify-center gap-2 bg-[var(--color-primary)] hover:bg-opacity-90 text-white px-8 py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all w-full sm:w-auto"
+                  disabled={isSubmitting}
+                  className="group flex items-center justify-center gap-2 bg-[var(--color-primary)] hover:bg-opacity-90 text-white px-8 py-3.5 rounded-xl font-bold text-sm tracking-wide transition-all w-full sm:w-auto disabled:opacity-70 disabled:cursor-not-allowed"
                 >
-                  Send Request
-                  <FaArrowRight className="text-xs transform group-hover:translate-x-1 transition-transform" />
+                  {isSubmitting ? 'Sending...' : 'Send Request'}
+                  {!isSubmitting && <FaArrowRight className="text-xs transform group-hover:translate-x-1 transition-transform" />}
                 </button>
               </div>
             </form>

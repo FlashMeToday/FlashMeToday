@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { 
   FaUpload, FaCheckCircle, FaExclamationCircle, FaArrowRight, FaArrowLeft,
   FaUser, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaRoute, FaLink, FaInstagram,
-  FaCamera, FaSuitcase, FaStar, FaBriefcase, FaLaptopCode
+  FaCamera, FaSuitcase, FaStar, FaBriefcase, FaLaptopCode, FaTimes
 } from 'react-icons/fa';
 
 const ALL_CATEGORIES = [
@@ -119,40 +119,39 @@ const FloatingSelect = ({ icon: Icon, label, name, options, value, onChange, req
   );
 };
 
+const initialFormData = {
+  fullName: '',
+  email: '',
+  mobile: '',
+  city: '',
+  nearbyCities: [],
+  portfolioLink: '',
+  socialPage: '',
+  photographerCategories: [],
+  photographerCameras: '',
+  photographerEquipments: '',
+  photographerSkillLevel: '',
+  photographerExperience: '',
+  photoEditorCategories: [],
+  photoEditorSoftwares: '',
+  videographerCategories: [],
+  videographerCameras: '',
+  videographerEquipments: '',
+  videographerSoftwares: '',
+  videographerSkillLevel: '',
+  videographerExperience: '',
+  videoEditorCategories: [],
+  videoEditorSoftwares: '',
+};
+
 const Join = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [selectedSkills, setSelectedSkills] = useState([]);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
 
-  const [formData, setFormData] = useState({
-    fullName: '',
-    email: '',
-    mobile: '',
-    city: '',
-    nearbyCities: [],
-    portfolioLink: '',
-    socialPage: '',
-    
-    photographerCategories: [],
-    photographerCameras: '',
-    photographerEquipments: '',
-    photographerSkillLevel: '',
-    photographerExperience: '',
-
-    photoEditorCategories: [],
-    photoEditorSoftwares: '',
-
-    videographerCategories: [],
-    videographerCameras: '',
-    videographerEquipments: '',
-    videographerSoftwares: '',
-    videographerSkillLevel: '',
-    videographerExperience: '',
-
-    videoEditorCategories: [],
-    videoEditorSoftwares: '',
-  });
+  const [formData, setFormData] = useState(initialFormData);
 
   const [uploadedPhotos, setUploadedPhotos] = useState([]);
   const [cityInput, setCityInput] = useState('');
@@ -160,7 +159,32 @@ const Join = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
+    
+    if (name === 'mobile') {
+      let val = value.replace(/\D/g, ''); // keep only numbers
+      if (val.length > 10) {
+        if (val.startsWith('0') && val.length === 11) {
+          val = val.slice(1);
+        } else {
+          val = val.slice(-10); // get last 10 digits
+        }
+      }
+      setFormData(prev => ({ ...prev, [name]: val }));
+      return;
+    }
+    
     setFormData(prev => ({ ...prev, [name]: value }));
+  };
+
+  const handlePhotoUpload = (e) => {
+    if (e.target.files) {
+      const newFiles = Array.from(e.target.files);
+      setUploadedPhotos(prev => [...prev, ...newFiles]);
+    }
+  };
+
+  const handleRemovePhoto = (index) => {
+    setUploadedPhotos(prev => prev.filter((_, i) => i !== index));
   };
 
   const handleCategoryToggle = (role, category) => {
@@ -225,28 +249,48 @@ const Join = () => {
     setIsSubmitting(true);
     setSubmitStatus(null);
 
-    const employee = {
-      ...formData,
-      nearbyCities: formData.nearbyCities.join(', '),
-      selectedSkills,
-      isMobileContentCreator: selectedSkills.includes('mobile-content'),
-      uploadedPhotos: Array.from(uploadedPhotos).map(f => f.name)
-    };
+    const formPayload = new FormData();
+    
+    // Append all text fields
+    Object.keys(formData).forEach(key => {
+      if (Array.isArray(formData[key])) {
+        formData[key].forEach(val => formPayload.append(key, val));
+      } else {
+        formPayload.append(key, formData[key]);
+      }
+    });
+    
+    formPayload.set('nearbyCities', formData.nearbyCities.join(', '));
+    selectedSkills.forEach(skill => formPayload.append('selectedSkills', skill));
+    formPayload.append('isMobileContentCreator', selectedSkills.includes('mobile-content'));
+
+    // Append files
+    Array.from(uploadedPhotos).forEach(file => {
+      formPayload.append('photos', file);
+    });
 
     try {
-      const res = await fetch('https://flashmetodaypro-2.onrender.com/api/employees/post', {
+      const res = await fetch('http://localhost:5000/api/join-requests', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(employee)
+        body: formPayload
       });
 
       if (res.ok) {
-        setSubmitStatus('success');
+        setShowSuccessModal(true);
+        setFormData(initialFormData);
+        setCurrentStep(1);
+        setSelectedSkills([]);
+        setUploadedPhotos([]);
+        setSubmitStatus(null);
       } else {
+        const errorData = await res.json().catch(() => ({}));
+        console.error('Server error:', errorData);
+        alert(`Submission Failed: ${errorData.message || 'Unknown error. Check console and backend logs.'}`);
         setSubmitStatus('error');
       }
     } catch (err) {
-      console.error(err);
+      console.error('Network or frontend error:', err);
+      alert(`Submission Error: ${err.message}`);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -373,7 +417,7 @@ const Join = () => {
                     />
                     <FloatingInput 
                       icon={FaEnvelope}
-                      label="Email Address"
+                      label="Email"
                       type="email"
                       name="email"
                       value={formData.email}
@@ -385,7 +429,7 @@ const Join = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
                     <FloatingInput 
                       icon={FaPhoneAlt}
-                      label="Mobile Number (10 Digits)"
+                      label="Mobile Number"
                       type="tel"
                       name="mobile"
                       value={formData.mobile}
@@ -444,7 +488,7 @@ const Join = () => {
                     <label 
                       className={`absolute left-11 transition-all duration-200 pointer-events-none z-10 bg-white px-1.5 ${isNearbyCitiesActive ? '-top-2.5 text-[11px] font-bold text-[var(--color-primary)] tracking-wide' : 'top-4 text-base font-medium text-gray-400'}`}
                     >
-                      Nearby travel locations *
+                      Nearby Travel Locations *
                     </label>
                   </div>
 
@@ -716,29 +760,59 @@ const Join = () => {
                     <p className="text-sm font-semibold leading-relaxed">Please upload a minimum of 5 images representing your very best work. This is crucial for our review process. *</p>
                   </div>
                   
-                  <div className="border border-dashed border-gray-300 rounded-[2rem] p-16 text-center hover:border-[var(--color-primary)] transition-colors cursor-pointer bg-gray-50/50 relative group">
-                    <input 
-                      type="file" 
-                      multiple 
-                      accept="image/*"
-                      className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
-                      onChange={(e) => setUploadedPhotos(e.target.files)}
-                      required
-                    />
-                    <div className="relative z-0">
-                      <div className="w-20 h-20 bg-white rounded-full shadow-sm flex items-center justify-center mx-auto mb-6 group-hover:scale-110 transition-transform duration-300 group-hover:text-[var(--color-primary)] text-gray-400">
-                        <FaUpload className="text-2xl" />
+                  <div className="border border-dashed border-gray-300 rounded-[2rem] p-10 text-center hover:border-[var(--color-primary)] transition-colors bg-gray-50/50 relative group">
+                    <div className="relative z-0 max-w-xl mx-auto">
+                      <div className="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 group-hover:text-[var(--color-primary)] text-gray-400">
+                        <FaUpload className="text-xl" />
                       </div>
-                      <p className="font-bold text-gray-900 text-xl mb-2">Upload Files *</p>
-                      <p className="text-gray-400 text-sm font-medium">Drag & drop or click to browse</p>
-                      <p className="text-gray-400 text-xs mt-2 uppercase tracking-widest">SVG, PNG, JPG (MAX. 800x400px)</p>
+                      <p className="font-bold text-gray-900 text-lg mb-1">Upload Files *</p>
+                      <p className="text-gray-400 text-sm font-medium mb-4">Drag & drop or click to browse</p>
+                      <input 
+                        type="file" 
+                        multiple 
+                        accept="image/*"
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10"
+                        onChange={handlePhotoUpload}
+                        title=""
+                      />
                     </div>
                     
                     {uploadedPhotos.length > 0 && (
-                      <div className="mt-8 pt-8 border-t border-gray-200 relative z-0 flex flex-wrap justify-center gap-3">
-                        <span className="font-bold text-sm uppercase tracking-widest text-[var(--color-primary)] bg-purple-50 px-6 py-3 rounded-full shadow-sm inline-flex items-center gap-2 border border-purple-100">
-                          <FaCheckCircle /> {uploadedPhotos.length} files attached
-                        </span>
+                      <div className="mt-8 pt-8 border-t border-gray-200 relative z-20">
+                        <div className="flex justify-between items-center mb-4">
+                          <span className="font-bold text-sm uppercase tracking-widest text-[var(--color-primary)]">
+                            {uploadedPhotos.length} {uploadedPhotos.length === 1 ? 'file' : 'files'} selected
+                          </span>
+                        </div>
+                        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+                          <AnimatePresence>
+                            {uploadedPhotos.map((file, idx) => (
+                              <motion.div 
+                                key={idx}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.8 }}
+                                className="relative aspect-square rounded-xl overflow-hidden shadow-sm group/item border border-gray-200 bg-white"
+                              >
+                                <img 
+                                  src={URL.createObjectURL(file)} 
+                                  alt={`Preview ${idx}`} 
+                                  className="w-full h-full object-cover"
+                                />
+                                <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/item:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-[2px]">
+                                  <button 
+                                    type="button"
+                                    onClick={() => handleRemovePhoto(idx)}
+                                    className="bg-red-500 text-white w-8 h-8 rounded-full flex items-center justify-center hover:bg-red-600 transition-colors shadow-lg transform hover:scale-110"
+                                    title="Remove Photo"
+                                  >
+                                    <FaTimes />
+                                  </button>
+                                </div>
+                              </motion.div>
+                            ))}
+                          </AnimatePresence>
+                        </div>
                       </div>
                     )}
                   </div>
@@ -751,11 +825,6 @@ const Join = () => {
           {/* Status Messages */}
           <div className="mt-10">
             <AnimatePresence>
-              {submitStatus === 'success' && (
-                <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="bg-green-50/80 border border-green-200 text-green-700 p-5 rounded-2xl flex items-center justify-center gap-3 font-bold mb-6 shadow-sm">
-                  <FaCheckCircle className="text-xl" /> Application submitted successfully! We will be in touch.
-                </motion.div>
-              )}
               {submitStatus === 'error' && (
                 <motion.div initial={{ opacity: 0, y: -10 }} animate={{ opacity: 1, y: 0 }} className="bg-red-50/80 border border-red-200 text-red-700 p-5 rounded-2xl flex items-center justify-center gap-3 font-bold mb-6 shadow-sm">
                   <FaExclamationCircle className="text-xl" /> Submission failed. Please verify your connection or try again.
@@ -793,7 +862,7 @@ const Join = () => {
                 </>
               ) : (
                 <>
-                  {currentStep < 3 ? 'Next Step' : 'Submit App'}
+                  {currentStep < 3 ? 'Next Step' : 'Submit'}
                   {currentStep < 3 && <FaArrowRight className="text-sm" />}
                 </>
               )}
@@ -802,6 +871,32 @@ const Join = () => {
 
         </form>
       </div>
+
+      <AnimatePresence>
+        {showSuccessModal && (
+          <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              className="bg-white rounded-[2rem] p-8 md:p-12 max-w-md w-full shadow-2xl text-center relative overflow-hidden"
+            >
+              <div className="w-24 h-24 bg-green-50 rounded-full flex items-center justify-center mx-auto mb-6">
+                <FaCheckCircle className="text-5xl text-green-500" />
+              </div>
+              <h3 className="text-3xl font-black text-gray-900 mb-4">Application Submitted!</h3>
+              <p className="text-gray-500 mb-8 font-medium">Thank you for applying. We have received your portfolio and details. Our team will review them and get in touch with you shortly.</p>
+              
+              <button 
+                onClick={() => setShowSuccessModal(false)}
+                className="w-full bg-gray-900 hover:bg-black text-white py-4 rounded-full font-bold uppercase tracking-widest text-sm transition-all hover:shadow-lg"
+              >
+                Done
+              </button>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

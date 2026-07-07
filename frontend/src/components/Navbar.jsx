@@ -17,13 +17,26 @@ const Navbar = () => {
     setMobileActiveDropdown(mobileActiveDropdown === key ? null : key);
   };
 
-  // Handle scroll effect
+  // Handle scroll and click outside effects
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
+      setActiveDropdown(null); // Close dropdown on scroll
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    
+    const handleClickOutside = (e) => {
+      if (!e.target.closest('.dropdown-container')) {
+        setActiveDropdown(null);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    document.addEventListener('click', handleClickOutside);
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      document.removeEventListener('click', handleClickOutside);
+    };
   }, []);
 
   // Close dropdowns on route change
@@ -71,11 +84,16 @@ const Navbar = () => {
 
     return (
       <div 
-        className="relative"
+        className="relative dropdown-container"
         onMouseEnter={() => setActiveDropdown(dropdownKey)}
         onMouseLeave={() => setActiveDropdown(null)}
       >
-        <button className={`flex items-center gap-2 font-medium text-[15px] transition-colors duration-300 px-4 xl:px-5 py-2 rounded-full ${
+        <button 
+          onClick={(e) => {
+            e.stopPropagation();
+            setActiveDropdown(isOpen ? null : dropdownKey);
+          }}
+          className={`flex items-center gap-2 font-medium text-[15px] transition-colors duration-300 px-4 xl:px-5 py-2 rounded-full ${
           isParentActive
             ? 'bg-[var(--color-primary)] text-white shadow-md shadow-[var(--color-primary)]/20'
             : isOpen
