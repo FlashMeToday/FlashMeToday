@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FiCalendar, FiClock, FiMapPin, FiMail, FiPhone, FiCheck, FiX, FiTrash2, FiSearch, FiFilter } from 'react-icons/fi';
 import { FaUserCircle, FaCamera } from 'react-icons/fa';
+import { API_URL } from '../../config/api';
 
 const BookingsTab = () => {
   const [bookings, setBookings] = useState([]);
@@ -22,7 +23,7 @@ const BookingsTab = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:5000/api/bookings?page=${page}&limit=20`, {
+      const response = await fetch(`${API_URL}/bookings?page=${page}&limit=20`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -42,7 +43,7 @@ const BookingsTab = () => {
   const updateStatus = async (id, newStatus) => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:5000/api/bookings/${id}/status`, {
+      const response = await fetch(`${API_URL}/bookings/${id}/status`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -63,7 +64,7 @@ const BookingsTab = () => {
     if (!selectedBooking) return;
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:5000/api/bookings/${selectedBooking._id}`, {
+      const response = await fetch(`${API_URL}/bookings/${selectedBooking._id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

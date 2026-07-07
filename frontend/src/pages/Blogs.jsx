@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { FaArrowRight } from 'react-icons/fa';
+import { API_URL } from '../config/api';
 
 const Blogs = () => {
   const [blogsData, setBlogsData] = useState([]);
@@ -10,7 +11,7 @@ const Blogs = () => {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/blogs?status=Published');
+        const response = await fetch(`${API_URL}/blogs?status=Published`);
         const data = await response.json();
         if (data.success) {
           setBlogsData(data.data);

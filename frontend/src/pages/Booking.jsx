@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useSearchParams, Link, useNavigate, useLocation } from 'react-router-dom';
 import bookingDataRaw from '../assets/data/services.json';
 import { FaUser, FaEnvelope, FaWhatsapp, FaPhoneAlt, FaCalendarAlt, FaClipboardList, FaCamera, FaMapMarkerAlt, FaChevronDown, FaArrowRight, FaInfoCircle, FaCheckCircle, FaLock } from 'react-icons/fa';
+import { API_URL } from '../config/api';
 
 const Booking = () => {
   const [searchParams] = useSearchParams();
@@ -105,7 +106,7 @@ const Booking = () => {
     setSubmitError('');
     
     try {
-      const response = await fetch('http:
+      const response = await fetch(`${API_URL}/bookings`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

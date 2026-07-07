@@ -24,6 +24,7 @@ import logo from '../../assets/Logo/logo.webp';
 import PhotographersTab from './PhotographersTab';
 import BookingsTab from './BookingsTab';
 import BlogsTab from './BlogsTab';
+import { API_URL } from '../../config/api';
 
 const SettingsTab = () => {
   const [oldPassword, setOldPassword] = useState('');
@@ -46,7 +47,7 @@ const SettingsTab = () => {
     try {
       setLoading(true);
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:5000/api/admin/update', {
+      const response = await fetch(`${API_URL}/admin/update`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -156,7 +157,7 @@ const ContactTab = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:5000/api/contact?page=${page}&limit=10`, {
+      const response = await fetch(`${API_URL}/contact?page=${page}&limit=10`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -185,7 +186,7 @@ const ContactTab = () => {
     setIsDeleting(true);
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:5000/api/contact/${messageToDelete}`, {
+      const response = await fetch(`${API_URL}/contact/${messageToDelete}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -444,7 +445,7 @@ const JoiningRequestTab = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:5000/api/join-requests?page=${page}&limit=10`, {
+      const response = await fetch(`${API_URL}/join-requests?page=${page}&limit=10`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -473,7 +474,7 @@ const JoiningRequestTab = () => {
     setIsDeleting(true);
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:5000/api/join-requests/${requestToDelete}`, {
+      const response = await fetch(`${API_URL}/join-requests/${requestToDelete}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -499,7 +500,7 @@ const JoiningRequestTab = () => {
     setIsStatusUpdating(true);
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:5000/api/join-requests/${id}/status`, {
+      const response = await fetch(`${API_URL}/join-requests/${id}/status`, {
         method: 'PUT',
         headers: {
           'Authorization': `Bearer ${token}`,
@@ -930,7 +931,7 @@ const DashboardContent = () => {
     const fetchStats = async () => {
       try {
         const token = localStorage.getItem('adminToken');
-        const res = await fetch('http://localhost:5000/api/dashboard/stats', {
+        const res = await fetch(`${API_URL}/dashboard/stats`, {
           headers: { 'Authorization': `Bearer ${token}` }
         });
         const result = await res.json();
@@ -1069,9 +1070,9 @@ const Dashboard = () => {
   const fetchNotificationCounts = async (token) => {
     try {
       const [contactRes, joinRes, bookingRes] = await Promise.all([
-        fetch('http://localhost:5000/api/contact/unread', { headers: { 'Authorization': `Bearer ${token}` } }),
-        fetch('http://localhost:5000/api/join-requests/unread', { headers: { 'Authorization': `Bearer ${token}` } }),
-        fetch('http://localhost:5000/api/bookings/unread', { headers: { 'Authorization': `Bearer ${token}` } })
+        fetch(`${API_URL}/contact/unread`, { headers: { 'Authorization': `Bearer ${token}` } }),
+        fetch(`${API_URL}/join-requests/unread`, { headers: { 'Authorization': `Bearer ${token}` } }),
+        fetch(`${API_URL}/bookings/unread`, { headers: { 'Authorization': `Bearer ${token}` } })
       ]);
       
       const contactData = await contactRes.json();
@@ -1088,7 +1089,7 @@ const Dashboard = () => {
 
   const markContactsAsRead = async (token) => {
     try {
-      await fetch('http://localhost:5000/api/contact/mark-read', {
+      await fetch(`${API_URL}/contact/mark-read`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` }
       });
@@ -1100,7 +1101,7 @@ const Dashboard = () => {
 
   const markJoinRequestsAsRead = async (token) => {
     try {
-      await fetch('http://localhost:5000/api/join-requests/mark-read', {
+      await fetch(`${API_URL}/join-requests/mark-read`, {
         method: 'PUT',
         headers: { 'Authorization': `Bearer ${token}` }
       });

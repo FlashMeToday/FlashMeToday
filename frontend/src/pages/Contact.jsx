@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useSearchParams, useNavigate, useLocation } from 'react-router-dom';
 import { FaWhatsapp, FaPhoneAlt, FaEnvelope, FaMapMarkerAlt, FaArrowRight } from 'react-icons/fa';
+import { API_URL } from '../config/api';
 
 const Contact = () => {
   const [searchParams] = useSearchParams();
@@ -62,7 +63,7 @@ const Contact = () => {
     setErrorMessage('');
 
     try {
-      const response = await fetch('http:
+      const response = await fetch(`${API_URL}/contact`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

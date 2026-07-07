@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { FiPlus, FiSearch, FiFilter, FiEdit2, FiEye, FiTrash2, FiX, FiCheck, FiUpload, FiMapPin } from 'react-icons/fi';
 import { FaPhone, FaPhoneAlt, FaEnvelope, FaCamera, FaMapMarkerAlt } from 'react-icons/fa';
 import { State, City } from 'country-state-city';
+import { API_URL } from '../../config/api';
 
 const PhotographersTab = () => {
   
@@ -106,7 +107,7 @@ const PhotographersTab = () => {
       if (filters.status) queryParams += `&status=${encodeURIComponent(filters.status)}`;
       if (filters.expertise) queryParams += `&expertise=${encodeURIComponent(filters.expertise)}`;
 
-      const response = await fetch(`http://localhost:5000/api/photographers${queryParams}`, {
+      const response = await fetch(`${API_URL}/photographers${queryParams}`, {
         headers: { 'Authorization': `Bearer ${token}` }
       });
       const data = await response.json();
@@ -202,8 +203,8 @@ const PhotographersTab = () => {
       }
 
       const url = selectedPhotographer 
-        ? `http://localhost:5000/api/photographers/${selectedPhotographer._id}`
-        : 'http://localhost:5000/api/photographers';
+        ? `${API_URL}/photographers/${selectedPhotographer._id}`
+        : `${API_URL}/photographers`;
       const method = selectedPhotographer ? 'PUT' : 'POST';
 
       const response = await fetch(url, {
@@ -235,7 +236,7 @@ const PhotographersTab = () => {
     if (!selectedPhotographer) return;
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:5000/api/photographers/${selectedPhotographer._id}`, {
+      const response = await fetch(`${API_URL}/photographers/${selectedPhotographer._id}`, {
         method: 'DELETE',
         headers: { 'Authorization': `Bearer ${token}` }
       });

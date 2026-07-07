@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
+import { API_URL } from '../../config/api';
   FiFileText, FiPlus, FiEdit2, FiTrash2, FiSearch, 
   FiX, FiChevronRight, FiChevronLeft, FiCheck, FiImage
 } from 'react-icons/fi';
@@ -36,7 +37,7 @@ const BlogsTab = () => {
       setLoading(true);
       
       const token = localStorage.getItem('adminToken');
-      const response = await fetch('http://localhost:5000/api/blogs?limit=50', {
+      const response = await fetch(`${API_URL}/blogs?limit=50`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -67,7 +68,7 @@ const BlogsTab = () => {
     try {
       setIsUploading(true);
       const token = localStorage.getItem('adminToken');
-      const res = await fetch('http://localhost:5000/api/upload', {
+      const res = await fetch(`${API_URL}/upload`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -122,8 +123,8 @@ const BlogsTab = () => {
     try {
       const token = localStorage.getItem('adminToken');
       const url = selectedBlog 
-        ? `http://localhost:5000/api/blogs/${selectedBlog._id}` 
-        : 'http://localhost:5000/api/blogs';
+        ? `${API_URL}/blogs/${selectedBlog._id}` 
+        : `${API_URL}/blogs`;
       
       const method = selectedBlog ? 'PUT' : 'POST';
 
@@ -150,7 +151,7 @@ const BlogsTab = () => {
   const handleDelete = async () => {
     try {
       const token = localStorage.getItem('adminToken');
-      const response = await fetch(`http://localhost:5000/api/blogs/${selectedBlog._id}`, {
+      const response = await fetch(`${API_URL}/blogs/${selectedBlog._id}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`

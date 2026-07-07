@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
+import { API_URL } from '../config/api';
   FaUpload, FaCheckCircle, FaExclamationCircle, FaArrowRight, FaArrowLeft,
   FaUser, FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaRoute, FaLink, FaInstagram,
   FaCamera, FaSuitcase, FaStar, FaBriefcase, FaLaptopCode, FaTimes
@@ -269,7 +270,7 @@ const Join = () => {
     });
 
     try {
-      const res = await fetch('http://localhost:5000/api/join-requests', {
+      const res = await fetch(`${API_URL}/join-requests`, {
         method: 'POST',
         body: formPayload
       });

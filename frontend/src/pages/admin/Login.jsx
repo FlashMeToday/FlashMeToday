@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaEye, FaEyeSlash, FaLock, FaEnvelope } from 'react-icons/fa';
 import { motion } from 'framer-motion';
+import { API_URL } from '../../config/api';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -18,7 +19,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const res = await fetch('http:
+      const res = await fetch(`${API_URL}/admin/login`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
