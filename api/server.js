@@ -3,15 +3,15 @@ const express = require('express');
 const cors = require('cors');
 
 // Import Routes
-const authRoutes = require('./routes/authRoutes');
-const contactRoutes = require('./routes/contactRoutes');
-const joinRequestRoutes = require('./routes/joinRequestRoutes');
-const photographerRoutes = require('./routes/photographerRoutes');
-const bookingRoutes = require('./routes/bookingRoutes');
-const blogRoutes = require('./routes/blogRoutes');
-const uploadRoutes = require('./routes/uploadRoutes');
-const dashboardRoutes = require('./routes/dashboardRoutes');
-const connectDB = require('./config/db');
+const authRoutes = require('./_src/routes/authRoutes');
+const contactRoutes = require('./_src/routes/contactRoutes');
+const joinRequestRoutes = require('./_src/routes/joinRequestRoutes');
+const photographerRoutes = require('./_src/routes/photographerRoutes');
+const bookingRoutes = require('./_src/routes/bookingRoutes');
+const blogRoutes = require('./_src/routes/blogRoutes');
+const uploadRoutes = require('./_src/routes/uploadRoutes');
+const dashboardRoutes = require('./_src/routes/dashboardRoutes');
+const connectDB = require('./_src/config/db');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
