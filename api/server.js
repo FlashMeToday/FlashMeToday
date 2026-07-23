@@ -53,6 +53,10 @@ app.get('/', (req, res) => {
 });
 
 // Server Initialization
-app.listen(PORT, () => {
-  console.log(`Backend server is running on http://localhost:${PORT}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`Backend server is running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
