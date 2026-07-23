@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useSearchParams, Link, useNavigate, useLocation } from 'react-router-dom';
-import bookingDataRaw from '../assets/data/services.json';
+import bookingDataRaw from '../assets/Data/services.json';
 import { FaUser, FaEnvelope, FaWhatsapp, FaPhoneAlt, FaCalendarAlt, FaClipboardList, FaCamera, FaMapMarkerAlt, FaChevronDown, FaArrowRight, FaInfoCircle, FaCheckCircle, FaLock } from 'react-icons/fa';
 import { API_URL } from '../config/api';
 
